@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -c tailwind.config.cjs -i styles/tailwind.css -o assets/css/tailwind.min.css --minify"
+    "build": "tailwindcss -c tailwind.config.cjs -i styles/tailwind.css -o assets/css/tailwind.min.css --minify && node build-site.cjs"
   },
   "devDependencies": { "tailwindcss": "3.4.17" }
 }
