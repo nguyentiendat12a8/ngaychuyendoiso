@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ngày Chuyển Đổi Số Quốc Gia 10/10</title>
+    <title>Ngày Chuyển đổi số quốc gia 10/10</title>
     <!-- Open Graph SEO Meta Tags (Xem trước khi chia sẻ link Zalo/FB/Messenger) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Ngày Chuyển Đổi Số Quốc Gia 10/10 - Hành Động Cùng Chuyển Đổi Số Quốc Gia">
-    <meta property="og:description" content="Trang thông tin chính thức Ngày Chuyển đổi số Quốc gia 10/10. Tạo ảnh Avatar gắn khung nhận diện chính thức, xem lịch trình sự kiện và câu chuyện CĐS tiêu biểu.">
+    <meta property="og:title" content="Ngày Chuyển đổi số quốc gia 10/10 - Hành động cùng Chuyển đổi số quốc gia">
+    <meta property="og:description" content="Trang thông tin chính thức Ngày Chuyển đổi số quốc gia 10/10. Tạo ảnh avatar gắn khung nhận diện chính thức, xem lịch trình sự kiện và câu chuyện CĐS tiêu biểu.">
     <meta property="og:image" content="logo.png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="600">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Ngày Chuyển Đổi Số Quốc Gia 10/10">
-    <meta name="twitter:description" content="Trang thông tin chính thức Ngày Chuyển đổi số Quốc gia 10/10 - Hành động cùng Chuyển đổi số quốc gia.">
+    <meta name="twitter:title" content="Ngày Chuyển đổi số quốc gia 10/10">
+    <meta name="twitter:description" content="Trang thông tin chính thức Ngày Chuyển đổi số quốc gia 10/10 - Hành động cùng Chuyển đổi số quốc gia.">
     <meta name="twitter:image" content="logo.png">
 
     <!-- Favicon chuẩn Logo CĐS Quốc Gia -->
@@ -33,6 +33,9 @@
     <!-- Swiper.js CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
+        .storiesSwiper .swiper-wrapper {
+            transition-timing-function: linear !important;
+        }
         .swiper-button-next::after,
         .swiper-button-prev::after {
             display: none !important;
@@ -145,6 +148,10 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: shimmer 5s infinite linear;
+            display: inline-block;
+            padding-top: 0.3em;
+            padding-bottom: 0.15em;
+            margin-top: 0.05em;
         }
 
         #particleCanvas {
@@ -261,14 +268,70 @@
 </head>
 <body class="antialiased selection:bg-amber-400 selection:text-slate-950 min-h-screen overflow-x-hidden">
 
+    <!-- Sticky Header Bar chuẩn Bộ nhận diện -->
+    <header class="sticky top-0 z-50 bg-[#0B1B4D]/90 backdrop-blur-md border-b border-[#C9D3F0]/15 shadow-xl transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+            
+            <!-- Left: Logo & Tên sự kiện -->
+            <a href="#hero" class="flex items-center gap-3 group">
+                <img src="logo.png" alt="Logo CĐS Quốc Gia" class="h-9 sm:h-11 w-auto transform group-hover:scale-105 transition-transform duration-300">
+                <div class="hidden sm:block">
+                    <span class="block text-xs font-black text-white uppercase tracking-wider">NGÀY CHUYỂN ĐỔI SỐ</span>
+                    <span class="block text-[10px] font-extrabold text-[#FFC21A] uppercase tracking-widest">QUỐC GIA 10/10/2026</span>
+                </div>
+            </a>
+
+            <!-- Center: Menu Navigation (Desktop) -->
+            <nav class="hidden md:flex items-center space-x-6 lg:space-x-8 text-xs lg:text-sm font-bold text-[#C9D3F0]">
+                <a href="#hero" class="hover:text-[#FFC21A] transition-colors py-2">Tổng quan</a>
+                <a href="#ket-qua" class="hover:text-[#FFC21A] transition-colors py-2">Kết quả</a>
+                <a href="#su-kien" class="hover:text-[#FFC21A] transition-colors py-2">Chương trình</a>
+                <a href="#cau-chuyen" class="hover:text-[#FFC21A] transition-colors py-2">Câu chuyện</a>
+                <a href="#tao-avatar" class="hover:text-[#FFC21A] transition-colors py-2">Hưởng ứng</a>
+            </nav>
+
+            <!-- Right: Nút nổi Đăng ký tham dự & Menu Mobile Button -->
+            <div class="flex items-center gap-3">
+                <a href="#dang-ky-qr" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#FFC21A] via-[#F7931E] to-[#FFC21A] text-[#0B1B4D] font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider">
+                    <i class="fa-solid fa-qrcode text-sm"></i>
+                    <span>Đăng ký tham dự</span>
+                </a>
+
+                <!-- Mobile Menu Button -->
+                <button type="button" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-xl text-[#C9D3F0] hover:text-white hover:bg-[#13307A]/60 focus:outline-none transition-colors" aria-label="Toggle Menu">
+                    <i id="mobileMenuIcon" class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-[#C9D3F0]/15 bg-[#0B1B4D]/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-2">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-[#13307A] hover:text-[#FFC21A] transition-colors">
+                <i class="fa-solid fa-house mr-2 text-[#FFC21A]"></i> Tổng quan
+            </a>
+            <a href="#ket-qua" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-[#13307A] hover:text-[#FFC21A] transition-colors">
+                <i class="fa-solid fa-chart-line mr-2 text-[#FFC21A]"></i> Kết quả
+            </a>
+            <a href="#su-kien" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-[#13307A] hover:text-[#FFC21A] transition-colors">
+                <i class="fa-solid fa-calendar-check mr-2 text-[#FFC21A]"></i> Chương trình
+            </a>
+            <a href="#cau-chuyen" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-[#13307A] hover:text-[#FFC21A] transition-colors">
+                <i class="fa-solid fa-newspaper mr-2 text-[#FFC21A]"></i> Câu chuyện
+            </a>
+            <a href="#tao-avatar" onclick="toggleMobileMenu()" class="block px-4 py-2.5 rounded-xl text-sm font-bold text-white hover:bg-[#13307A] hover:text-[#FFC21A] transition-colors">
+                <i class="fa-solid fa-user-gear mr-2 text-[#FFC21A]"></i> Hưởng ứng
+            </a>
+        </div>
+    </header>
+
     <!-- Hero Section -->
-    <section class="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden">
+    <section id="hero" class="relative pt-16 pb-20 md:pt-24 md:pb-32 overflow-hidden">
         <!-- Canvas Constellation Particle Animation -->
         <canvas id="particleCanvas"></canvas>
 
         <!-- Ambient Glow Blobs -->
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#2F6BFF]/15 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
-        <div class="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#FFC21A]/10 rounded-full blur-[130px] pointer-events-none animate-float"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#2F6BFF]/10 rounded-full blur-[140px] pointer-events-none animate-pulse-glow"></div>
+        <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#FFC21A]/05 rounded-full blur-[130px] pointer-events-none animate-float"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -283,18 +346,40 @@
                     </div>
 
                     <!-- Tiêu đề sự kiện chuẩn nhận diện với Shimmer Animation -->
-                    <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight uppercase mb-4">
-                        NGÀY CHUYỂN ĐỔI SỐ<br>
-                        <span class="gradient-shimmer-text">QUỐC GIA NĂM 2026</span>
+                    <h1 data-aos="fade-up" data-aos-delay="100" class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-relaxed tracking-tight uppercase mb-4 pt-2">
+                        NGÀY CHUYỂN ĐỔI SỐ <span class="gradient-shimmer-text">QUỐC GIA NĂM 2026</span>
                     </h1>
 
                     <!-- Gạch dưới tiêu đề A4 (96x6px) -->
                     <div data-aos="fade-up" data-aos-delay="200" class="heading-line-a4 mb-6"></div>
 
-                    <!-- Chủ đề ghi NGUYÊN VĂN chuẩn bộ nhận diện (Ngắt dòng sau "dữ liệu") -->
-                    <div data-aos="fade-up" data-aos-delay="300" class="text-lg sm:text-2xl text-white font-medium leading-relaxed mb-6 bg-[#13307A]/40 p-5 rounded-2xl border-l-4 border-[#FFC21A] backdrop-blur-sm">
-                        “Chuyển đổi số quốc gia: Từ kiến trúc, nền tảng, dữ liệu<br class="hidden sm:inline">
-                        đến kết quả thực chất, nâng cao hiệu quả quản trị quốc gia”
+                    <!-- Slogan Chủ Đề Sự Kiện Tái Thiết Kế (Thông Thoáng, Tách Dấu Chuẩn UI) -->
+                    <div data-aos="fade-up" data-aos-delay="300" class="my-6 p-6 sm:p-8 rounded-2xl bg-[#13307A]/50 border border-[#C9D3F0]/20 border-l-4 border-l-[#FFC21A] backdrop-blur-md shadow-2xl relative overflow-hidden">
+                        
+                        <!-- Ambient Glow Element -->
+                        <div class="absolute -right-12 -bottom-12 w-48 h-48 bg-[#FFC21A]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                        <div class="space-y-5 relative z-10">
+                            <!-- Dòng 1: TỪ KIẾN TRÚC · NỀN TẢNG · DỮ LIỆU -->
+                            <div class="flex items-center gap-2 text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#FFC21A] mb-2">
+                                <i class="fa-solid fa-layer-group text-sm"></i>
+                                <span>TỪ KIẾN TRÚC &nbsp;•&nbsp; NỀN TẢNG &nbsp;•&nbsp; DỮ LIỆU</span>
+                            </div>
+
+                            <!-- Dòng 2: KẾT QUẢ THỰC CHẤT (Tách xa dòng ĐẾN, không che dấu) -->
+                            <div class="pt-2 pb-2">
+                                <span class="text-xs sm:text-sm uppercase tracking-[0.2em] font-extrabold text-[#C9D3F0]/80 block mb-4">ĐẾN</span>
+                                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-wide text-[#FFC21A] bg-gradient-to-r from-[#FFC21A] via-[#FFF3B0] to-[#FFC21A] bg-clip-text text-transparent leading-[1.6] pt-3 pb-3 drop-shadow-[0_4px_12px_rgba(255,194,26,0.3)]">
+                                    KẾT QUẢ THỰC CHẤT
+                                </h2>
+                            </div>
+
+                            <!-- Dòng 3: Nâng cao hiệu quả quản trị quốc gia -->
+                            <div class="pt-4 border-t border-[#C9D3F0]/15 flex items-center gap-2.5 text-sm sm:text-base lg:text-lg text-white font-semibold">
+                                <i class="fa-solid fa-shield-halved text-[#FFC21A]"></i>
+                                <span>Nâng cao hiệu quả quản trị quốc gia</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Countdown Timer đếm ngược -->
@@ -346,13 +431,13 @@
 
                         <!-- Floating Badges cho 3 vòng -->
                         <div class="badge-v1 absolute -top-2 right-2 px-3 py-1 rounded-md bg-[#2F6BFF]/30 border border-[#2F6BFF] text-[10px] font-bold text-[#C9D3F0] backdrop-blur-sm shadow-lg">
-                            Vòng 1: Kiến trúc (Chính phủ số)
+                            Vòng 1: Chính phủ số
                         </div>
                         <div class="badge-v2 absolute bottom-6 left-0 px-3 py-1 rounded-md bg-[#2F6BFF]/30 border border-[#2F6BFF] text-[10px] font-bold text-[#C9D3F0] backdrop-blur-sm shadow-lg">
-                            Vòng 2: Nền tảng (Kinh tế số)
+                            Vòng 2: Kinh tế số
                         </div>
                         <div class="badge-v3 absolute top-1/2 -right-6 transform -translate-y-1/2 px-3 py-1 rounded-md bg-[#F7931E]/30 border border-[#F7931E] text-[10px] font-bold text-[#FFC21A] backdrop-blur-sm shadow-lg">
-                            Vòng 3: Dữ liệu (Xã hội số)
+                            Vòng 3: Xã hội số
                         </div>
                     </div>
                 </div>
@@ -366,7 +451,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">TỔNG THỂ QUỐC GIA</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase">3 TRỤ CỘT CHUYỂN ĐỔI SỐ</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase pt-1" style="line-height: 1.75;">3 TRỤ CỘT CHUYỂN ĐỔI SỐ</h2>
                 <div class="heading-line-a4 mx-auto mt-4"></div>
             </div>
 
@@ -374,7 +459,7 @@
                 <!-- Pillar 1 -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-right">
                     <div class="w-12 h-12 rounded-xl bg-[#2F6BFF]/20 text-[#2F6BFF] flex items-center justify-center text-2xl mb-6 font-black">01</div>
-                    <h3 class="text-2xl font-extrabold text-white mb-4">Chính Phủ Số</h3>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Chính phủ số</h3>
                     <ul class="space-y-3 text-[#C9D3F0] text-sm">
                         <li class="flex items-start space-x-2">
                             <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
@@ -394,11 +479,11 @@
                 <!-- Pillar 2 -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-up">
                     <div class="w-12 h-12 rounded-xl bg-[#2F6BFF]/20 text-[#2F6BFF] flex items-center justify-center text-2xl mb-6 font-black">02</div>
-                    <h3 class="text-2xl font-extrabold text-white mb-4">Kinh Tế Số</h3>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Kinh tế số</h3>
                     <ul class="space-y-3 text-[#C9D3F0] text-sm">
                         <li class="flex items-start space-x-2">
                             <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Thúc đẩy tỷ trọng đóng góp của Kinh tế số trong GDP</span>
+                            <span>Thúc đẩy tỷ trọng đóng góp của kinh tế số trong GDP</span>
                         </li>
                         <li class="flex items-start space-x-2">
                             <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
@@ -414,7 +499,7 @@
                 <!-- Pillar 3 -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-left">
                     <div class="w-12 h-12 rounded-xl bg-[#F7931E]/20 text-[#F7931E] flex items-center justify-center text-2xl mb-6 font-black">03</div>
-                    <h3 class="text-2xl font-extrabold text-white mb-4">Xã Hội Số</h3>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Xã hội số</h3>
                     <ul class="space-y-3 text-[#C9D3F0] text-sm">
                         <li class="flex items-start space-x-2">
                             <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
@@ -439,37 +524,37 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-xs uppercase tracking-[0.14em] text-[#13307A] font-extrabold block mb-2">ĐO LƯỜNG GIÁ TRỊ</span>
-                <h2 class="text-3xl sm:text-4xl font-black uppercase text-[#0B1B4D]">MINH CHỨNG KẾT QUẢ THỰC CHẤT</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold uppercase text-[#0B1B4D] pt-1" style="line-height: 1.75;">MINH CHỨNG KẾT QUẢ THỰC CHẤT</h2>
                 <div class="w-24 h-1.5 bg-[#FFC21A] mx-auto mt-4"></div>
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-shadow" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="text-4xl sm:text-6xl font-black text-[#13307A] mb-2 flex justify-center items-center">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#13307A] mb-2 flex justify-center items-center">
                         <span class="counter-val" data-target="90">0</span>%
                     </div>
                     <div class="text-xs sm:text-sm font-bold text-slate-700">Hồ sơ xử lý trực tuyến toàn trình</div>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-shadow" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="text-4xl sm:text-6xl font-black text-[#13307A] mb-2 flex justify-center items-center">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#13307A] mb-2 flex justify-center items-center">
                         <span class="counter-val" data-target="102">0</span>&nbsp;Tr+
                     </div>
-                    <div class="text-xs sm:text-sm font-bold text-slate-700">Hồ sơ Định danh VNeID</div>
+                    <div class="text-xs sm:text-sm font-bold text-slate-700">Hồ sơ định danh VNeID</div>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-shadow" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="text-4xl sm:text-6xl font-black text-[#13307A] mb-2 flex justify-center items-center">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#13307A] mb-2 flex justify-center items-center">
                         <span class="counter-val" data-target="100">0</span>%
                     </div>
-                    <div class="text-xs sm:text-sm font-bold text-slate-700">Bộ/Ngành kết nối CSDL Quốc gia</div>
+                    <div class="text-xs sm:text-sm font-bold text-slate-700">Bộ, ngành kết nối CSDL quốc gia</div>
                 </div>
 
                 <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl transition-shadow" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="text-4xl sm:text-6xl font-black text-[#13307A] mb-2 flex justify-center items-center">
+                    <div class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#13307A] mb-2 flex justify-center items-center">
                         <span class="counter-val" data-target="95">0</span>%
                     </div>
-                    <div class="text-xs sm:text-sm font-bold text-slate-700">Mức độ hài lòng của Người dân</div>
+                    <div class="text-xs sm:text-sm font-bold text-slate-700">Mức độ hài lòng của người dân</div>
                 </div>
             </div>
         </div>
@@ -479,7 +564,8 @@
     <section id="su-kien" class="py-24 relative border-b border-[#C9D3F0]/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase">Chương trình trọng tâm ngày Chuyển đổi số</h2>
+                <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">SỰ KIỆN NỔI BẬT</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase pt-1" style="line-height: 1.75;">CHƯƠNG TRÌNH TRỌNG TÂM NGÀY CHUYỂN ĐỔI SỐ</h2>
                 <div class="heading-line-a4 mx-auto mt-4"></div>
             </div>
 
@@ -487,141 +573,141 @@
                 <!-- Ngày 09/10 -->
                 <div class="brand-card p-6 sm:p-8 border-t-4 border-t-[#2F6BFF] relative overflow-hidden flex flex-col justify-between h-full" data-aos="fade-right">
                     <div class="flex flex-col flex-grow">
-                        <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center justify-between mb-4 h-10">
                             <div class="px-4 py-2 rounded-xl bg-[#2F6BFF] text-white font-black text-lg shadow-md">
                                 NGÀY 09/10/2026
                             </div>
-                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#2F6BFF]/20 text-[#C9D3F0] border border-[#2F6BFF]/30">Phiên Tiền Sự Kiện</span>
+                            <span class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-[#2F6BFF]/20 text-[#C9D3F0] border border-[#2F6BFF]/30">PHIÊN TIỀN SỰ KIỆN</span>
                         </div>
-                        <h3 class="text-2xl font-extrabold text-white mb-3 min-h-[64px] flex items-center">Diễn Đàn Đô Thị Thông Minh 2026</h3>
-                        <p class="text-xs sm:text-sm text-[#C9D3F0] mb-6 leading-relaxed flex-grow min-h-[60px] flex items-center">
-                            Tập trung thảo luận quy hoạch hạ tầng số đô thị, kết nối trung tâm điều hành thông minh (IOC), giải pháp chiếu sáng - giao thông số và liên thông dữ liệu giữa các thành phố lớn.
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-white mb-3 h-16 sm:h-16 flex items-center">Diễn đàn Đô thị thông minh 2026</h3>
+                        <p class="text-xs sm:text-sm text-[#C9D3F0] mb-6 leading-relaxed w-full text-justify sm:text-left h-24 sm:h-20 flex items-center">
+                            Tập trung thảo luận quy hoạch hạ tầng số đô thị, kết nối Trung tâm Điều hành IOC, giải pháp giao thông số và liên thông dữ liệu giữa các thành phố lớn.
                         </p>
                         
-                        <div class="mb-6 p-3 rounded-xl bg-[#0B1B4D]/60 border border-[#C9D3F0]/15 flex items-center justify-between text-xs text-[#C9D3F0] h-[48px]">
+                        <div class="mt-auto mb-6 p-3 rounded-xl bg-[#0B1B4D]/60 border border-[#C9D3F0]/15 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-xs text-[#C9D3F0] min-h-[48px]">
                             <a href="https://maps.google.com/?q=Trung+tam+Hoi+nghi+Quoc+gia+Ha+Noi" target="_blank" class="flex items-center gap-1.5 text-[#FFC21A] hover:underline font-bold transition-colors">
                                 <i class="fa-solid fa-location-dot"></i>
                                 <span>Trung tâm Hội nghị Quốc gia</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-users text-[#2F6BFF]"></i> ~500 Đại biểu</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-users text-[#2F6BFF]"></i> ~500 đại biểu</span>
                         </div>
                     </div>
 
                     <!-- Timeline Chi Tiết Ngày 09/10 -->
                     <div class="pt-5 border-t border-[#C9D3F0]/15">
                         <h4 class="text-xs uppercase tracking-wider font-extrabold text-[#FFC21A] mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-timeline"></i> Lịch Trình Chi Tiết (Timeline)
+                            <i class="fa-solid fa-timeline"></i> Lịch trình chi tiết (Timeline)
                         </h4>
-                        <div class="max-h-[350px] overflow-y-auto pr-3 custom-scrollbar">
+                        <div class="max-h-[250px] overflow-y-auto pr-3 custom-scrollbar">
                             <div class="relative pl-7 space-y-4 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-[#2F6BFF]/50">
                                 <!-- Item 1 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">08:00 - 08:30</div>
-                                    <div class="text-xs text-white font-medium">Đón tiếp đại biểu & Khai mạc Triển lãm Giải pháp Đô thị thông minh</div>
+                                    <div class="text-xs text-white font-medium">Đón tiếp đại biểu & khai mạc triển lãm giải pháp đô thị thông minh</div>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">08:30 - 09:30</div>
-                                    <div class="text-xs text-white font-medium">Phiên toàn thể: Định hướng phát triển Hạ tầng số & Trung tâm Điều hành IOC Quốc gia</div>
+                                    <div class="text-xs text-white font-medium">Phiên toàn thể: Định hướng phát triển hạ tầng số & Trung tâm IOC quốc gia</div>
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">09:30 - 10:45</div>
-                                    <div class="text-xs text-white font-medium">Tọa đàm chuyên đề 1: Giải pháp Giao thông thông minh, chiếu sáng & Năng lượng đô thị</div>
+                                    <div class="text-xs text-white font-medium">Tọa đàm 1: Giải pháp giao thông thông minh, chiếu sáng & năng lượng đô thị</div>
                                 </div>
                                 <!-- Item 4 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">10:45 - 11:45</div>
-                                    <div class="text-xs text-white font-medium">Tọa đàm chuyên đề 2: Liên thông dữ liệu đô thị & An toàn thông minh trong Đô thị số</div>
+                                    <div class="text-xs text-white font-medium">Tọa đàm 2: Liên thông dữ liệu đô thị & an toàn thông minh trong đô thị số</div>
                                 </div>
                                 <!-- Item 5 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">13:30 - 16:30</div>
-                                    <div class="text-xs text-white font-medium">Khảo sát thực tế & Trải nghiệm Mô hình Đô thị thông minh tiêu biểu</div>
+                                    <div class="text-xs text-white font-medium">Khảo sát thực tế & trải nghiệm mô hình đô thị thông minh tiêu biểu</div>
                                 </div>
                                 <!-- Item 6 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#2F6BFF] border-2 border-[#0B1B4D]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">16:30 - 17:00</div>
-                                    <div class="text-xs text-white font-medium">Báo cáo tổng kết & Khai mạc Chuỗi hoạt động Ngày CĐS 10/10</div>
+                                    <div class="text-xs text-white font-medium">Báo cáo tổng kết & khai mạc chuỗi hoạt động Ngày CĐS 10/10</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Ngày 10/10 -->
+                <!-- Ngày 10/10 (Cloned 1:1 từ Cấu trúc Ngày 09/10) -->
                 <div class="brand-card p-6 sm:p-8 border-t-4 border-t-[#FFC21A] bg-[#13307A] relative overflow-hidden flex flex-col justify-between h-full" data-aos="fade-left">
                     <div class="flex flex-col flex-grow">
-                        <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center justify-between mb-4 h-10">
                             <div class="px-4 py-2 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-black text-lg shadow-md">
                                 NGÀY 10/10/2026
                             </div>
-                            <span class="text-xs font-extrabold px-3 py-1 rounded-full bg-[#FFC21A]/20 text-[#FFC21A] border border-[#FFC21A]/30">SỰ KIỆN CHÍNH</span>
+                            <span class="text-xs font-extrabold uppercase px-3 py-1 rounded-full bg-[#FFC21A]/20 text-[#FFC21A] border border-[#FFC21A]/30">SỰ KIỆN CHÍNH</span>
                         </div>
-                        <h3 class="text-2xl font-extrabold text-[#FFC21A] mb-3 min-h-[64px] flex items-center">Lễ Kỷ Niệm & Phiên Tham Luận Quốc Gia</h3>
-                        <p class="text-xs sm:text-sm text-white mb-6 leading-relaxed flex-grow min-h-[60px] flex items-center">
-                            Phiên toàn thể phát động Ngày Chuyển đổi số quốc gia; Lãnh đạo Chính phủ phát biểu chỉ đạo; Báo cáo tham luận chuyên sâu về kiến trúc số, nền tảng dùng chung và tôn vinh kết quả thực chất.
+                        <h3 class="text-lg sm:text-xl lg:text-2xl font-extrabold text-[#FFC21A] mb-3 h-16 sm:h-16 flex items-center">Lễ kỷ niệm & Phiên tham luận quốc gia</h3>
+                        <p class="text-xs sm:text-sm text-white mb-6 leading-relaxed w-full text-justify sm:text-left h-24 sm:h-20 flex items-center">
+                            Tập trung phát động Ngày Chuyển đổi số quốc gia; Lãnh đạo Chính phủ phát biểu chỉ đạo; Báo cáo tham luận chuyên sâu và tôn vinh kết quả thực chất.
                         </p>
 
-                        <div class="mb-6 p-3 rounded-xl bg-[#0B1B4D]/70 border border-[#FFC21A]/30 flex items-center justify-between text-xs text-white h-[48px]">
+                        <div class="mt-auto mb-6 p-3 rounded-xl bg-[#0B1B4D]/70 border border-[#FFC21A]/30 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 text-xs text-white min-h-[48px]">
                             <a href="https://maps.google.com/?q=Trung+tam+Hoi+nghi+Quoc+gia+Ha+Noi" target="_blank" class="flex items-center gap-1.5 text-[#FFC21A] hover:underline font-bold transition-colors">
                                 <i class="fa-solid fa-location-dot"></i>
                                 <span>Hội trường Lớn (Xem bản đồ)</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
-                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-award text-[#FFC21A]"></i> Tuyên dương Mô hình CĐS</span>
+                            <span class="flex items-center gap-1.5"><i class="fa-solid fa-award text-[#FFC21A]"></i> Tuyên dương mô hình CĐS</span>
                         </div>
                     </div>
 
                     <!-- Timeline Chi Tiết Ngày 10/10 -->
                     <div class="pt-5 border-t border-[#FFC21A]/20">
                         <h4 class="text-xs uppercase tracking-wider font-extrabold text-[#FFC21A] mb-4 flex items-center gap-2">
-                            <i class="fa-solid fa-timeline"></i> Lịch Trình Chi Tiết (Timeline)
+                            <i class="fa-solid fa-timeline"></i> Lịch trình chi tiết (Timeline)
                         </h4>
-                        <div class="max-h-[350px] overflow-y-auto pr-3 custom-scrollbar">
+                        <div class="max-h-[250px] overflow-y-auto pr-3 custom-scrollbar">
                             <div class="relative pl-7 space-y-4 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-[#FFC21A]/50">
                                 <!-- Item 1 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">08:00 - 08:30</div>
-                                    <div class="text-xs text-white font-medium">Đón tiếp Lãnh đạo Đảng, Nhà nước, các Bộ/Ngành & Đại biểu Quốc tế</div>
+                                    <div class="text-xs text-white font-medium">Đón tiếp Lãnh đạo Đảng, Nhà nước, các bộ, ngành & đại biểu quốc tế</div>
                                 </div>
                                 <!-- Item 2 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">08:30 - 09:00</div>
-                                    <div class="text-xs text-white font-medium">Lễ Chào cờ & Phim tư liệu: <i>"Chuyển đổi số Quốc gia 2026 - Từ Kiến trúc đến Kết quả thực chất"</i></div>
+                                    <div class="text-xs text-white font-medium">Lễ chào cờ & phim tư liệu: "Chuyển đổi số quốc gia 2026 - Kết quả thực chất"</div>
                                 </div>
                                 <!-- Item 3 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">09:00 - 09:30</div>
-                                    <div class="text-xs text-white font-medium">Phát biểu chỉ đạo của Lãnh đạo Chính phủ về Chiến lược Quản trị Quốc gia dựa trên Dữ liệu</div>
+                                    <div class="text-xs text-white font-medium">Phát biểu chỉ đạo của Lãnh đạo Chính phủ về chiến lược quản trị quốc gia</div>
                                 </div>
                                 <!-- Item 4 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">09:30 - 10:30</div>
-                                    <div class="text-xs text-white font-medium">Phiên Tham luận Quốc gia: Báo cáo kết quả kết nối CSDL Quốc gia, Nền tảng dùng chung & Hạ tầng AI</div>
+                                    <div class="text-xs text-white font-medium">Phiên tham luận: Báo cáo kết quả CSDL quốc gia, nền tảng số & hạ tầng AI</div>
                                 </div>
                                 <!-- Item 5 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">10:30 - 11:15</div>
-                                    <div class="text-xs text-white font-medium">Lễ Tuyên dương & Vinh danh các Mô hình Chuyển đổi số Tiêu biểu cấp Quốc gia năm 2026</div>
+                                    <div class="text-xs text-white font-medium">Lễ tuyên dương & vinh danh các mô hình chuyển đổi số tiêu biểu 2026</div>
                                 </div>
                                 <!-- Item 6 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FFC21A] border-2 border-[#13307A]"></span>
                                     <div class="text-xs font-black text-[#FFC21A]">11:15 - 11:30</div>
-                                    <div class="text-xs text-white font-medium">Bế mạc & Phát động Chiến dịch Chuyển đổi số toàn dân giai đoạn tiếp theo</div>
+                                    <div class="text-xs text-white font-medium">Bế mạc & phát động chiến dịch Chuyển đổi số toàn dân giai đoạn mới</div>
                                 </div>
                             </div>
                         </div>
@@ -636,9 +722,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">GÓC NHÌN ĐỔI MỚI</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase">CÂU CHUYỆN CHUYỂN ĐỔI SỐ VIỆT NAM</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase pt-1" style="line-height: 1.75;">CÂU CHUYỆN CHUYỂN ĐỔI SỐ VIỆT NAM</h2>
                 <div class="heading-line-a4 mx-auto mt-4 mb-4"></div>
-                <p class="text-[#C9D3F0] text-sm">Những câu chuyện truyền cảm hứng về giá trị thực chất mang lại cho Người dân & Doanh nghiệp</p>
+                <p class="text-[#C9D3F0] text-sm">Những câu chuyện truyền cảm hứng về giá trị thực chất mang lại cho người dân & doanh nghiệp</p>
             </div>
 
             <!-- Swiper Carousel Container với Wrapper ngoài chứa nút chuyển slide -->
@@ -647,130 +733,170 @@
                     <div class="swiper-wrapper">
                         <!-- Article 1 -->
                         <div class="swiper-slide h-auto">
-                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col" onclick="openArticleModal(1)">
-                                <div class="h-56 overflow-hidden relative flex-shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop" alt="Chính Phủ Số" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-4 left-4 bg-[#FFC21A] text-[#0B1B4D] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-md">Chính Phủ Số</div>
+                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col border border-[#C9D3F0]/15 hover:border-[#FFC21A]/60 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-15px_rgba(255,194,26,0.3)] transition-all duration-500 ease-out" onclick="openArticleModal(1)">
+                                <div class="h-60 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop" alt="Chính phủ số" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1B4D] via-transparent to-black/40"></div>
+                                    <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0B1B4D]/85 backdrop-blur-md text-[#FFC21A] border border-[#FFC21A]/40 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase shadow-lg">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                                        <span>Hà Nội · Chính phủ số</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-[#C9D3F0] text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
+                                        28/09/2026
+                                    </div>
                                 </div>
-                                <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div class="p-6 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#0B1B4D]/90 to-[#0B1B4D]">
                                     <div>
-                                        <div class="text-xs text-[#C9D3F0] mb-2 flex items-center space-x-2">
-                                            <span><i class="fa-regular fa-calendar mr-1"></i>28/09</span>
-                                        </div>
-                                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-[#FFC21A] transition-colors line-clamp-2">
-                                            Đột Phá VNeID & Dịch Vụ Công Không Giấy Tờ: Mang Lại Giá Trị Thực Cho 100 Triệu Dân
+                                        <h3 class="text-lg font-extrabold text-white mb-3 group-hover:text-[#FFC21A] transition-colors duration-300 h-14 flex items-center leading-snug">
+                                            “Đột phá VNeID & dịch vụ công không giấy tờ”
                                         </h3>
-                                        <p class="text-xs text-[#C9D3F0] leading-relaxed mb-4 line-clamp-3">
+                                        <p class="text-xs text-[#C9D3F0]/90 leading-relaxed mb-5 line-clamp-3">
                                             100% kết quả thủ tục hành chính được cấp bản điện tử có giá trị pháp lý. Người dân đi làm thủ tục chỉ cần sử dụng VNeID, cắt giảm hơn 40% thời gian chờ đợi...
                                         </p>
                                     </div>
-                                    <button onclick="event.stopPropagation(); openArticleModal(1);" class="inline-flex items-center text-xs font-bold text-[#FFC21A] hover:underline mt-auto">
-                                        Đọc toàn bộ câu chuyện <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
+                                    <div class="pt-3 border-t border-[#C9D3F0]/10 flex items-center justify-between mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/30 text-xs font-extrabold group-hover:bg-[#FFC21A] group-hover:text-[#0B1B4D] group-hover:border-[#FFC21A] transition-all duration-300 shadow-md">
+                                            <span>Xem câu chuyện</span>
+                                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                                        </span>
+                                        <span class="text-[10px] text-[#C9D3F0]/60 font-medium">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                                    </div>
                                 </div>
                             </article>
                         </div>
 
                         <!-- Article 2 -->
                         <div class="swiper-slide h-auto">
-                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col" onclick="openArticleModal(2)">
-                                <div class="h-56 overflow-hidden relative flex-shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=800&auto=format&fit=crop" alt="Kinh Tế Số Nông Thôn" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-4 left-4 bg-[#F7931E] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-md">Kinh Tế Số Nông Thôn</div>
+                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col border border-[#C9D3F0]/15 hover:border-[#FFC21A]/60 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-15px_rgba(255,194,26,0.3)] transition-all duration-500 ease-out" onclick="openArticleModal(2)">
+                                <div class="h-60 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=800&auto=format&fit=crop" alt="Kinh tế số nông thôn" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1B4D] via-transparent to-black/40"></div>
+                                    <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0B1B4D]/85 backdrop-blur-md text-[#F7931E] border border-[#F7931E]/40 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase shadow-lg">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                                        <span>Đắc Lắk · Kinh tế số</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-[#C9D3F0] text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
+                                        25/09/2026
+                                    </div>
                                 </div>
-                                <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div class="p-6 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#0B1B4D]/90 to-[#0B1B4D]">
                                     <div>
-                                        <div class="text-xs text-[#C9D3F0] mb-2 flex items-center space-x-2">
-                                            <span><i class="fa-regular fa-calendar mr-1"></i>25/09</span>
-                                        </div>
-                                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-[#FFC21A] transition-colors line-clamp-2">
-                                            Nông Dân 4.0: Đưa Nông Sản Việt Vươn Tầm Toàn Cầu Nhờ Mã Vùng Trồng Số
+                                        <h3 class="text-lg font-extrabold text-white mb-3 group-hover:text-[#FFC21A] transition-colors duration-300 h-14 flex items-center leading-snug">
+                                            “Nông dân 4.0 & mã vùng trồng số”
                                         </h3>
-                                        <p class="text-xs text-[#C9D3F0] leading-relaxed mb-4 line-clamp-3">
+                                        <p class="text-xs text-[#C9D3F0]/90 leading-relaxed mb-5 line-clamp-3">
                                             Hàng triệu hộ nông dân gắn mã vùng trồng số và liên thông dữ liệu truy xuất nguồn gốc, trực tiếp xuất khẩu nông sản trên sàn e-commerce quốc tế với doanh thu tăng 35%...
                                         </p>
                                     </div>
-                                    <button onclick="event.stopPropagation(); openArticleModal(2);" class="inline-flex items-center text-xs font-bold text-[#FFC21A] hover:underline mt-auto">
-                                        Đọc toàn bộ câu chuyện <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
+                                    <div class="pt-3 border-t border-[#C9D3F0]/10 flex items-center justify-between mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/30 text-xs font-extrabold group-hover:bg-[#FFC21A] group-hover:text-[#0B1B4D] group-hover:border-[#FFC21A] transition-all duration-300 shadow-md">
+                                            <span>Xem câu chuyện</span>
+                                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                                        </span>
+                                        <span class="text-[10px] text-[#C9D3F0]/60 font-medium">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                                    </div>
                                 </div>
                             </article>
                         </div>
 
                         <!-- Article 3 -->
                         <div class="swiper-slide h-auto">
-                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col" onclick="openArticleModal(3)">
-                                <div class="h-56 overflow-hidden relative flex-shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Y Tế Số & Dữ Liệu" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-4 left-4 bg-[#2F6BFF] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-md">Y Tế Số & Dữ Liệu</div>
+                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col border border-[#C9D3F0]/15 hover:border-[#FFC21A]/60 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-15px_rgba(255,194,26,0.3)] transition-all duration-500 ease-out" onclick="openArticleModal(3)">
+                                <div class="h-60 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop" alt="Y tế số & dữ liệu" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1B4D] via-transparent to-black/40"></div>
+                                    <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0B1B4D]/85 backdrop-blur-md text-[#2F6BFF] border border-[#2F6BFF]/40 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase shadow-lg">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                                        <span>TP.HCM · Y tế số & Dữ liệu</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-[#C9D3F0] text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
+                                        20/09/2026
+                                    </div>
                                 </div>
-                                <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div class="p-6 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#0B1B4D]/90 to-[#0B1B4D]">
                                     <div>
-                                        <div class="text-xs text-[#C9D3F0] mb-2 flex items-center space-x-2">
-                                            <span><i class="fa-regular fa-calendar mr-1"></i>20/09</span>
-                                        </div>
-                                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-[#FFC21A] transition-colors line-clamp-2">
-                                            Hồ Sơ Sức Khỏe Điện Tử Toàn Dân: Kết Nối Liên Thông 34 Tỉnh Thành
+                                        <h3 class="text-lg font-extrabold text-white mb-3 group-hover:text-[#FFC21A] transition-colors duration-300 h-14 flex items-center leading-snug">
+                                            “Hồ sơ sức khỏe điện tử toàn dân”
                                         </h3>
-                                        <p class="text-xs text-[#C9D3F0] leading-relaxed mb-4 line-clamp-3">
+                                        <p class="text-xs text-[#C9D3F0]/90 leading-relaxed mb-5 line-clamp-3">
                                             100% bệnh viện và cơ sở y tế kết nối chia sẻ dữ liệu khám chữa bệnh. Người dân đi khám không cần mang sổ khám giấy, giảm 50% thời gian làm thủ tục nhập viện...
                                         </p>
                                     </div>
-                                    <button onclick="event.stopPropagation(); openArticleModal(3);" class="inline-flex items-center text-xs font-bold text-[#FFC21A] hover:underline mt-auto">
-                                        Đọc toàn bộ câu chuyện <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
+                                    <div class="pt-3 border-t border-[#C9D3F0]/10 flex items-center justify-between mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/30 text-xs font-extrabold group-hover:bg-[#FFC21A] group-hover:text-[#0B1B4D] group-hover:border-[#FFC21A] transition-all duration-300 shadow-md">
+                                            <span>Xem câu chuyện</span>
+                                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                                        </span>
+                                        <span class="text-[10px] text-[#C9D3F0]/60 font-medium">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                                    </div>
                                 </div>
                             </article>
                         </div>
 
                         <!-- Article 4 -->
                         <div class="swiper-slide h-auto">
-                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col" onclick="openArticleModal(4)">
-                                <div class="h-56 overflow-hidden relative flex-shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Giáo Dục Số" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-4 left-4 bg-[#FFC21A] text-[#0B1B4D] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-md">Giáo Dục Số</div>
+                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col border border-[#C9D3F0]/15 hover:border-[#FFC21A]/60 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-15px_rgba(255,194,26,0.3)] transition-all duration-500 ease-out" onclick="openArticleModal(4)">
+                                <div class="h-60 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop" alt="Giáo dục số" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1B4D] via-transparent to-black/40"></div>
+                                    <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0B1B4D]/85 backdrop-blur-md text-[#FFC21A] border border-[#FFC21A]/40 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase shadow-lg">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                                        <span>Lào Cai · Giáo dục số</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-[#C9D3F0] text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
+                                        15/09/2026
+                                    </div>
                                 </div>
-                                <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div class="p-6 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#0B1B4D]/90 to-[#0B1B4D]">
                                     <div>
-                                        <div class="text-xs text-[#C9D3F0] mb-2 flex items-center space-x-2">
-                                            <span><i class="fa-regular fa-calendar mr-1"></i>15/09</span>
-                                        </div>
-                                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-[#FFC21A] transition-colors line-clamp-2">
-                                            Trợ Lý AI Học Đường: Cá Nhân Hóa Lộ Trình Học Cho Hàng Triệu Học Sinh
+                                        <h3 class="text-lg font-extrabold text-white mb-3 group-hover:text-[#FFC21A] transition-colors duration-300 h-14 flex items-center leading-snug">
+                                            “Trợ lý AI học đường”
                                         </h3>
-                                        <p class="text-xs text-[#C9D3F0] leading-relaxed mb-4 line-clamp-3">
+                                        <p class="text-xs text-[#C9D3F0]/90 leading-relaxed mb-5 line-clamp-3">
                                             Ứng dụng trí tuệ nhân tạo và kho học liệu số dùng chung quốc gia giúp cá nhân hóa giáo án, thu hẹp khoảng cách chất lượng giáo dục giữa thành thị và vùng sâu vùng xa...
                                         </p>
                                     </div>
-                                    <button onclick="event.stopPropagation(); openArticleModal(4);" class="inline-flex items-center text-xs font-bold text-[#FFC21A] hover:underline mt-auto">
-                                        Đọc toàn bộ câu chuyện <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
+                                    <div class="pt-3 border-t border-[#C9D3F0]/10 flex items-center justify-between mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/30 text-xs font-extrabold group-hover:bg-[#FFC21A] group-hover:text-[#0B1B4D] group-hover:border-[#FFC21A] transition-all duration-300 shadow-md">
+                                            <span>Xem câu chuyện</span>
+                                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                                        </span>
+                                        <span class="text-[10px] text-[#C9D3F0]/60 font-medium">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                                    </div>
                                 </div>
                             </article>
                         </div>
 
                         <!-- Article 5 -->
                         <div class="swiper-slide h-auto">
-                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col" onclick="openArticleModal(5)">
-                                <div class="h-56 overflow-hidden relative flex-shrink-0">
-                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Đô Thị Thông Minh" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                    <div class="absolute top-4 left-4 bg-[#F7931E] text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase shadow-md">Đô Thị Thông Minh</div>
+                            <article class="brand-card overflow-hidden group cursor-pointer h-full flex flex-col border border-[#C9D3F0]/15 hover:border-[#FFC21A]/60 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_-15px_rgba(255,194,26,0.3)] transition-all duration-500 ease-out" onclick="openArticleModal(5)">
+                                <div class="h-60 overflow-hidden relative flex-shrink-0">
+                                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Đô thị thông minh" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-[#0B1B4D] via-transparent to-black/40"></div>
+                                    <div class="absolute top-4 left-4 flex items-center gap-1.5 bg-[#0B1B4D]/85 backdrop-blur-md text-[#F7931E] border border-[#F7931E]/40 text-[11px] font-extrabold px-3 py-1 rounded-full uppercase shadow-lg">
+                                        <i class="fa-solid fa-location-dot text-[10px]"></i>
+                                        <span>Đà Nẵng · Đô thị thông minh</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4 bg-black/50 backdrop-blur-md text-[#C9D3F0] text-[10px] font-bold px-2.5 py-1 rounded-md border border-white/10">
+                                        10/09/2026
+                                    </div>
                                 </div>
-                                <div class="p-6 flex flex-col flex-grow justify-between">
+                                <div class="p-6 flex flex-col flex-grow justify-between bg-gradient-to-b from-[#0B1B4D]/90 to-[#0B1B4D]">
                                     <div>
-                                        <div class="text-xs text-[#C9D3F0] mb-2 flex items-center space-x-2">
-                                            <span><i class="fa-regular fa-calendar mr-1"></i>10/09</span>
-                                        </div>
-                                        <h3 class="text-lg font-bold text-white mb-3 group-hover:text-[#FFC21A] transition-colors line-clamp-2">
-                                            Trung Tâm Điều Hành IOC Quốc Gia: Quản Trị Đô Thị Dựa Trên Dữ Liệu Thời Gian Thực
+                                        <h3 class="text-lg font-extrabold text-white mb-3 group-hover:text-[#FFC21A] transition-colors duration-300 h-14 flex items-center leading-snug">
+                                            “Trung tâm Điều hành IOC quốc gia”
                                         </h3>
-                                        <p class="text-xs text-[#C9D3F0] leading-relaxed mb-4 line-clamp-3">
+                                        <p class="text-xs text-[#C9D3F0]/90 leading-relaxed mb-5 line-clamp-3">
                                             Mô hình IOC kết nối dữ liệu giao thông, môi trường, an ninh và hạ tầng đô thị. Xử lý phản ánh của người dân đạt tỷ lệ hài lòng 98%, tối ưu hóa vận hành đô thị...
                                         </p>
                                     </div>
-                                    <button onclick="event.stopPropagation(); openArticleModal(5);" class="inline-flex items-center text-xs font-bold text-[#FFC21A] hover:underline mt-auto">
-                                        Đọc toàn bộ câu chuyện <i class="fa-solid fa-arrow-right ml-1"></i>
-                                    </button>
+                                    <div class="pt-3 border-t border-[#C9D3F0]/10 flex items-center justify-between mt-auto">
+                                        <span class="inline-flex items-center justify-center gap-2 px-4 py-1.5 rounded-full bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/30 text-xs font-extrabold group-hover:bg-[#FFC21A] group-hover:text-[#0B1B4D] group-hover:border-[#FFC21A] transition-all duration-300 shadow-md">
+                                            <span>Xem câu chuyện</span>
+                                            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition-transform"></i>
+                                        </span>
+                                        <span class="text-[10px] text-[#C9D3F0]/60 font-medium">Chi tiết <i class="fa-solid fa-chevron-right text-[8px]"></i></span>
+                                    </div>
                                 </div>
                             </article>
                         </div>
@@ -796,9 +922,9 @@
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="zoom-in">
             <div class="brand-card p-8 sm:p-12 border border-[#FFC21A]/40 text-center">
                 <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">TƯƠNG TÁC SỐNG ĐỘNG</span>
-                <h2 class="text-3xl font-extrabold text-white uppercase mb-3">TẠO ẢNH AVATAR KÈM KHUNG NHẬN DIỆN 10/10</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white uppercase mb-3 pt-1" style="line-height: 1.75;">TẠO ẢNH AVATAR KÈM KHUNG NHẬN DIỆN 10/10</h2>
                 <p class="text-xs text-[#C9D3F0] mb-8 max-w-2xl mx-auto">
-                    Tải ảnh của bạn lên để hệ thống tự động gắn Khung Nhận Diện Chính Thức Ngày Chuyển Đổi Số Quốc Gia 10/10 dùng làm ảnh đại diện Facebook, Zalo, Tiktok...
+                    Tải ảnh của bạn lên để hệ thống tự động gắn khung nhận diện chính thức Ngày Chuyển đổi số quốc gia 10/10 dùng làm ảnh đại diện Facebook, Zalo, Tiktok...
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
@@ -810,7 +936,7 @@
 
                     <div class="md:col-span-6 text-left space-y-5">
                         <div>
-                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">1. Chọn Ảnh Chân Dung Của Bạn</label>
+                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">1. Chọn ảnh chân dung của bạn</label>
                             <div class="flex items-center space-x-3">
                                 <label for="uploadPhoto" class="py-2.5 px-4 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-black text-xs cursor-pointer hover:bg-amber-300 transition-all flex items-center space-x-2 shadow-md hover:scale-105 active:scale-95">
                                     <i class="fa-solid fa-cloud-arrow-up text-sm"></i>
@@ -822,29 +948,29 @@
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">2. Chọn Mẫu Khung Nhận Diện</label>
+                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">2. Chọn mẫu khung nhận diện</label>
                             <div class="grid grid-cols-3 gap-2" id="frameThemeSelector">
                                 <button type="button" onclick="selectFrameTheme(1)" id="btnTheme1" class="frame-theme-btn active py-2.5 px-2 rounded-xl border-2 border-[#FFC21A] bg-[#FFC21A] text-[#0B1B4D] font-black text-[11px] transition-all text-center shadow-md">
-                                    Mẫu 1: Hành Động
+                                    Mẫu 1: Hành động
                                 </button>
                                 <button type="button" onclick="selectFrameTheme(2)" id="btnTheme2" class="frame-theme-btn py-2.5 px-2 rounded-xl border-2 border-[#C9D3F0]/20 bg-[#13307A] text-[#C9D3F0] font-bold text-[11px] hover:border-[#FFC21A]/50 transition-all text-center">
-                                    Mẫu 2: Tiên Phong
+                                    Mẫu 2: Tiên phong
                                 </button>
                                 <button type="button" onclick="selectFrameTheme(3)" id="btnTheme3" class="frame-theme-btn py-2.5 px-2 rounded-xl border-2 border-[#C9D3F0]/20 bg-[#13307A] text-[#C9D3F0] font-bold text-[11px] hover:border-[#FFC21A]/50 transition-all text-center">
-                                    Mẫu 3: Giá Trị Thực
+                                    Mẫu 3: Giá trị thực
                                 </button>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">3. Phóng Tỏ / Thu Nhỏ Ảnh (Zoom)</label>
+                            <label class="block text-xs font-bold text-[#C9D3F0] uppercase mb-2">3. Phóng to / thu nhỏ ảnh (Zoom)</label>
                             <input type="range" id="zoomRange" min="0.5" max="2.5" step="0.05" value="1" class="w-full accent-[#FFC21A] cursor-pointer">
                         </div>
 
                         <div class="pt-4">
                             <button onclick="downloadAvatar()" class="w-full py-4 px-6 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-extrabold text-sm hover:bg-amber-300 transition-all flex items-center justify-center space-x-2 shadow-lg hover:scale-105">
                                 <i class="fa-solid fa-download"></i>
-                                <span>Tải Ảnh Avatar Khung 10/10 Về Máy</span>
+                                <span>Tải ảnh avatar khung 10/10 về máy</span>
                             </button>
                         </div>
                     </div>
@@ -865,10 +991,10 @@
                         <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">ĐĂNG KÝ THAM DỰ HỘI THẢO</span>
                         <h3 class="text-2xl sm:text-3xl font-extrabold text-white uppercase mb-3">XÁC NHẬN THAM DỰ DÀNH CHO ĐẠI BIỂU</h3>
                         <p class="text-xs text-[#C9D3F0] leading-relaxed mb-6">
-                            Quý Đại biểu các Bộ, Ban, Ngành và Địa phương vui lòng quét mã QR hoặc bấm nút bên dưới để hoàn tất thông tin đăng ký xác nhận tham dự qua Google Form chính thức của Ban Tổ Chức.
+                            Quý đại biểu các bộ, ban, ngành và địa phương vui lòng quét mã QR hoặc bấm nút bên dưới để hoàn tất thông tin đăng ký xác nhận tham dự qua Google Form chính thức của Ban Tổ chức.
                         </p>
                         <a href="https://forms.google.com" target="_blank" class="inline-flex items-center px-6 py-3.5 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-extrabold text-sm hover:bg-amber-300 transition-all shadow-md">
-                            <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Mở Trang Đăng Ký Google Form
+                            <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i> Mở trang đăng ký Google Form
                         </a>
                     </div>
 
@@ -876,7 +1002,7 @@
                         <div class="bg-white p-4 rounded-2xl shadow-2xl border-4 border-[#FFC21A]">
                             <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://forms.google.com&color=0B1B4D" alt="QR Code Đăng ký Đại biểu" class="w-40 h-40">
                         </div>
-                        <span class="text-[11px] font-bold text-[#FFC21A] mt-3 uppercase tracking-wider">Quét mã QR bằng Điện thoại</span>
+                        <span class="text-[11px] font-bold text-[#FFC21A] mt-3 uppercase tracking-wider">Quét mã QR bằng điện thoại</span>
                     </div>
 
                 </div>
@@ -1050,12 +1176,12 @@
             let ringColor3 = '#F7931E';
 
             if (selectedTheme === 2) {
-                sloganText = 'Tiên phong Chuyển đổi số Quốc gia';
+                sloganText = 'Tiên phong Chuyển đổi số quốc gia';
                 ringColor1 = '#2F6BFF';
                 ringColor2 = '#FFC21A';
                 ringColor3 = '#2F6BFF';
             } else if (selectedTheme === 3) {
-                sloganText = 'Kiến tạo Giá trị Thực chất';
+                sloganText = 'Kiến tạo giá trị thực chất';
                 ringColor1 = '#F7931E';
                 ringColor2 = '#FFC21A';
                 ringColor3 = '#F7931E';
@@ -1356,50 +1482,50 @@
         // Articles Modal Logic
         const articlesData = {
             1: {
-                category: "Chính Phủ Số",
-                title: "Đột Phá VNeID & Dịch Vụ Công Không Giấy Tờ: Mang Lại Giá Trị Thực Cho 100 Triệu Dân",
+                category: "Chính phủ số",
+                title: "Đột phá VNeID & dịch vụ công không giấy tờ: Mang lại giá trị thực cho 100 triệu dân",
                 date: "28/09",
                 image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800&auto=format&fit=crop",
                 content: `
-                    <p class="font-semibold text-white">Bước ngoặt lịch sử của Việt Nam trong tiến trình số hóa toàn diện bộ máy quản trị công. Lần đầu tiên, 100% kết quả thủ tục hành chính tại tất cả các Bộ, Ngành và 34 Tỉnh/Thành phố đều được cấp bản điện tử có giá trị pháp lý tương đương bản giấy.</p>
-                    <p>Trước đây, người dân phải mang theo hàng loạt giấy tờ tùy thân, bản sao chứng thực khi thực hiện các thủ tục như đăng ký đất đai, cấp phép kinh doanh hay làm thủ tục bảo hiểm. Hiện nay, thông qua ứng dụng Định danh điện tử Quốc gia (VNeID) tích hợp trí tuệ nhân tạo, thông tin của người dân được tự động đối soát với Cơ sở dữ liệu Quốc gia về Dân cư.</p>
+                    <p class="font-semibold text-white">Bước ngoặt lịch sử của Việt Nam trong tiến trình số hóa toàn diện bộ máy quản trị công. Lần đầu tiên, 100% kết quả thủ tục hành chính tại tất cả các bộ, ngành và 34 tỉnh, thành phố đều được cấp bản điện tử có giá trị pháp lý tương đương bản giấy.</p>
+                    <p>Trước đây, người dân phải mang theo hàng loạt giấy tờ tùy thân, bản sao chứng thực khi thực hiện các thủ tục như đăng ký đất đai, cấp phép kinh doanh hay làm thủ tục bảo hiểm. Hiện nay, thông qua ứng dụng Định danh điện tử quốc gia (VNeID) tích hợp trí tuệ nhân tạo, thông tin của người dân được tự động đối soát với Cơ sở dữ liệu quốc gia về dân cư.</p>
                     <blockquote class="p-4 my-4 bg-[#13307A]/60 border-l-4 border-[#FFC21A] rounded-r-xl italic text-white">
-                        “Mục tiêu cao nhất của Chính phủ số không phải là tạo ra nhiều hệ thống công nghệ, mà là cắt giảm tối đa chi phí thời gian và đi lại cho Người dân & Doanh nghiệp.”
+                        “Mục tiêu cao nhất của Chính phủ số không phải là tạo ra nhiều hệ thống công nghệ, mà là cắt giảm tối đa chi phí thời gian và đi lại cho người dân & doanh nghiệp.”
                     </blockquote>
-                    <p>Thống kê trong quý III cho thấy, tỷ lệ cắt giảm thời gian xử lý thủ tục hành chính đạt 42.5%, tiết kiệm cho xã hội hàng ngàn tỷ đồng mỗi năm. Đây chính là minh chứng rõ nét nhất cho tinh thần: <strong>Chuyển đổi số lấy Người dân làm trung tâm - Từ kiến trúc nền tảng đến kết quả thực chất.</strong></p>
+                    <p>Thống kê trong quý III cho thấy, tỷ lệ cắt giảm thời gian xử lý thủ tục hành chính đạt 42.5%, tiết kiệm cho xã hội hàng ngàn tỷ đồng mỗi năm. Đây chính là minh chứng rõ nét nhất cho tinh thần: <strong>Chuyển đổi số lấy người dân làm trung tâm - Từ kiến trúc nền tảng đến kết quả thực chất.</strong></p>
                 `
             },
             2: {
-                category: "Kinh Tế Số Nông Thôn",
-                title: "Nông Dân 4.0: Đưa Nông Sản Việt Vươn Tầm Toàn Cầu Nhờ Mã Vùng Trồng Số",
+                category: "Kinh tế số nông thôn",
+                title: "Nông dân 4.0: Đưa nông sản Việt vươn tầm toàn cầu nhờ mã vùng trồng số",
                 date: "25/09",
                 image: "https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=800&auto=format&fit=crop",
                 content: `
                     <p class="font-semibold text-white">Chuyển đổi số không chỉ diễn ra tại các đô thị lớn hay các tập đoàn công nghệ hàng đầu, mà đang len lỏi vào từng đồng ruộng, vườn cây của người nông dân Việt Nam.</p>
-                    <p>Tại Đồng bằng sông Cửu Long và Tây Nguyên, dự án số hóa mã vùng trồng và liên thông dữ liệu truy xuất nguồn gốc chuỗi cung ứng nông sản đã đạt tỷ lệ bao phủ hơn 80%. Mỗi quả sầu riêng, xoài hay cà phê xuất khẩu đều mang một mã QR gắn với dữ liệu nhật ký canh tác số trên nền tảng dùng chung Quốc gia.</p>
+                    <p>Tại Đồng bằng sông Cửu Long và Tây Nguyên, dự án số hóa mã vùng trồng và liên thông dữ liệu truy xuất nguồn gốc chuỗi cung ứng nông sản đã đạt tỷ lệ bao phủ hơn 80%. Mỗi quả sầu riêng, xoài hay cà phê xuất khẩu đều mang một mã QR gắn với dữ liệu nhật ký canh tác số trên nền tảng dùng chung quốc gia.</p>
                     <blockquote class="p-4 my-4 bg-[#13307A]/60 border-l-4 border-[#F7931E] rounded-r-xl italic text-white">
-                        “Nhờ có mã vùng trồng số và giao dịch trực tiếp trên sàn E-commerce quốc tế, thu nhập của gia đình tôi tăng hơn 35% so với bán qua thương lái truyền thống.” - Chia sẻ từ nông dân vùng trồng sầu riêng Đắk Lắk.
+                        “Nhờ có mã vùng trồng số và giao dịch trực tiếp trên sàn e-commerce quốc tế, thu nhập của gia đình tôi tăng hơn 35% so với bán qua thương lái truyền thống.” - Chia sẻ từ nông dân vùng trồng sầu riêng Đắk Lắk.
                     </blockquote>
-                    <p>Nhờ hạ tầng mạng 5G phủ sóng 99% vùng nông thôn cùng sự hỗ trợ tích cực của Tổ Công nghệ số cộng đồng, người nông dân giờ đây có thể tự tin bán hàng qua hình thức livestream xuyên biên giới, mở ra định hướng phát triển Kinh tế số nông thôn bền vững và đột phá.</p>
+                    <p>Nhờ hạ tầng mạng 5G phủ sóng 99% vùng nông thôn cùng sự hỗ trợ tích cực của Tổ công nghệ số cộng đồng, người nông dân giờ đây có thể tự tin bán hàng qua hình thức livestream xuyên biên giới, mở ra định hướng phát triển kinh tế số nông thôn bền vững và đột phá.</p>
                 `
             },
             3: {
-                category: "Y Tế Số & Dữ Liệu",
-                title: "Hồ Sơ Sức Khỏe Điện Tử Toàn Dân: Kết Nối Liên Thông 34 Tỉnh Thành",
+                category: "Y tế số & dữ liệu",
+                title: "Hồ sơ sức khỏe điện tử toàn dân: Kết nối liên thông 34 tỉnh, thành",
                 date: "20/09",
                 image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
                 content: `
-                    <p class="font-semibold text-white">Hệ thống Hồ sơ sức khỏe điện tử toàn dân chính thức kết nối liên thông dữ liệu giữa tất cả bệnh viện tuyến Trung ương, tuyến Tỉnh và trạm y tế xã trên toàn quốc.</p>
+                    <p class="font-semibold text-white">Hệ thống Hồ sơ sức khỏe điện tử toàn dân chính thức kết nối liên thông dữ liệu giữa tất cả bệnh viện tuyến Trung ương, tuyến tỉnh và trạm y tế xã trên toàn quốc.</p>
                     <p>Giờ đây, khi đến khám tại bất kỳ cơ sở y tế nào, bác sĩ chỉ cần truy cập lịch sử y khoa của bệnh nhân qua mã định danh VNeID (đã được sự đồng ý của bệnh nhân), giúp giảm thiểu tối đa xét nghiệm trùng lặp và rút ngắn thời gian chẩn đoán.</p>
                     <blockquote class="p-4 my-4 bg-[#13307A]/60 border-l-4 border-[#2F6BFF] rounded-r-xl italic text-white">
-                        “Liên thông dữ liệu xét nghiệm và hồ sơ bệnh án giúp tiết kiệm thời gian khám bệnh tới 50% và tối ưu hóa chi phí cho quỹ Bảo hiểm Y tế.”
+                        “Liên thông dữ liệu xét nghiệm và hồ sơ bệnh án giúp tiết kiệm thời gian khám bệnh tới 50% và tối ưu hóa chi phí cho quỹ Bảo hiểm y tế.”
                     </blockquote>
                     <p>Bên cạnh đó, trợ lý AI y tế tích hợp hỗ trợ phân tích hình ảnh X-quang, MRI và dự báo sớm nguy cơ bệnh mãn tính, mang lại dịch vụ chăm sóc sức khỏe chất lượng cao cho mọi người dân.</p>
                 `
             },
             4: {
-                category: "Giáo Dục Số",
-                title: "Trợ Lý AI Học Đường: Cá Nhân Hóa Lộ Trình Học Cho Hàng Triệu Học Sinh",
+                category: "Giáo dục số",
+                title: "Trợ lý AI học đường: Cá nhân hóa lộ trình học cho hàng triệu học sinh",
                 date: "15/09",
                 image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&auto=format&fit=crop",
                 content: `
@@ -1412,12 +1538,12 @@
                 `
             },
             5: {
-                category: "Đô Thị Thông Minh",
-                title: "Trung Tâm Điều Hành IOC Quốc Gia: Quản Trị Đô Thị Dựa Trên Dữ Liệu Thời Gian Thực",
+                category: "Đô thị thông minh",
+                title: "Trung tâm Điều hành IOC quốc gia: Quản trị đô thị dựa trên dữ liệu thời gian thực",
                 date: "10/09",
                 image: "https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop",
                 content: `
-                    <p class="font-semibold text-white">Mô hình Trung tâm Điều hành Thông minh (IOC) được nâng cấp và liên thông toàn diện từ Trung ương đến địa phương, trở thành 'bộ não số' trong quản trị đô thị hiện đại.</p>
+                    <p class="font-semibold text-white">Mô hình Trung tâm Điều hành thông minh (IOC) được nâng cấp và liên thông toàn diện từ Trung ương đến địa phương, trở thành 'bộ não số' trong quản trị đô thị hiện đại.</p>
                     <p>Thông qua hàng triệu cảm biến IoT và camera AI giám sát giao thông, môi trường, an ninh trật tự, hệ thống IOC tự động phân tích và cảnh báo sớm các sự cố như ùn tắc giao thông, ngập lụt hay ô nhiễm không khí cho các cơ quan chức năng xử lý tức thời.</p>
                     <blockquote class="p-4 my-4 bg-[#13307A]/60 border-l-4 border-[#F7931E] rounded-r-xl italic text-white">
                         “100% phản ánh của người dân gửi qua ứng dụng Đô thị thông minh đều được tiếp nhận, phân loại tự động và giải quyết trong thời gian cam kết với tỷ lệ hài lòng đạt trên 98%.”
@@ -1459,8 +1585,9 @@
             slidesPerView: 1,
             spaceBetween: 24,
             loop: true,
+            speed: 6000,
             autoplay: {
-                delay: 3000,
+                delay: 0,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true,
             },
@@ -1483,6 +1610,57 @@
                 }
             }
         });
+
+        // Dừng thẻ chạy lại ngay lập tức khi di chuột (hover) và tiếp tục chạy khi di chuột ra
+        const storiesContainer = document.querySelector('.storiesSwiper');
+        if (storiesContainer) {
+            storiesContainer.addEventListener('mouseenter', () => {
+                if (storiesSwiper) {
+                    const wrapper = storiesContainer.querySelector('.swiper-wrapper');
+                    if (wrapper) {
+                        try {
+                            const style = window.getComputedStyle(wrapper);
+                            const matrix = new DOMMatrixReadOnly(style.transform);
+                            const currentX = matrix.m41;
+                            storiesSwiper.setTranslate(currentX);
+                            storiesSwiper.setTransition(0);
+                        } catch (e) {
+                            console.log(e);
+                        }
+                    }
+                    if (storiesSwiper.autoplay) {
+                        storiesSwiper.autoplay.stop();
+                    }
+                }
+            });
+
+            storiesContainer.addEventListener('mouseleave', () => {
+                if (storiesSwiper) {
+                    storiesSwiper.setTransition(6000);
+                    if (storiesSwiper.autoplay) {
+                        storiesSwiper.autoplay.start();
+                    }
+                    storiesSwiper.slideNext(6000, false);
+                }
+            });
+        }
+
+        // Mobile Menu Navigation Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('mobileMenuIcon');
+            if (menu && icon) {
+                if (menu.classList.contains('hidden')) {
+                    menu.classList.remove('hidden');
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-xmark');
+                } else {
+                    menu.classList.add('hidden');
+                    icon.classList.remove('fa-xmark');
+                    icon.classList.add('fa-bars');
+                }
+            }
+        }
     </script>
 </body>
 </html>
