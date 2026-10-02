@@ -390,4 +390,59 @@ AOS.init({ once: true, duration: 1200 });
             }
         }
 
-        window.onload = initCanvas;
+        // ScrollSpy Menu Navigation Active Highlighting
+        function updateScrollSpy() {
+            const sections = [
+                { id: 'hero', navHref: '#hero' },
+                { id: 'tru-cot', navHref: '#hero' },
+                { id: 'ket-qua', navHref: '#ket-qua' },
+                { id: 'su-kien', navHref: '#su-kien' },
+                { id: 'cau-chuyen', navHref: '#cau-chuyen' },
+                { id: 'tao-avatar', navHref: '#tao-avatar' },
+                { id: 'dang-ky-qr', navHref: '#tao-avatar' }
+            ];
+
+            const scrollPos = window.scrollY + 180;
+            let activeHref = '#hero';
+
+            if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 80) {
+                activeHref = '#tao-avatar';
+            } else {
+                for (let i = sections.length - 1; i >= 0; i--) {
+                    const el = document.getElementById(sections[i].id);
+                    if (el && scrollPos >= el.offsetTop) {
+                        activeHref = sections[i].navHref;
+                        break;
+                    }
+                }
+            }
+
+            // Desktop Header Links Highlighting
+            document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
+                if (link.getAttribute('href') === activeHref) {
+                    link.classList.add('text-[#FFC21A]', 'border-b-2', 'border-[#FFC21A]');
+                    link.classList.remove('text-[#C9D3F0]');
+                } else {
+                    link.classList.remove('text-[#FFC21A]', 'border-b-2', 'border-[#FFC21A]');
+                    link.classList.add('text-[#C9D3F0]');
+                }
+            });
+
+            // Mobile Drawer Links Highlighting
+            document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
+                if (link.getAttribute('href') === activeHref) {
+                    link.classList.add('bg-[#13307A]', 'text-[#FFC21A]', 'font-extrabold', 'border-l-4', 'border-[#FFC21A]');
+                    link.classList.remove('text-white');
+                } else {
+                    link.classList.remove('bg-[#13307A]', 'text-[#FFC21A]', 'font-extrabold', 'border-l-4', 'border-[#FFC21A]');
+                    link.classList.add('text-white');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateScrollSpy, { passive: true });
+        window.addEventListener('load', function() {
+            initCanvas();
+            updateScrollSpy();
+        });
+        document.addEventListener('DOMContentLoaded', updateScrollSpy);
