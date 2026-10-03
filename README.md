@@ -34,6 +34,33 @@ Tailwind CSS 3.4.17 (build tại máy); Font Awesome Free 6.4.0; AOS 2.3.4; Spli
 
 Font hiện dùng WOFF2 đầy đủ bộ ký tự từ font gốc, không cắt theo nội dung hiện tại để tránh thiếu dấu khi cập nhật. Ảnh minh họa và logo hiển thị dùng WebP; các file gốc giữ lại để chỉnh sửa. Khung avatar giữ nguyên PNG gốc, tách khỏi JavaScript để tải/cache riêng. `optimize-assets.py` là công cụ chuyển đổi ban đầu, không thuộc quy trình build thường ngày và không cần Python trên Vercel.
 
-QR và liên kết đăng ký hiện giữ nguyên bản nháp, sẽ cập nhật sau. QR vẫn dùng dịch vụ ngoài. Các liên kết bản đồ và website liên hệ vẫn dẫn ra ngoài.
+QR đăng ký dùng nguyên ảnh được cung cấp, lưu tại `assets/images/registration-qr.jpg`. Ảnh và nút đăng ký cùng dẫn đến URL giải mã từ QR: `https://q.me-qr.com/qhn68xfc`. Không gọi dịch vụ tạo QR ngoài khi tải trang. Đây là URL trung gian ME-QR; cần kiểm tra trên điện thoại rằng đích chuyển tiếp là biểu mẫu chính thức trước khi công bố. Các liên kết bản đồ và website liên hệ vẫn dẫn ra ngoài.
+
+## Giữ tài nguyên khi cập nhật
+
+Mở trực tiếp `index.html` bằng `file://` vẫn hỗ trợ tải avatar: build tạo `assets/js/avatar-frame.local.js` từ đúng ảnh khung, chỉ nạp file này khi xem local để Canvas không bị khóa xuất ảnh. Khi chạy HTTP/HTTPS, trang chỉ tải PNG riêng và không tải script Base64 này. Commit file companion cùng các tài nguyên; sau khi đổi khung chạy lại `npm run build`.
+
+Khung avatar hiện dùng `assets/images/avatar-frame-cc05a2f8a505.png` (byte giữ nguyên ảnh nhúng trước đây). Logo Bộ Khoa học và Công nghệ dùng `assets/images/logo-most-4f8d4d809f3f.webp`, nén lossless và giữ nguyên tất cả pixel RGBA. `logo-most.svg` gốc vẫn còn để chỉnh sửa; bản chạy tham chiếu WebP tại đủ 6 vị trí. Không dán lại chuỗi Base64 lớn vào `main.js`: build sẽ báo lỗi để tránh tái phát. Khi thay khung/logo, thêm file mới và cập nhật đường dẫn tương ứng, giữ bản gốc. `fix-embedded-assets.py` là công cụ chuyển đổi một lần, không cần chạy trong build.
 
 Trước bản chính thức cần kiểm thử trình duyệt, thiết bị di động, tạo avatar, các liên kết và thay URL chia sẻ Open Graph bằng URL tuyệt đối của tên miền thật.
+
+## Cloudflare Pages: 404 và header phòng vệ
+
+Cloudflare Pages: Root Directory là thư mục chứa `package.json` (thường là `source`), Build Command `npm run build`, Build output directory `dist`. Commit `404.html`, `_headers`, `assets/css/404.css`, ảnh QR mới và các sửa đổi build/index/README. Không commit `.build-tools/` hoặc `dist/`.
+
+Build tự đưa `404.html`, CSS của trang lỗi và `_headers` vào gốc `dist`. `source/404.html` dùng đường dẫn tương đối để mở offline bằng `file://`, nút Về trang chủ mở `index.html`. Build chuyển đường dẫn trong `dist/404.html` thành đường dẫn bắt đầu bằng `/` để hoạt động khi URL sai có nhiều cấp; bản `dist` dành cho web hosting, xem offline thì mở bản trong source. Trên Pages, top-level `404.html` tắt mặc định trả landing page cho mọi URL không tồn tại. Nếu sau này thêm client-side routing, cần xem lại hành vi này.
+
+Header đang áp dụng: `nosniff`, `SAMEORIGIN` (không cho site khác nhúng iframe), referrer `strict-origin-when-cross-origin`, tắt quyền camera/micro/vị trí và HSTS 1 ngày. HSTS chưa có `includeSubDomains` hoặc `preload`; chỉ tăng thời hạn khi đã kiểm tra HTTPS và phương án dự phòng. Các header được Pages áp dụng cho phản hồi tĩnh; mở `file://` không thử được header, máy chủ static thông thường cũng không tự đọc `_headers`.
+
+CSP **chỉ Report-Only**, không có CSP cưỡng chế chặn. Cho phép script nội bộ và Cloudflare Web Analytics, ảnh nội bộ/data/blob, font nội bộ và CSS inline vì trang/carousel còn dùng. QR là ảnh nội bộ; link ra ME-QR/Google Maps là điều hướng, không cần thêm chúng vào nguồn tải script/ảnh. Canvas không cần quyền camera; chọn ảnh từ máy vẫn hoạt động.
+
+`script-src-attr 'none'` cố ý báo các handler inline đang có; không xóa handler hoặc chuyển sang chặn trước khi thay bằng event listener và kiểm thử. Không thêm `'unsafe-inline'` vào script chỉ để làm mất cảnh báo. Không có endpoint báo cáo trung tâm: quan sát Console của trình duyệt, chưa có thu thập báo cáo từ toàn bộ người truy cập. Nếu cần, triển khai endpoint riêng trước khi thêm `report-to`/`report-uri`; không trỏ báo cáo vào đường dẫn chưa tồn tại.
+
+Sau deploy:
+
+1. DevTools → Network → chọn document → Response Headers: phải thấy `Content-Security-Policy-Report-Only` cùng header phòng vệ; không được có CSP cưỡng chế ngoài ý muốn từ cấu hình khác.
+2. Mở URL không tồn tại, ví dụ `/kiem-tra-404/khong-ton-tai`: nhận HTTP **404**, hiện trang lỗi và bấm Về trang chủ được. Kiểm tra `/.env` và `/.git/config` cũng 404; 404 không thay thế việc loại bỏ bí mật khỏi bản deploy.
+3. Mở Console, bật Preserve log rồi thử menu mobile, tab sự kiện, popup bài viết, carousel, chọn ảnh, zoom, tải avatar và QR/nút đăng ký. Cảnh báo Report-Only của onclick hiện là dự kiến; ghi lại vi phạm tài nguyên hoặc script khác trước khi chỉnh allowlist. Kiểm tra Chrome/Edge, Safari iPhone và Chrome Android.
+4. Chỉ chuyển thành `Content-Security-Policy` sau khi xử lý handler inline, kiểm thử mọi luồng và các script Cloudflare thực tế. Đánh giá riêng các directive còn nới lỏng (CSS inline), không coi CSP hiện tại là hoàn tất chống XSS. Giữ bản deploy trước để rollback nếu có lỗi.
+
+Không tạo Cache Everything hoặc chỉnh thời gian cache trong thay đổi này. Các header trên không thay thế WAF, chống DDoS hoặc bài kiểm thử tải.
