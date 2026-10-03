@@ -383,6 +383,9 @@ AOS.init({ once: true, duration: 1200 });
             document.getElementById('modalDate').innerHTML = `<i class="fa-regular fa-calendar mr-1"></i> ${article.date}`;
             document.getElementById('modalImage').src = article.image;
             document.getElementById('modalContent').innerHTML = article.content;
+            window.articleNarration?.setArticle(id);
+            const articleBody = document.getElementById('articleModalBody');
+            if (articleBody) articleBody.scrollTop = 0;
             
             const modal = document.getElementById('articleModal');
             modal.classList.remove('hidden');
@@ -391,6 +394,7 @@ AOS.init({ once: true, duration: 1200 });
         }
 
         function closeArticleModal() {
+            window.articleNarration?.reset();
             const modal = document.getElementById('articleModal');
             if (modal) {
                 modal.classList.add('hidden');

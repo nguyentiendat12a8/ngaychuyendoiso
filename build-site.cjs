@@ -9,6 +9,20 @@ if (/data:image\/[^;]+;base64,[A-Za-z0-9+/=]{100000}/.test(mainSource)) {
   throw new Error('Large Base64 image in main.js: keep the image in assets/images and reference its path.');
 }
 fs.mkdirSync(out, { recursive: true });
+// Refuse stale narration after article edits; audio is generated ahead of deploy.
+const audioManifest = JSON.parse(fs.readFileSync(path.join(root, 'assets/audio/manifest.json'), 'utf8'));
+const storySource = mainSource.split('const articlesData = {')[1].split('function openArticleModal')[0];
+const storyMatches = [...storySource.matchAll(/title:\s*"([^"]+)"[\s\S]*?content:\s*`([^`]+)`/g)];
+if (storyMatches.length !== 5) throw new Error('Review narration manifest for the updated article structure.');
+storyMatches.forEach((match, index) => {
+  const input = (match[1] + '\n' + match[2]).replace(/\r\n/g, '\n');
+  const hash = crypto.createHash('sha256').update(input).digest('hex');
+  if (audioManifest.tracks[index + 1]?.contentHash !== hash) {
+    throw new Error(`Story ${index + 1} audio is stale: regenerate narration before deploying.`);
+  }
+});
+fs.writeFileSync(path.join(root, 'assets/js/story-audio-data.js'),
+  'window.storyAudioTracks = ' + JSON.stringify(audioManifest.tracks, null, 2) + ';\n');
 // Generate an offline-only companion from the same frame bytes. Online users
 // never request it; keeping it separate avoids bloating main.js again.
 const framePath = mainSource.match(/const FRAME_URL = '([^']+)'/)[1];

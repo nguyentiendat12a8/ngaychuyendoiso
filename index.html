@@ -808,15 +808,27 @@
 
     <!-- Modal Đọc Chi Tiết Bài Viết -->
     <div id="articleModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all duration-300" onclick="closeArticleModal()">
-        <div class="brand-card max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 bg-[#0B1B4D] border border-[#FFC21A]/40 rounded-2xl shadow-2xl relative text-left" onclick="event.stopPropagation()">
-            <!-- Close Button -->
-            <button onclick="closeArticleModal()" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-[#13307A] text-[#FFC21A] hover:bg-[#FFC21A] hover:text-[#0B1B4D] transition-colors flex items-center justify-center font-bold text-lg shadow-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+        <div class="brand-card max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden bg-[#0B1B4D] border border-[#FFC21A]/40 rounded-2xl shadow-2xl relative text-left" onclick="event.stopPropagation()">
+            <!-- Category and compact narration toolbar -->
+            <div class="shrink-0 flex items-center justify-between gap-3 px-6 sm:px-8 py-4 border-b border-[#C9D3F0]/15 bg-[#0B1B4D]">
+                <div class="flex items-center gap-3 min-w-0">
+                <span id="modalCategory" class="min-w-0 truncate bg-[#FFC21A] text-[#0B1B4D] text-[10px] font-extrabold px-3 h-7 leading-7 rounded-full uppercase"></span>
+                <section id="articleAudioPanel" class="hidden shrink-0" aria-label="Nghe bài viết">
+                    <div class="flex items-center gap-2 min-w-0">
+                        <button id="articleListenBtn" type="button" aria-label="Phát bản đọc bài viết" title="Phát bản đọc bài viết" aria-pressed="false" class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#FFC21A] text-[#0B1B4D] hover:bg-[#FFD452] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC21A] disabled:opacity-60 transition-colors">
+                            <i class="fa-solid fa-play text-sm" aria-hidden="true"></i>
+                        </button>
+                        <audio id="articleAudio" preload="none" class="hidden" aria-label="Bản đọc bài viết"></audio>
+                    </div>
+                    <p id="articleAudioStatus" class="sr-only" role="status" aria-live="polite">Bản đọc bằng giọng AI. Bấm Nghe bài viết để bắt đầu.</p>
+                </section>
+                </div>
+                <button type="button" onclick="closeArticleModal()" aria-label="Đóng bài viết" class="shrink-0 w-10 h-10 rounded-full bg-[#13307A] text-[#FFC21A] hover:bg-[#FFC21A] hover:text-[#0B1B4D] transition-colors flex items-center justify-center font-bold text-lg shadow-lg">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
 
-            <!-- Category Badge -->
-            <span id="modalCategory" class="inline-block bg-[#FFC21A] text-[#0B1B4D] text-[10px] font-extrabold px-3 py-1 rounded-full uppercase mb-4"></span>
-
+            <div id="articleModalBody" class="min-h-0 overflow-y-auto overscroll-contain p-6 sm:p-8">
             <!-- Article Title -->
             <h2 id="modalTitle" class="text-2xl sm:text-3xl font-extrabold text-white mb-3 leading-snug"></h2>
 
@@ -838,6 +850,7 @@
                 <button onclick="closeArticleModal()" class="py-2.5 px-6 rounded-xl bg-[#13307A] text-white font-bold text-xs hover:bg-[#FFC21A] hover:text-[#0B1B4D] transition-colors shadow-md">
                     <i class="fa-solid fa-xmark mr-1.5"></i> Đóng bài viết
                 </button>
+            </div>
             </div>
         </div>
     </div>
@@ -976,6 +989,8 @@
 
     <!-- Scripts -->
     <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/js/story-audio-data.js"></script>
+    <script src="assets/js/story-audio.js"></script>
     <script src="assets/js/main.js"></script>
 
     <!-- Splide.js & AutoScroll Extension Script -->

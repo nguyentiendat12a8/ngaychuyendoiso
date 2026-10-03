@@ -64,3 +64,21 @@ Sau deploy:
 4. Chỉ chuyển thành `Content-Security-Policy` sau khi xử lý handler inline, kiểm thử mọi luồng và các script Cloudflare thực tế. Đánh giá riêng các directive còn nới lỏng (CSS inline), không coi CSP hiện tại là hoàn tất chống XSS. Giữ bản deploy trước để rollback nếu có lỗi.
 
 Không tạo Cache Everything hoặc chỉnh thời gian cache trong thay đổi này. Các header trên không thay thế WAF, chống DDoS hoặc bài kiểm thử tải.
+
+## Nghe 5 câu chuyện
+
+Popup chi tiết có nút Nghe bài viết và thanh phát/tạm dừng/tua cạnh nhãn chủ đề. Không có ô chọn tốc độ riêng hoặc dòng trạng thái hiển thị; trạng thái vẫn được thông báo cho trình đọc màn hình. Giọng Microsoft Hoài My, tốc độ tạo -5%, đọc tiêu đề và toàn bộ nội dung. Âm thanh tạo trước bằng `edge-tts` như mẫu đã duyệt, không dùng tài khoản FPT. Khách truy cập chỉ tải MP3 nội bộ, không gửi nội dung hay gọi API TTS. Không tự phát hoặc đặt src khi mở popup (`preload="none"`); chỉ bắt đầu tải khi bấm Nghe. Đóng popup/Escape/đổi bài dừng và gỡ nguồn âm thanh. Không có bản đọc thì phần nghe ẩn, nội dung bài vẫn hiển thị.
+
+Commit toàn bộ `assets/audio/*.mp3`, `assets/audio/manifest.json`, `assets/js/story-audio-data.js`, `assets/js/story-audio.js`, `generate-story-audio.py`, cùng index/main/build/CSS/header đã sửa. CSP Report-Only có `media-src 'self'`.
+
+Sau khi sửa tiêu đề/nội dung bài, build sẽ báo bản đọc không còn khớp. Tạo lại trên máy biên tập (không chạy trong Cloudflare build):
+
+```sh
+python -m pip install --target .build-tools edge-tts mutagen
+python generate-story-audio.py
+npm run build
+```
+
+Máy tạo âm thanh cần Python và Internet. Công cụ chỉ tạo bài thay đổi, giữ MP3 có cùng nội dung/giọng/tốc độ; tên file có mã phiên bản để tránh cache bản cũ. Manifest lưu dấu vết nội dung và thời lượng, build kiểm tra khớp với 5 bài. Thư mục `.build-tools` đã được bỏ qua bởi Git. Không đưa Python/API key lên hosting. Thư viện cộng đồng edge-tts dùng dịch vụ đọc của Edge, không phải API Azure có hợp đồng/SLA; nếu dịch vụ thay đổi, có thể thay bằng MP3 FPT/Viettel được duyệt và cập nhật manifest trước khi build.
+
+Kiểm tra trước công bố: nghe đủ 5 bài để duyệt phát âm viết tắt/tên riêng/số liệu; thử phát, tạm dừng, tua, tốc độ, đóng/mở và chuyển bài trên Chrome/Edge và điện thoại iOS/Android. Kiểm tra Network: mở popup chưa tải MP3, bấm nghe mới có yêu cầu; source mở file:// cũng phát được MP3 local. Nếu mạng lỗi, thông báo không tải được âm thanh, người xem vẫn đọc được bài. Chưa có đồng bộ highlight từng từ.
