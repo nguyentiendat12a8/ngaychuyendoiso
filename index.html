@@ -181,36 +181,36 @@
                     </div>
                 </div>
 
-                <!-- Visual Graphic Column: Biểu Tượng 3 Vòng Đồng Tâm Hội Tụ (Right) -->
+                <!-- Visual Graphic Column: Biểu Tượng 3 Vòng Đồng Tâm Hội Tụ Chuẩn BND (Right) -->
                 <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="relative w-80 h-80 sm:w-96 sm:h-96 flex items-center justify-center">
-                        <svg viewBox="0 0 400 400" class="w-full h-full transform hover:scale-105 transition-transform duration-500 drop-shadow-2xl">
-                            <!-- Vòng 1 (Kiến trúc / Chính phủ số) -->
-                            <g class="ring-v1-group">
-                                <circle cx="200" cy="200" r="160" fill="none" stroke="#2F6BFF" stroke-opacity="0.45" stroke-width="18" stroke-dasharray="820 180" stroke-dashoffset="-40" />
-                                <circle cx="200" cy="200" r="160" fill="none" stroke="#FFC21A" stroke-width="20" stroke-dasharray="60 940" stroke-dashoffset="-140" />
-                            </g>
-                            <!-- Vòng 2 (Nền tảng / Kinh tế số) -->
-                            <circle class="ring-v2" cx="200" cy="200" r="117" fill="none" stroke="#2F6BFF" stroke-width="18" stroke-dasharray="600 130" stroke-dashoffset="-80" />
-                            <!-- Vòng 3 (Dữ liệu / Xã hội số) -->
-                            <circle class="ring-v3" cx="200" cy="200" r="74" fill="none" stroke="#F7931E" stroke-width="18" stroke-dasharray="360 100" stroke-dashoffset="-20" />
-                            <!-- Lõi Logo (Người dân là trung tâm) -->
-                            <g class="ring-core">
-                                <circle cx="200" cy="200" r="42" fill="#0B1B4D" stroke="#FFC21A" stroke-width="3" />
-                                <text x="200" y="195" text-anchor="middle" fill="#FFFFFF" font-size="11" font-weight="800">10/10</text>
-                                <text x="200" y="210" text-anchor="middle" fill="#FFC21A" font-size="9" font-weight="700">2026</text>
+                    <div class="relative w-88 h-88 sm:w-[26rem] sm:h-[26rem] lg:w-[30rem] lg:h-[30rem] flex items-center justify-center">
+                        <!-- SVG 3 Vòng Đồng Tâm chạy 3 vòng cùng lúc & logo trung tâm xuất hiện cuối cùng -->
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1080 60 1040 1040" class="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(47,107,255,0.35)]">
+                            <g id="vong-cung-group">
+                                <!-- Vòng 1: Chính phủ số (Dark Blue Arc) -->
+                                <path id="vong-1" class="ring-v1-anim" fill="none" stroke="#1B3E9C" stroke-width="48" stroke-linecap="round" d="M1361.7,258.7c177.4-131.6,428-94.4,559.6,83s94.4,428-83,559.6s-428,94.4-559.6-83c-60.5-81.6-87.7-183.1-76.1-284"/>
+                                <!-- Vòng 2: Kinh tế số (Bright Blue Arc) -->
+                                <path id="vong-2" class="ring-v2-anim" fill="none" stroke="#2F6BFF" stroke-width="48" stroke-linecap="round" d="M1361.7,748.7c-93.2-131.6-62-313.9,69.7-407s313.9-62,407,69.7c93.2,131.6,62,313.9-69.7,407c-56.9,40.2-126.3,58.8-195.6,52.4"/>
+                                <!-- Vòng 3: Xã hội số (Orange Arc) -->
+                                <path id="vong-3" class="ring-v3-anim" fill="none" stroke="#F7931E" stroke-width="48" stroke-linecap="round" d="M1655.4,755.5c-96.9,30.6-200.3-23.1-230.9-120s23.1-200.3,120-230.9c96.9-30.6,200.3,23.1,230.9,120c8.1,25.7,10.5,52.8,7,79.5"/>
+                                <!-- Viên nang vàng (Yellow Pill Accent) -->
+                                <path id="doan-nhan" class="ring-pill-anim" fill="none" stroke="#FFC21A" stroke-width="48" stroke-linecap="round" d="M1230.3,427.3c13.5-32.6,31.2-63.2,52.6-91.2"/>
+                                <!-- Lõi Biểu tượng Logo CĐS (Xuất hiện ở giữa trung tâm sau khi 3 vòng vẽ xong) -->
+                                <g class="ring-core-anim">
+                                    <image width="1800" height="1800" id="bieu-tuong-loi" href="assets/images/logo.webp" transform="matrix(0.1111 0 0 0.1111 1500 480)"/>
+                                </g>
                             </g>
                         </svg>
 
-                        <!-- Floating Badges cho 3 vòng -->
-                        <div class="badge-v1 absolute -top-2 right-2 px-3 py-1 rounded-md bg-[#2F6BFF]/30 border border-[#2F6BFF] text-[10px] font-bold text-[#C9D3F0] backdrop-blur-sm shadow-lg">
-                            Vòng 1: Chính phủ số
+                        <!-- Floating Badges cho 3 vòng (Xuất hiện đồng bộ khi từng vòng xuất hiện) -->
+                        <div class="badge-v1-pop absolute -top-2 right-2 px-3 py-1.5 rounded-xl bg-[#0B1B4D]/90 border border-[#2F6BFF] text-xs font-bold text-[#C9D3F0] backdrop-blur-md shadow-lg">
+                            Vòng 1: <span class="text-[#FFC21A] ml-1">Chính phủ số</span>
                         </div>
-                        <div class="badge-v2 absolute bottom-6 left-0 px-3 py-1 rounded-md bg-[#2F6BFF]/30 border border-[#2F6BFF] text-[10px] font-bold text-[#C9D3F0] backdrop-blur-sm shadow-lg">
-                            Vòng 2: Kinh tế số
+                        <div class="badge-v2-pop absolute bottom-6 left-0 px-3 py-1.5 rounded-xl bg-[#0B1B4D]/90 border border-[#2F6BFF] text-xs font-bold text-[#C9D3F0] backdrop-blur-md shadow-lg">
+                            Vòng 2: <span class="text-[#FFC21A] ml-1">Kinh tế số</span>
                         </div>
-                        <div class="badge-v3 absolute top-1/2 -right-6 transform -translate-y-1/2 px-3 py-1 rounded-md bg-[#F7931E]/30 border border-[#F7931E] text-[10px] font-bold text-[#FFC21A] backdrop-blur-sm shadow-lg">
-                            Vòng 3: Xã hội số
+                        <div class="badge-v3-pop absolute top-1/2 -right-6 transform -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#0B1B4D]/90 border border-[#F7931E] text-xs font-bold text-[#FFC21A] backdrop-blur-md shadow-lg">
+                            Vòng 3: <span class="text-[#FFC21A] ml-1">Xã hội số</span>
                         </div>
                     </div>
                 </div>
@@ -229,62 +229,62 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Pillar 1 -->
+                <!-- Pillar 1: Chính phủ số (Căn cứ QĐ 1266/QĐ-TTg) -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-right">
                     <div class="w-12 h-12 rounded-xl bg-[#2F6BFF]/20 text-[#2F6BFF] flex items-center justify-center text-2xl mb-6 font-black">01</div>
                     <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Chính phủ số</h3>
-                    <ul class="space-y-3 text-[#C9D3F0] text-sm">
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>100% dịch vụ công trực tuyến toàn trình xử lý thông suốt</span>
+                    <ul class="space-y-3.5 text-[#C9D3F0] text-sm">
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>100% số hóa hồ sơ TTHC & dịch vụ công trực tuyến toàn trình</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Quản trị và điều hành dựa trên dữ liệu thời gian thực</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Quản trị và điều hành dựa trên dữ liệu thời gian thực (AI)</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Số hóa 100% hồ sơ kết quả giải quyết thủ tục hành chính</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>100% kết nối, chia sẻ liên thông Cơ sở dữ liệu dùng chung quốc gia</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Pillar 2 -->
+                <!-- Pillar 2: Kinh tế số (Căn cứ QĐ 1266/QĐ-TTg) -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-up">
                     <div class="w-12 h-12 rounded-xl bg-[#2F6BFF]/20 text-[#2F6BFF] flex items-center justify-center text-2xl mb-6 font-black">02</div>
                     <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Kinh tế số</h3>
-                    <ul class="space-y-3 text-[#C9D3F0] text-sm">
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Thúc đẩy tỷ trọng đóng góp của kinh tế số trong GDP</span>
+                    <ul class="space-y-3.5 text-[#C9D3F0] text-sm">
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Quy mô Kinh tế số đạt tối thiểu 30% - 50% GDP</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Phát triển hệ sinh thái sản phẩm công nghệ Make in Vietnam</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Hỗ trợ 500.000 doanh nghiệp nhỏ & vừa (SMEs) chuyển đổi số</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Phổ cập thanh toán không dùng tiền mặt toàn diện</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Vận hành tối thiểu 5 sàn dữ liệu quốc gia & phổ cập thanh toán số</span>
                         </li>
                     </ul>
                 </div>
 
-                <!-- Pillar 3 -->
+                <!-- Pillar 3: Xã hội số (Căn cứ QĐ 1266/QĐ-TTg) -->
                 <div class="brand-card p-8 relative overflow-hidden" data-aos="fade-left">
                     <div class="w-12 h-12 rounded-xl bg-[#F7931E]/20 text-[#F7931E] flex items-center justify-center text-2xl mb-6 font-black">03</div>
                     <h3 class="text-xl sm:text-2xl font-extrabold text-white mb-4">Xã hội số</h3>
-                    <ul class="space-y-3 text-[#C9D3F0] text-sm">
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Tổ công nghệ số cộng đồng hoạt động rộng khắp đến tận cơ sở</span>
+                    <ul class="space-y-3.5 text-[#C9D3F0] text-sm">
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>100% hộ gia đình phủ cáp quang & sổ sức khỏe điện tử</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Mỗi người dân sở hữu danh tính số (VNeID) và kỹ năng số</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Trên 70% người trưởng thành có chữ ký số cá nhân (VNeID)</span>
                         </li>
-                        <li class="flex items-start space-x-2">
-                            <i class="fa-solid fa-check text-[#FFC21A] mt-1 text-xs"></i>
-                            <span>Bảo đảm an toàn thông tin mạng & bảo vệ dữ liệu cá nhân</span>
+                        <li class="flex items-start space-x-2.5">
+                            <i class="fa-solid fa-circle-check text-[#FFC21A] mt-1 text-xs shrink-0"></i>
+                            <span>Tập huấn kỹ năng số cho 10 triệu lượt người & Tổ CĐS cộng đồng</span>
                         </li>
                     </ul>
                 </div>
@@ -360,9 +360,12 @@
     <!-- Section 03: Lịch Sự Kiện Trọng Tâm 2 Ngày (09/10 & 10/10) -->
     <section id="su-kien" class="py-24 relative border-b border-[#C9D3F0]/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12" data-aos="fade-up">
-                <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">SỰ KIỆN NỔI BẬT</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-white uppercase pt-1" style="line-height: 1.4;">CHƯƠNG TRÌNH TRỌNG TÂM NGÀY CHUYỂN ĐỔI SỐ</h2>
+            <div class="text-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+                <span class="text-xs uppercase tracking-[0.18em] text-[#FFC21A] font-extrabold block mb-3">SỰ KIỆN NỔI BẬT</span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white uppercase pt-1" style="line-height: 1.45;">
+                    CHƯƠNG TRÌNH TRỌNG TÂM NGÀY <br class="hidden sm:block" />
+                    CHUYỂN ĐỔI SỐ
+                </h2>
                 <div class="heading-line-a4 mx-auto mt-4"></div>
             </div>
 
@@ -403,9 +406,9 @@
                         </p>
 
                         <div class="mb-6 p-4 rounded-xl bg-[#0B1B4D]/70 border border-[#FFC21A]/30 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs sm:text-sm text-white min-h-[48px]">
-                            <a href="https://maps.google.com/?q=Trung+tam+Hoi+nghi+Quoc+gia+Ha+Noi" target="_blank" class="flex items-center gap-2 text-[#FFC21A] hover:underline font-bold transition-colors">
+                            <a href="https://maps.google.com/?q=Trung+tam+Trien+lam+Quoc+gia+Dong+Anh+Ha+Noi" target="_blank" class="flex items-center gap-2 text-[#FFC21A] hover:underline font-bold transition-colors">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>Hội trường Lớn (Xem bản đồ)</span>
+                                <span>Trung tâm Triển lãm Quốc gia, Đông Anh, Hà Nội (Xem bản đồ)</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
                             <span class="flex items-center gap-2"><i class="fa-solid fa-award text-[#FFC21A]"></i> Tuyên dương mô hình CĐS</span>
@@ -475,9 +478,9 @@
                         </p>
                         
                         <div class="mb-6 p-4 rounded-xl bg-[#0B1B4D]/60 border border-[#C9D3F0]/15 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs sm:text-sm text-[#C9D3F0] min-h-[48px]">
-                            <a href="https://maps.google.com/?q=Trung+tam+Hoi+nghi+Quoc+gia+Ha+Noi" target="_blank" class="flex items-center gap-2 text-[#FFC21A] hover:underline font-bold transition-colors">
+                            <a href="https://maps.google.com/?q=Trung+tam+Trien+lam+Quoc+gia+Dong+Anh+Ha+Noi" target="_blank" class="flex items-center gap-2 text-[#FFC21A] hover:underline font-bold transition-colors">
                                 <i class="fa-solid fa-location-dot"></i>
-                                <span>Trung tâm Hội nghị Quốc gia</span>
+                                <span>Trung tâm Triển lãm Quốc gia (Đông Anh, Hà Nội)</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
                             <span class="flex items-center gap-2"><i class="fa-solid fa-users text-[#2F6BFF]"></i> ~500 đại biểu</span>
@@ -724,7 +727,7 @@
                 <span class="text-xs uppercase tracking-[0.18em] text-[#FFC21A] font-extrabold block mb-3">✦ TƯƠNG TÁC SỐNG ĐỘNG ✦</span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white uppercase mb-4" style="line-height: 1.45;">
                     TẠO ẢNH AVATAR KÈM KHUNG NHẬN DIỆN <br class="hidden sm:block" />
-                    NGÀY CHUYỂN ĐỔI SỐ QUỐC GIA <span class="text-[#FFC21A]">10/10</span>
+                    NGÀY CHUYỂN ĐỔI SỐ QUỐC GIA
                 </h2>
                 <p class="text-xs sm:text-sm text-[#C9D3F0] mb-8 max-w-2xl mx-auto leading-relaxed">
                     Tải ảnh của bạn lên để hệ thống tự động gắn khung nhận diện chính thức Ngày Chuyển đổi số quốc gia 10/10 dùng làm ảnh đại diện Facebook, Zalo, Tiktok...
@@ -756,7 +759,7 @@
                         </div>
 
                         <div class="pt-4">
-                            <button onclick="downloadAvatar()" class="w-full py-4 px-6 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-extrabold text-sm hover:bg-amber-300 transition-all flex items-center justify-center space-x-2 shadow-lg hover:scale-105">
+                            <button id="downloadBtn" disabled onclick="downloadAvatar()" class="w-full py-4 px-6 rounded-xl bg-[#FFC21A] text-[#0B1B4D] font-extrabold text-sm transition-all flex items-center justify-center space-x-2 shadow-lg opacity-50 cursor-not-allowed">
                                 <i class="fa-solid fa-download"></i>
                                 <span>Tải ảnh avatar khung mẫu chuẩn 10/10 về máy</span>
                             </button>
@@ -776,8 +779,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-center md:text-left">
                     
                     <div class="md:col-span-8">
-                        <span class="text-xs uppercase tracking-[0.14em] text-[#FFC21A] font-extrabold block mb-2">ĐĂNG KÝ THAM DỰ HỘI THẢO</span>
-                        <h3 class="text-2xl sm:text-3xl font-extrabold text-white uppercase mb-3">XÁC NHẬN THAM DỰ DÀNH CHO ĐẠI BIỂU</h3>
+                        <span class="text-xs uppercase tracking-[0.18em] text-[#FFC21A] font-extrabold block mb-3">ĐĂNG KÝ THAM DỰ HỘI THẢO</span>
+                        <h3 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white uppercase mb-4" style="line-height: 1.45;">
+                            XÁC NHẬN THAM DỰ <br class="hidden sm:block" />
+                            DÀNH CHO ĐẠI BIỂU
+                        </h3>
                         <p class="text-xs text-[#C9D3F0] leading-relaxed mb-6">
                             Quý đại biểu các bộ, ban, ngành và địa phương vui lòng quét mã QR hoặc bấm nút bên dưới để hoàn tất thông tin đăng ký xác nhận tham dự qua Google Form chính thức của Ban Tổ chức.
                         </p>
@@ -860,16 +866,6 @@
                                     <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-bca.webp" alt="Bộ Công an" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-moj.webp" alt="Bộ Tư pháp" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
 
                             <!-- Set 2 -->
                             <li class="splide__slide flex-shrink-0">
@@ -880,16 +876,6 @@
                             <li class="splide__slide flex-shrink-0">
                                 <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
                                     <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-bca.webp" alt="Bộ Công an" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-moj.webp" alt="Bộ Tư pháp" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
 
@@ -904,16 +890,6 @@
                                     <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-bca.webp" alt="Bộ Công an" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
-                            <li class="splide__slide flex-shrink-0">
-                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-moj.webp" alt="Bộ Tư pháp" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
-                                </div>
-                            </li>
 
                             <!-- Set 4 -->
                             <li class="splide__slide flex-shrink-0">
@@ -926,14 +902,28 @@
                                     <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
+
+                            <!-- Set 5 -->
                             <li class="splide__slide flex-shrink-0">
                                 <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-bca.webp" alt="Bộ Công an" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                    <img loading="lazy" decoding="async" src="logo-most.svg" alt="Bộ Khoa học và Công nghệ" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
                             <li class="splide__slide flex-shrink-0">
                                 <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
-                                    <img loading="lazy" decoding="async" src="assets/images/logo-moj.webp" alt="Bộ Tư pháp" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                    <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                            </li>
+
+                            <!-- Set 6 -->
+                            <li class="splide__slide flex-shrink-0">
+                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
+                                    <img loading="lazy" decoding="async" src="logo-most.svg" alt="Bộ Khoa học và Công nghệ" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
+                                </div>
+                            </li>
+                            <li class="splide__slide flex-shrink-0">
+                                <div class="w-28 h-28 sm:w-32 sm:h-32 flex items-center justify-center bg-[#13307A]/75 p-4 rounded-2xl border border-[#C9D3F0]/25 backdrop-blur-md shadow-lg hover:border-[#FFC21A]/70 hover:scale-105 transition-all">
+                                    <img decoding="async" src="assets/images/logo.webp" alt="Cục Chuyển đổi số Quốc gia" class="w-16 h-16 sm:w-20 sm:h-20 object-contain">
                                 </div>
                             </li>
                         </ul>
@@ -955,27 +945,20 @@
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm text-[#C9D3F0]/90">
                         <div class="flex items-center gap-3">
-                            <i class="fa-solid fa-globe text-[#FFC21A] text-sm w-4 text-center shrink-0"></i>
-                            <span class="font-semibold text-white">Trang web:</span>
-                            <a href="https://dx.gov.vn" target="_blank" class="text-[#FFC21A] hover:underline font-bold transition-colors">
-                                dx.gov.vn <i class="fa-solid fa-arrow-up-right-from-square text-[10px] ml-1"></i>
-                            </a>
-                        </div>
-                        <div class="flex items-center gap-3">
                             <i class="fa-solid fa-phone text-[#FFC21A] text-sm w-4 text-center shrink-0"></i>
                             <span class="font-semibold text-white">Điện thoại:</span>
                             <span class="font-bold text-white">(024) 3782 1766</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fa-solid fa-envelope text-[#FFC21A] text-sm w-4 text-center shrink-0"></i>
+                            <span class="font-semibold text-white">Email:</span>
+                            <a href="mailto:ubqg.cds@mic.gov.vn" class="text-[#FFC21A] hover:underline font-bold">ubqg.cds@mic.gov.vn</a>
                         </div>
                         <div class="flex items-start gap-3 sm:col-span-2">
                             <i class="fa-solid fa-location-dot text-[#FFC21A] text-sm w-4 text-center mt-0.5 shrink-0"></i>
                             <div>
                                 <span class="font-semibold text-white">Địa chỉ:</span> Tòa nhà VNTA, 68 Dương Đình Nghệ, phường Cầu Giấy, thành phố Hà Nội
                             </div>
-                        </div>
-                        <div class="flex items-center gap-3 sm:col-span-2">
-                            <i class="fa-solid fa-envelope text-[#FFC21A] text-sm w-4 text-center shrink-0"></i>
-                            <span class="font-semibold text-white">Email:</span>
-                            <a href="mailto:ubqg.cds@mic.gov.vn" class="text-[#FFC21A] hover:underline font-bold">ubqg.cds@mic.gov.vn</a>
                         </div>
                     </div>
                 </div>

@@ -85,45 +85,67 @@
             z-index: 1;
         }
 
-        /* Animation Tập Hợp Từng Vòng Đồng Tâm & Cố Định Vị Trí Ban Đầu */
-        .ring-v1-group, .ring-v2, .ring-v3, .ring-core {
-            transform-origin: 200px 200px;
+        /* Animation 3 Vòng Vẽ Cùng Lúc & Lõi Logo Xuất Hiện Cuối Cùng */
+        .ring-v3-anim {
+            stroke-dasharray: 1600;
+            stroke-dashoffset: 1600;
+            animation: ringDrawArc 2.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
         }
 
-        .ring-v1-group {
-            animation: ringGatherV1 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
+        .ring-v2-anim {
+            stroke-dasharray: 2500;
+            stroke-dashoffset: 2500;
+            animation: ringDrawArc 2.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
         }
 
-        .ring-v2 {
-            animation: ringGatherV2 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 0.6s both;
+        .ring-v1-anim {
+            stroke-dasharray: 3400;
+            stroke-dashoffset: 3400;
+            animation: ringDrawArc 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
         }
 
-        .ring-v3 {
-            animation: ringGatherV3 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) 1.1s both;
+        .ring-pill-anim {
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: ringDrawArc 2.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
         }
 
-        .ring-core {
-            animation: corePop 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.6s both;
+        .ring-core-anim {
+            transform-origin: 1600px 580px;
+            animation: corePopIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 2.3s both;
         }
 
-        .badge-v1 {
-            animation: badgePop 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s both;
-        }
-        .badge-v2 {
-            animation: badgePop 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s both;
-        }
-        .badge-v3 {
-            animation: badgePop 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) 1.4s both;
+        .badge-v3-pop {
+            animation: badgePopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 2.1s both;
         }
 
-        @keyframes ringGatherV1 {
+        .badge-v2-pop {
+            animation: badgePopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 2.3s both;
+        }
+
+        .badge-v1-pop {
+            animation: badgePopIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 2.5s both;
+        }
+
+        @keyframes ringDrawArc {
+            0% {
+                stroke-dashoffset: 3400;
+                opacity: 0.2;
+            }
+            100% {
+                stroke-dashoffset: 0;
+                opacity: 1;
+            }
+        }
+
+        @keyframes corePopIn {
             0% {
                 opacity: 0;
-                transform: scale(0.2) rotate(-120deg);
+                transform: scale(0) rotate(-45deg);
             }
-            70% {
-                opacity: 0.9;
-                transform: scale(1.08) rotate(10deg);
+            75% {
+                opacity: 1;
+                transform: scale(1.15) rotate(5deg);
             }
             100% {
                 opacity: 1;
@@ -131,58 +153,17 @@
             }
         }
 
-        @keyframes ringGatherV2 {
+        @keyframes badgePopIn {
             0% {
                 opacity: 0;
-                transform: scale(0.2) rotate(120deg);
+                transform: translateY(16px) scale(0.7);
             }
             70% {
-                opacity: 0.9;
-                transform: scale(1.10) rotate(-10deg);
-            }
-            100% {
                 opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        @keyframes ringGatherV3 {
-            0% {
-                opacity: 0;
-                transform: scale(0.2) rotate(-90deg);
-            }
-            70% {
-                opacity: 0.9;
-                transform: scale(1.12) rotate(10deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        @keyframes corePop {
-            0% {
-                opacity: 0;
-                transform: scale(0);
-            }
-            70% {
-                transform: scale(1.3);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes badgePop {
-            0% {
-                opacity: 0;
-                transform: translateY(16px) scale(0.8);
+                transform: translateY(-3px) scale(1.05);
             }
             100% {
                 opacity: 1;
                 transform: translateY(0) scale(1);
             }
         }
-    
