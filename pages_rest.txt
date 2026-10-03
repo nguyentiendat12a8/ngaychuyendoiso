@@ -1,0 +1,299 @@
+=================== PAGE 7 ===================
+- Ngan sach trung uong: 9.854,886 ty dong.
+- Ngan sach dia phuong: 7.279,973 ty dong.
+- Ty 1e giai ngan cho Chuyen doi so la 13,69%, trong d6 Trung uong la
+11,12%, Dia phuong la 17,17%.
+3. Phat trien ha tang chuyen doi so
+3.1. Ha tang chuyen doi so
+a) Ha tang vien thong
+Ha tang vien thong bang rong di dong tiep tuc phat trien nhanh, chat luong
+truy capduoccai thién ro ret.Den het thang6/2026,cacdoanh nghiepvien thong
+da trien khai 40.158 tram 5G, phu song khoang 91,9% dan s0, voi hon 24,4 trieu
+thue bao; so voi dau nam 2025, so tram tang gan 5 lan, ty le phu song tang tur
+25,5% len 91,9%. Ty 1e thon, ban co ket noi bang rong di dong dat 99,56%; ty 1é
+dan so duroc phu song 4G dat 99,8%; ty 1e thue bao di dong sur dung dien thoai
+thong minh dat 91,3%. T6c do bang rong di dong dat 210,85 Mbps, xep thu 9 thé
+gioi.
+Ha tang bang rong co dinh, cap quang va ket noi quoc te tiep tuc duoc mo
+rong. Hon 1,3 trieu km cap quang da dugc trien khai den 100% xa, phuong;
+khoang 86% ho gia dinh sur dung dich vu FTTH. Toc do bang rong co dinh dat
+291,82 Mbps, xep thu 11 thé gioi. Thang 8/2025, VNPT khai truong tuyén cap
+dat quoc te VSTN dai hon 3.900 km, ket noi Da Nang voi cac trung tam du lieu
+lon trong khu vyc ASEAN; day la tuyen cap dau tien do Viet Nam lam chu hoan
+toan, gop phan nang cao kha nang ty chu va giam rui ro gian doan ket noi quoc
+té.
+Cong tac xur ly diem lom song, mo rong ket noi toi vung sau, vung xa, bien
+gioi, hai dao duoc day manh, gop, phan thu hep khoang cach so. Cac thon, ban
+thong cong ich den nam 2030, tao dieu kien de nguoi dan tiep can dich vu cong
+tryc tuyen, giao duc so, y te so, thuong mai dien t'r va cac dich vu so thiet yeu.
+b) Bao dam ha tang ket noi cho cac co quan trong he thong chinh tri
+Bo Khoa hoc va Cong nghe da mo rong Mang truyen so lieu chuyen dung
+phuc vu guri, nhan van ban va xur ly ho so cap do Mat, Toi mat tir Trung uong dén
+co so, dap ung yeu cau cua 4 khoi: kh6i Dang co 3.548 ket noi; khoi chinh quyen
+c6 3.790 ket noi; khoi MTTQ Viet Nam ket noi tai 34 tinh, thanh pho; khoi Quoc
+hoi ket noi tai 3 dia diém o Ha Noi. Dong thoi, da hoan thanh ket noi mang dien
+rong cua nganh Toa an va nganh Kiem sat qua Mang truyen so lieu chuyen dung
+tir Trung uong dén co so, moi nganh gom 34 tinh va 397 diem ket noi.
+c) Quan ly, thuc day sur dung tai nguyen Internet
+Tai nguyen IP/ASN quoc gia tiep tuc duoc phat trien, dap ung yeu cau
+chuyen d0i so. Viet Nam hien c6 16,43 trieu dia chi IPv4, dung thu 2 ASEAN,
+
+=================== PAGE 8 ===================
+8
+thu 8 chau A; hon 1.787 ty khoi dia chi /64 IPv6, dung thu 2 ASEAN, thur 7 thé
+gioi; 896 ASN va 1.129 thanh vien mang IP/ASN doc lap.
+Bo Khoa hoc va Cong nghe da ban hanh Chuong trinh thuc day, trien khai
+chuyen d0i IPv6 only giai doan 2026-2030 tai Quyet dinh s6 3369/QD-BKHCN
+ngay 27/10/2025 va cong b6 10 trinh ngung IPv4. Ty le sur dung IPv6 dat 67,68%,
+cao gap 1,6 lan muc binh quan ASEAN va thé gioi, dung thur 2 Dong Nam A, thu
+7 toan cau. Toan bo tai nguyen IP/ASN duroc ky so bang ROA/RPKI, dua Viet
+Nam dung dau ASEAN va giam 80% sy co gia mao, liua dao lien quan den IP/ASN
+sovoinam2023.
+Den hét thang 6/2026, c6 694.476 ten mien quoc gia “.vn", tang 8,2% so
+voi cung ky nam 2025, dung thu 2 ASEAN, thuoc nhom 10 chau A - Thai Binh
+Duong va xep thur 40 thé gioi. Bodaban hanh Quyét dinh so507/QD-BKHCN
+ngay 23/01/2026 ve Chuong trinh h6 trg nguoi dan, doanh nghiep, h0 kinh doanh
+hien dien tryc tuyen tin cay, an toan voi ten mien “.vn” giai doan 2026-2030.
+d) Ha tang chung thuc chur ky so
+He thong ket noi dich vu chung thuc chur ky so cong cong duoc van hanh
+on dinh, lien tuc 24/7, da duoc phe duyet an toan thong tin cap do 3; thuc hien
+day du sao luu dur lieu du phong, khong xay ra sy co ky thuat hoac mat an toan
+thong tin. Chuc nang kiem tra van ban ky so tren trang thong tin dien tur hoat dong
+hieu qua, cho phep nguoi dung xac thyc nguoi ky, thoi gian ky, hiéu lyc chung
+thu sova tinh toan ven cuavanban dien tur.
+3.2. Phat trien trung tam dur lieu, dien toan dam may
+a)Phat trien trung tam dur lieu
+Ca nuoc hien c6 10 doanh nghiep so huru 42 trung tam du lieu, voi tong
+cong suat thiet ké 372,75 MW, gom: Ha Noi 17 trung tam, 186,2 MW; TP. Ho
+Chi Minh 18 trung tam, 149,95 MW; Da Nang 4 trung tam, 22,6 MW; Hai Phong
+1 trung tam, 6 MW; Can Tho 1 trung tam, 5 MW; Dong Nai 1 trung tam, 3 MW.
+C6 19/42 trung tam dur lieu, turong duong 44%, dat it nhat mot tieu chuan
+quoc té Uptime Tier hoac ANSI/TIA-942. Trung tam dur lieu Fornix HCM02 cua
+FPT duoc cap chung chi cong trinh xanh LEED vao thang 8/2025.
+b) Bao dam kenh truyen cho Trung tam Du lieu cua Dang
+Bo Khoa hoc va Cong nghe da hoan thanh cac yeu cau cua Van phong
+Trung uong Dang ve cung cap kenh truyen cho Trung tam Du lieu cua Dang dat
+tai Trung tam Dur lieu quoc gia, gom: 04 kenh cap quang ket noi tryc tiep voi Tru
+so Van phong Trung uong Dang; 02 kenh Mang truyen so lieu chuyen dung, bang
+thong 20 Gbps, dy phong 1+1; 02 kenh Internet chuyen dung, bang thong 20
+Gbps. Cac kenh truyen deu san sang mo rong bang thong khi co yeu cau.
+4. Phat trien CSDL, he thong so, nen tang so dung chung quoc gia
+Trong thoi gian qua, trien khai nhiem vu dugc Ban Chi dao Trung uong ve
+phat trien khoa hoc, cong nghe, doi moi sang tao va chuyen doi so, Chinh phu,
+
+=================== PAGE 9 ===================
+9
+Thu turong Chinh phu giao tai Ké hoach so 02-KH/BCDTW9, Nghi quyét so
+11/NQ-CP10, Nghi quyét so 214/NQ-CPll, cong tac xay dung, hoan thien CSDL
+quocgia,chuyen nganh da datduocmot soketqua tich cuc,cu thé:
+ - D6i voi 12 CSDL trong yéu theo Ké hoach so 02-KH/BCDTW va CSDL
+ban an, quyét dinh cua Toa an: 01/12 CSDL (CSDL quoc gia ve tai chinh) da co
+nen tang, diu lieu, ket noi, chia se, dam bao tieu chi dung, du, sach, song, dong bo
+theo thoi gian thyc ve Trung tam dur lieu quoc gia; 07/12 CSDL12da co nen tang,
+du lieu duoc doi soat voi CSDL dan cu de lam sach, da ket noi, chia sé noi nganh
+va ngoai nganh, dong thoi dong bo du lieu offline ve Trung tam dir lieu quoc gia.
+- D6i voi 104 CSDL theo Nghi quyét so 11/NQ-CP: 17/10413 CSDL da c6
+nen tang, du lieu, ket noi, chia se, dam bao tieu chi dung, du, sach, song, dong bo
+theo thoi gian thuc ve Trung tam dur lieu quoc gia; 50/104 CSDL da c6 nen tang,
+diu lieu dong bo ve Trung tam dir lieu quoc gia.14
+Thuc hien quy dinh tai Khoan 1, Dieu 26 Luat Chuyen doi so, Bo Khoa hoc
+va Cong nghe da chu tri, phoi hop voi cac bo, nganh, dia phuong de ra soat va
+xaydungdy thao trinhThu tuongChinh phu ban hanh Quyét dinh s01132/QD-
+TTg ngay 24 thang 6 nam 2026 ve viec ban hanh tieu chi, danh muc nen tang so
+dung chung quoc gia trong cac co quan thuoc he thong chinh tri. Tieu chi nen tang
+so duoc phan thanh hai nhom: Tieu chi xac dinh nen tang so dung chung quoc gia
+sur dung chung cho cac nganh, linh vyc (tieu chi xac dinh nen tang Nhom A) va
+Tieu chi xac dinh nen tang so dung chung quoc gia cho nganh, linh vyc (tieu chi
+xac dinh nen tang Nhom B). Can cu tieu chi, de xuat cua cac bo, nganh, dia
+phuong, Thu turong Chinh phu da quyét dinh 79 nen tang so dung chung quoc gia
+bao gom 17 nén tang so nhom A va 62 nen tang so nhom B.
+Mot so ket quanoi bat:
+9Ké hoach so 02-KH/BCDTWngay 19/6/2025 cuaBan Chi daoTrung uong ve phat trien khoa hoc,cong nghe,
+doimoisangtaova chuyendoisove thuc day chuyen doi solienthong,dongbo,nhanh,hieu qua dapungyeu
+cau sapxeptochurcbomay cua hethong chinh tri.
+nghe, doi moi sang tao va chuyen doi so quoc gia.
+1Nghiquyét so214/NQ-CPngay23/7/2025cua Chinh phubanhanhKe hoach hanhdong cuaChinh phu ve thuc
+12 CSDL ho tich dien tur (Bo Tu phap); CSDL ban an, quyet dinh cua Toa an (Toa an nhan dan toi cao); CSDL
+quoc gia ve dat dai (BoNong nghiep va Moi truong); CSDL nganh nong nghiep (Bo Nong nghiepva Moi truong);
+CSDL nganh giao duc va dao tao (Bo Giao duc va Dao tao); CSDL quoc gia ve xay dung (Bo Xay dung); CSDL
+hanghoa(hoa chat,tien chat)(BoCongThuong)
+13 B0 Cong an: (1) CSDL ve cu tru; (2) CSDL Can cuoc cong dan; (3) CSDL Quoc gia ve dan cur; Bo Tai chinh:
+(4)He thong tiepnhanva quanlyhoso;(5) He thongCapma soBHXHva Quan lyBHYT hogia dinh;(6) He
+thongXet duyet chinh sach (TCS);(7)He thong giam dinh bao hiem y té;(8)He thong quan ly thu va so the
+(TST);(9) CSDL quoc gia ve dau thau;(10) CSDL thongke quoc gia.Ngan hang Nha nuocViet Nam:(11) Kho
+tindientir cuaNHNN.Tap doanDien lycViet Nam:(15) He thongQuan ly thong tinkhachhang.BoKhoahoc
+va Cong nghe:(16) CSDL Co quan, doanh nghiep buu chinh;(17) CSDL Thong ke toc do truy cap Internet bang
+rongcodinhvabangrongdidongcuiacac doanhnghiepvadiaphuong trencanuoc
+14 Nguon:Bao cao so1411/BC-BCA-VPB ngay 03/7/2026 cuaBo Cong an ve tinh hinh trien khaicac CSDL quoc
+gia,chuyen nganh
+
+=================== PAGE 17 ===================
+17
+- Nghien curu co che ung dung dur lieu so, nen tang so trong cong tac quan
+ly, giam sat, kiem tra, danh gia hieu qua thyc hien Chuong trinh.
+- Trién khai Nghi quyét 66.18/2026/NQ-CP, Bo KH&CN dang chu tri cac
+noi dung lien quan den viec sura doi, bo sung Luat Giao dich dien t’r trong Dy an
+Luat Sura doi, bo sung mot so dieu cua Luat Tan so Vo tuyen dien, Luat Vien
+thong, Luat Giao dich dien tr va Luat Chuyen giao cong nghe nham cai cach thu
+tuc hanh chinh, chuyen manh tir “tien kiem” sang “hau kiem” va day manh ung
+dung dur lieu so de giam ho so, giay to cho nguoi dan, doanh nghiep.
+- Quy dinh cu the tieu chi nhan dien, phan loai va hach toan cac nhiem vu,
+noi dung chi duoc tinh vao tong chi ngan sach Nha nuoc cho chuyen doi so dé
+bao dam thong nhat trong qua trinh lap dy toan, tong hop, theo doi va danh gia ty
+1é toi thieu 1% tong chi Ngan sach Nha nuoc danh cho Chuyen doi so.
+III.TRIENKHAICACCHUONGTRINH,DEANTRONGTAM
+1. Ve phat trien ha tang so
+Dinh huong phat trien ha tang so tap trung vao viec hien dai hoa mang
+truyen so lieu chuyen dung thanh ha tang dung rieng quy mo quoc gia, bao dam
+an toan thong tin va ket noi dong bo tur Trung uong den cap xa. Ve vien thong va
+Internet, trong tam la trong nam 2026, phu song 100% thon 10m song c6 dien theo
+chuong trinh vien thong cong ich; phu song 5G chat luong cao tai cac do thi, khu
+cong nghiep, tien toi thur nghiem va thuong mai hoa 6G; dong thoi mo rong ha
+tangcap bien de duaViet Nam thanh trung tamket noi khu vyc, chuyen doi toan
+bo sang IPv6 va thuc day sur dung ten mien quoc gia ".vn". Song song do, chinh
+sach se bao dam nguon dien xanh, on dinh cho cac trung tam dur lieu, uu tien ha
+tang trien khai ban sao so va cac he thong phan tich, dy bao thoi gian thuc. Dac
+biet, ha tang Internet van vat (IoT) va cam bien so se duoc tich hop bat buoc vao
+quy hoach, dau tu cac dy an giao thong, nang luong, do thi thiét yeu nham phat
+trien ha tang dung chung hieu qua va tranh dau tu trung lap.
+2. Ve phat trien dir lieu so, nen tang so dung chung
+Noi dung tap trung vao viec phat trien di lieu so, phat trien nen tang so
+dung, CSDL quoc gia theo danh muc da dugc Thu turong Chinh phu phe duyet
+thong qua viec xay dung Kho dur lieu dung chung, he thong xur ly dur lieu thong
+minh va van hanh 05 san giao dich dur lieu. Cong tac xay dung cac co so du lieu
+quoc gia va chuyen nganh se dugc day nhanh, trong tam la so hoa, lam sach du
+lieu cot loi (nhu dat dai, nha 0) gan lien voi dinh danh ca nhan, dong thoi minh
+bach hoa qua viec cung cap du lieu mo va cong khai xep hang muc do phat trien
+du lieu cua cac bo, nganh, dia phuong. Ben canh do, dinh huong cung chu trong
+lam chu cong nghe dien toan dam may (Cloud), phat trien cac nen tang so quoc
+gia, nen tang truy xuat nguon goc minh bach chuoi cung ung va dac biet la thuc
+day tri tue nhan tao (AI). AI se duoc thur nghiem, nhan rong trong quan tri dia
+phuong, cac nganh kinh té - xa hoi, ung dung de ty dong hoa dich vu cong tryc
+tuyen, di kem voi cac quy dinh cu the ve dao durc, quan tri rui ro va an ninh mang
+choAI.
+
+=================== PAGE 18 ===================
+18
+3. Ve phat trien nhan luc so
+Dinh huong phat trien nhan lyc so tap trung vao viec pho cap ky nang so
+toan dien cho moi tang lop nhan dan va can bo, cong churc, trong tam la ky nang
+chuyen doi so, sur dung AI va an toan mang. Chuong trinh "Binh dan hoc vu so"
+se dugc trien khai tren toan quoc, uu tien cac nhom doi tuong de bi ton thuong va
+vung dan toc thieu so, kho khan, ket hop voi viec pho cap cong dan so thong qua
+sova STEM/STEAM se duoc dua vao ngay tircap phothong, thuc day mohinh
+"Hoc tur lam viec thuc te" giura nha truong - doanh nghiep, dong thoi khuyen khich
+hoc tap suot doi de dao tao lai cho lurc luong lao dong truoc tac dong cua AI va
+chuyen doi xanh. Ngoai ra, Mang luroi chuyen doi so tai co so va cac To cong
+nghe so cong dong se duoc day manh hoat dong thong qua cac chinh sach ho trg
+va xa hoi hoa phu hop.
+4. Ve phat trien doanh nghiep cong nghe so
+Dinh huong phat trien doanh nghiep cong nghe so tap trung vao viec nghien
+curu, lam chu va urng dung cac san pham, dich vu cong nghe so trong diem nam
+trong danh muc cong nghe chien luoc quoc gia. Cac tap doan cong nghe lon trong
+nuoc duoc khuyén khich dau tu phat trien cac ha tang cot loi noi dia nhu dien toan
+dam may (Cloud), tri tue nhan tao (AI) va he thong xur ly dur lieu (Data Engine).
+Dong thoi, khong gian tang truong kinh te so se dugc mo rong tir viec so hoa cac
+moi dua tren cong nghe chien luoc. Song song voi d6, chuong trinh chu trong
+phat trien he sinh thai an toan, an ninh mang Viet Nam, thuc day cac doanh nghiep
+noi dia lam chu cong nghe bao mat de bao ve khong gian so quoc gia.
+5. Ve tang curong hop tac quoc te
+Dinh huong tang cuong hop tac quoc te tap trung vao viec chu dong tham
+gia quan ly tai nguyen chung tren khong gian mang, gia nhap cac to chuc quoc té
+va chu tri, dan dat cac sang kien chuyen doi so. Viet Nam se chu dong gia nhap
+cac sang kien khong gian du lieu cua ASEAN va toan cau, dong thoi tuan thu cac
+tieu chuan lien thong du lieu quoc te nham tao dieu kien thuan loi cho thuong mai
+so xuyen bien gioi. Dac biet, chinh sach se tap trung xay dung moi truong lam
+viec voi cac uu dai dac thu de thu hut cac chuyen gia cong nghe va nha khoa hoc
+dur lieu hang dau the gioi ve Viet Nam lam viec.
+IV. DE XUAT, KIEN NGH!
+1. D6i voi Quoc hoi
+De thuc day chuyen doi so quoc gia trong giai doan toi, kién nghi Quoc hoi
+quan tam, chi dao mot so noi dung sau:
+Thu nhat, tiép tuc hoan thien the ché, phap luat lien quan den chuyen doi
+so theo huong dong bo, thong nhat, tao hanh lang phap ly thuan loi cho phat trien
+Chinh phu so, kinh té so, xa hoi so. Quoc hoi xem xet, uu tien chuong trinh xay
+dung luat, phap lenh doi voi cac noi dung co tac dong tryc tiep den chuyen doi so
+
+=================== PAGE 19 ===================
+19
+nhu du lieu, giao dich dien tr, dinh danh va xac thyc dien tur, an toan thong tin
+mang, an ninh mang, tri tue nhan tao, tai san so, cong nghiep cong nghe so, chia
+séva khai thac dir lieu giura cac co quan nha nuoc.Dong thoi, tang cuong ra soat,
+sura doi, bo sung cac quy dinh con chong chéo, chua phu hop voi phuong thurc
+quan ly, dieu hanh va cung cap dich vu tren moi trurong so.
+Thur hai, tang cuong giam sat toi cao doi voi viec to churc thuc hien cac chu
+truong, chinh sach, phap luat ve chuyen doi so. Trong do, tap trung giam sat viec
+trien khai cac nhiem vy trong tam ve phat trien du lieu so, ha tang so, nen tang so
+dung chung, dich vy cong tryc tuyen, thanh toan khong dung tien mat, bao dam
+an toan thong tin mang, bao ve du lieu ca nhan va hieu qua dau tu cho chuyen doi
+so. Viec giam sat can gan voi ket qua dau ra cy the, murc do hai long cua nguoi
+dan, doanh nghiep va trach nhiem cua nguoi dung dau co quan, don vi.
+Thur ba, uu tien bo tri nguon luc trong ké hoach tai chinh, ngan sach nha
+nuoc trung han va hang nam cho chuyen doi so. De nghi Quoc hoi quan tam bao
+dam nguon lyc cho cac nhiem vu co tinh nen tang, lien nganh, lien vung, nhat la
+phat trien co so du lieu quoc gia, ha tang dien toan dam may, ha tang ket noi,
+trung tam du lieu, nen tang so dung chung, bao dam an toan, an ninh mang va dao
+tao nhan lyrc so. Dong thoi, nghien curu co che tai chinh linh hoat, co che dat hang,
+thue dich vu cong nghe thong tin, hop tac cong tu va co che thur nghiem co kiem
+soat de huy dong nguon lyrc xa hoi cho chuyen doi so.
+2. Doi voi cac bo, nganh, dia phuo'ng
+De nang cao hieu qua trien khai chuyen doi so quoc gia, chuyen doi s6
+nganh, linh vyc va dia phuong, de nghi cac bo, nganh, dia phuong tap trung thyc
+hien mot so nhiem vu sau:
+Thur nhat, xac dinh chuyen doi so la nhiem vu trong tam, thuong xuyen,
+gan tryc tiép voi cai cach hanh chinh, doi moi phuong thurc quan ly va nang cao
+chat lurong phuc vu nguoi dan, doanh nghiep. Nguoi durng dau cac bo, nganh, dia
+phuong can truc tiep chi dao, chiu trach nhiem ve ket qua chuyen doi so; dua cac
+chi tieu chuyen doi so vao chuong trinh cong tac, ke hoach phat trien kinh te - xa
+hoi, ke hoach cai cach hanh chinh va danh gia murc do hoan thanh nhiem vu hang
+nam.
+Thur hai, day manh phat trien, ket noi, chia se va khai thac du lieu so. Cac
+bo, nganh, dia phuong can tap trung xay dung, hoan thien co so du lieu thuoc
+pham vi quan ly; chuan hoa, lam sach, cap nhat dur lieu; két noi, chia se du lieu
+voi cac co so dur lieu quoc gia, co so du lieu chuyen nganh va he thong thong tin
+giai quyet thu tuc hanh chinh.Viec phat trien dur lieu phai di doi voi bao dam chat
+luong dur lieu, an toan du lieu, bao ve du lieu ca nhan va phan dinh ro trach nhiem
+quan ly, khai thac, sur dung dur lieu.
+Thur ba, uu tien sur dung cac nen tang so dung chung, tranh dau tu manh
+mun, trung lap. Cac bo, nganh, dia phuong can ra soat he thong thong tin dang
+van hanh, thyc hien tich hop, lien thong, tai cau truc hoac ding cac he thong kem
+hieu qua; tang cuong sir dung nen tang so quoc gia, nen tang so dung chung cua
+
+=================== PAGE 20 ===================
+20
+bo, nganh, dia phuong; bao dam kha nang ket noi, chia se dur lieu, an toan thong
+tin va tuan thu khung kien truc tong the quoc gia so.
+Thu tu, nang cao chat luong cung cap dich vu cong tryc tuyen, lay nguoi
+dan, doanh nghiep lam trung tam. Viec trien khai dich vu cong tryc tuyen can gan
+voi tai cau truc quy trinh, don gian hoa thanh phan ho so, cat giam yeu cau nop
+lai thong tin da co, tang ty le xur ly ho so tryc tuyén toan trinh va nang cao trai
+nghiem nguoi dung. Khong chay theo so luong hinh thurc, ma can danh gia bang
+ty le ho so phat sinh tryc tuyén, ty le xi'r ly dung han, murc do hai long va chi phi
+tuan thu duoc cat giam.
+Thu nam, quan tam phat trien nhan lyc so va nang luc so trong co quan nha
+nuoc, doanh nghiep va xa hoi. Cac bo, nganh, dia phuong can to churc dao tao,
+boi durong ky nang so cho can bo, cong churc, vien churc; hinh thanh doi ngu
+chuyen trach hoac nong cot ve chuyen doi so; dong thoi thuc day pho cap ky nang
+so cho nguoi dan, ho tro doanh nghiep nho va vira, hop tac xa, ho kinh doanh urng
+dung nen tang so trong quan tri, san xuat, kinh doanh.
+Thur sau, tang cuong dau tu cho bao dam an ninh mang, an ninh dur lieu va
+bao ve dur lieu ca nhan ngay tir khau thiét ke, trien khai cac he thong so.
+Tren day la Bao cao cua Chinh phu ve ket qua trien khai chuyen doi so,
+kinh guri cac vi dai bieu Quoc hoi de nghien curu.
+Tran trong./.
+Noinhan:
+TM. CHINH PHU
+-Nhu tren;
+TUQ. THU TUONG
+-Thu tuong,cacPho Thu tuong Chinh phu;
+- Van phong Quoc hoi:
+BQ TRUONG
+-Uy ban KH,CN&MT cua Quoc hoi;
+BO KHOA HQC VA CONG NGHE
+-Cac bo,co quan ngang bo;
+-VPCP: BTCN, cacPCN,Tro ly TTg,
+cacVu:QHDP,KTTH,TH;
+-Luu:VT, CDS (02).
+书6
+Vu Hai Quan
+

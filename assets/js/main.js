@@ -52,16 +52,19 @@ AOS.init({ once: true, duration: 1200 });
                 if (entry.isIntersecting && !counterAnimated) {
                     counterAnimated = true;
                     counterElements.forEach(counter => {
-                        const target = +counter.getAttribute('data-target');
+                        const rawTarget = counter.getAttribute('data-target');
+                        const target = parseFloat(rawTarget);
+                        const isFloat = rawTarget.includes('.');
+                        const decimals = isFloat ? (rawTarget.split('.')[1] || '').length : 0;
                         let count = 0;
                         const increment = target / 45;
                         const updateCount = () => {
                             count += increment;
                             if (count < target) {
-                                counter.innerText = Math.ceil(count);
+                                counter.innerText = isFloat ? count.toFixed(decimals) : Math.ceil(count);
                                 setTimeout(updateCount, 45);
                             } else {
-                                counter.innerText = target;
+                                counter.innerText = isFloat ? target.toFixed(decimals) : target;
                             }
                         };
                         updateCount();
