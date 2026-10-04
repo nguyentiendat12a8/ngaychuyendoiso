@@ -3,6 +3,28 @@ const path = require('node:path');
 const crypto = require('node:crypto');
 const root = __dirname;
 const out = path.join(root, 'dist');
+// Keep the original cascade and all vendor rules; reduce five blocking requests
+// to one. Rebase URLs so fonts still resolve from assets/css/site.min.css.
+const styleSources = [
+  'assets/css/fonts.css',
+  'assets/css/tailwind.min.css',
+  'assets/vendor/fontawesome/css/all.min.css',
+  'assets/vendor/aos/aos.css',
+  'assets/vendor/splide/splide.min.css',
+];
+const styleBundle = styleSources.map(relative => {
+  let css = fs.readFileSync(path.join(root, relative), 'utf8');
+  if (relative.includes('/fontawesome/')) css = css.replace(/font-display:block/g, 'font-display:swap');
+  css = css.replace(/url\(([^)]+)\)/g, (original, value) => {
+    const url = value.trim().replace(/^["']|["']$/g, '');
+    if (/^(?:data:|https?:|\/|#)/.test(url)) return original;
+    const resolved = path.resolve(root, path.dirname(relative), url);
+    const rebased = path.relative(path.join(root, 'assets/css'), resolved).replace(/\\/g, '/');
+    return `url("${rebased}")`;
+  });
+  return `/* ${relative} */\n${css}`;
+}).join('\n');
+fs.writeFileSync(path.join(root, 'assets/css/site.min.css'), styleBundle);
 // Refuse accidental reintroduction of large bitmap payloads into page logic.
 const mainSource = fs.readFileSync(path.join(root, 'assets/js/main.js'), 'utf8');
 if (/data:image\/[^;]+;base64,[A-Za-z0-9+/=]{100000}/.test(mainSource)) {
@@ -61,8 +83,16 @@ function include(relative) {
   }
 }
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+// Responsive image candidates are dependencies too, including ones not selected
+// on the build machine's screen.
+for (const match of html.matchAll(/srcset="([^"]+)"/g)) {
+  for (const candidate of match[1].split(',')) include(candidate.trim().split(/\s+/)[0]);
+}
 for (const m of html.matchAll(/(?:src|href|content)="([^"]+)"/g)) {
-  if (/\.(?:css|js|png|jpg|webp|svg)(?:[?#].*)?$/.test(m[1])) include(m[1]);
+  if (/\.(?:css|js|png|jpg|webp|svg)(?:[?#].*)?$/.test(m[1])) {
+    const asset = m[1].startsWith('https://ngaychuyendoiso.info/') ? new URL(m[1]).pathname.slice(1) : m[1];
+    include(asset);
+  }
 }
 // HTML always revalidates; changed CSS/JS gets a fresh URL after each build.
 html = html.replace(/((?:src|href)=")([^"?]+\.(?:js|css))"/g, (_, start, relative) => {
@@ -82,5 +112,20 @@ const errorPage = fs.readFileSync(path.join(root, '404.html'), 'utf8')
 fs.writeFileSync(path.join(out, '404.html'), errorPage);
 include('_headers');
 fs.writeFileSync(path.join(out, '.nojekyll'), '');
+// Prune obsolete output files only; never follow junctions/symlinks or touch source.
+const resolvedOutput = fs.realpathSync(out);
+if (resolvedOutput !== path.join(fs.realpathSync(root), 'dist')) throw new Error('Unsafe dist path');
+const expectedOutput = new Set([...included, 'index.html', '.nojekyll']);
+function pruneOutput(directory) {
+  for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
+    const file = path.resolve(directory, entry.name);
+    if (!file.startsWith(resolvedOutput + path.sep) || fs.lstatSync(file).isSymbolicLink()) {
+      throw new Error('Unsafe output entry: ' + file);
+    }
+    if (entry.isDirectory()) pruneOutput(file);
+    else if (!expectedOutput.has(path.relative(resolvedOutput, file).replace(/\\/g, '/'))) fs.unlinkSync(file);
+  }
+}
+pruneOutput(resolvedOutput);
 const bytes = [...included].reduce((sum, file) => sum + fs.statSync(path.join(root, file)).size, Buffer.byteLength(html));
 console.log(`Deploy bundle: ${included.size + 1} files, ${(bytes / 1024 / 1024).toFixed(2)} MiB (not all loaded at once).`);

@@ -1,11 +1,7 @@
 AOS.init({ once: true, duration: 1200 });
 
         // Countdown (Đếm ngược 24/7 đến Ngày Chuyển đổi số Quốc gia 10/10/2026)
-        let targetDate = new Date('October 10, 2026 00:00:00').getTime();
-        if (targetDate - new Date().getTime() <= 0) {
-            // Tự động duy trì đếm ngược 9 ngày 02 giờ 20 phút nếu máy trạm vượt mốc
-            targetDate = new Date().getTime() + (9 * 24 * 3600 * 1000) + (2 * 3600 * 1000) + (20 * 60 * 1000) + 15000;
-        }
+        const targetDate = new Date('2026-10-10T00:00:00+07:00').getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -27,7 +23,7 @@ AOS.init({ once: true, duration: 1200 });
                 const containerEl = document.getElementById('countdownContainer');
                 if (containerEl && !containerEl.classList.contains('expired-active')) {
                     containerEl.classList.add('expired-active');
-                    containerEl.className = 'w-full';
+                    containerEl.className = 'w-full expired-active';
                     containerEl.innerHTML = `
                         <div class="w-full bg-gradient-to-r from-[#FFC21A] via-[#F7931E] to-[#FFC21A] text-[#0B1B4D] font-black p-4 sm:p-5 rounded-2xl text-center shadow-2xl border border-white/40">
                             <div class="text-sm sm:text-lg flex items-center justify-center gap-1.5 sm:gap-2 uppercase tracking-wider font-black mb-1.5 leading-tight">

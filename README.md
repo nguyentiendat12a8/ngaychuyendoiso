@@ -20,11 +20,15 @@ npm run build
 
 `npm ci` chỉ cần chạy khi cài lần đầu hoặc khi dependency thay đổi. Commit cả CSS đã build và `package-lock.json`. Máy chủ chỉ phục vụ file tĩnh, không cần Node.js.
 
+Build tạo `assets/css/site.min.css` từ font, Tailwind, Font Awesome, AOS và Splide theo đúng thứ tự cũ. Trang tải một file CSS; không bỏ quy tắc hoặc biểu tượng đang sử dụng. Đường dẫn font được đổi tương ứng và Font Awesome dùng `font-display: swap`. Sửa CSS ở file nguồn, sau đó build lại, không sửa trực tiếp bundle.
+
+Logo gốc `assets/images/logo.webp` được giữ lại. Các bản 128/256/400px phục vụ các kích thước hiển thị nhỏ; HTML dùng `srcset` cho ảnh và build lấy đủ các ứng viên. Khi thay logo gốc, cần tạo lại các bản kích thước này. Meta description ở đầu `index.html` có thể sửa cùng nội dung sự kiện.
+
 ## Xuất bản
 
 Chạy `npm run build`, sau đó đưa **nội dung thư mục `dist/`** lên hosting. Script chỉ lấy những tài nguyên trang thực sự tham chiếu, giữ nguyên đường dẫn tương đối và thêm mã phiên bản CSS/JS. Không tải `node_modules/`, `.build-tools/` hoặc các công cụ build lên hosting.
 
-Với Vercel: đặt **Root Directory** đúng thư mục chứa `package.json` và `vercel.json` (nếu repository chứa thư mục `source`, chọn `source`). Build Command: `npm run build`; Output Directory: `dist`. Cấu hình này đã được lưu trong `vercel.json`. Sau deploy, xem source trang: phải có `build-version=local-assets-20261001-v2`, `assets/css/fonts.css`, ảnh `story-*.webp`; không còn Tailwind CDN hoặc Google Fonts. Nếu repository còn một `index.html` khác ở gốc, không chọn nhầm nó làm trang xuất bản.
+Với Vercel: đặt **Root Directory** đúng thư mục chứa `package.json` và `vercel.json` (nếu repository chứa thư mục `source`, chọn `source`). Build Command: `npm run build`; Output Directory: `dist`. Cấu hình này đã được lưu trong `vercel.json`. Sau deploy, xem source trang: phải có `build-version=local-assets-20261001-v2`, `assets/css/site.min.css`, ảnh `story-*.webp`; không còn Tailwind CDN hoặc Google Fonts. Nếu repository còn một `index.html` khác ở gốc, không chọn nhầm nó làm trang xuất bản.
 
 ## Tài nguyên đóng gói
 
