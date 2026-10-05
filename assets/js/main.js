@@ -71,6 +71,29 @@ AOS.init({ once: true, duration: 1200 });
         const metricsSection = document.getElementById('ket-qua');
         if (metricsSection) observer.observe(metricsSection);
 
+        // Logo Explanation Toggle
+        const toggleExplanationBtn = document.getElementById('toggleExplanationBtn');
+        const identityExplanationBox = document.getElementById('identityExplanationBox');
+        const explanationBtnText = document.getElementById('explanationBtnText');
+        const explanationChevron = document.getElementById('explanationChevron');
+
+        if (toggleExplanationBtn && identityExplanationBox) {
+            toggleExplanationBtn.addEventListener('click', () => {
+                const isHidden = identityExplanationBox.classList.contains('hidden');
+                if (isHidden) {
+                    identityExplanationBox.classList.remove('hidden');
+                    toggleExplanationBtn.setAttribute('aria-expanded', 'true');
+                    if (explanationBtnText) explanationBtnText.innerText = 'Ẩn thuyết minh biểu trưng';
+                    if (explanationChevron) explanationChevron.classList.add('rotate-180');
+                } else {
+                    identityExplanationBox.classList.add('hidden');
+                    toggleExplanationBtn.setAttribute('aria-expanded', 'false');
+                    if (explanationBtnText) explanationBtnText.innerText = 'Xem thuyết minh biểu trưng 2026';
+                    if (explanationChevron) explanationChevron.classList.remove('rotate-180');
+                }
+            });
+        }
+
         // Canvas Avatar Generator
         const canvas = document.getElementById('avatarCanvas');
         const ctx = canvas.getContext('2d');

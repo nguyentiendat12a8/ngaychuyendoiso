@@ -95,7 +95,7 @@
         <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-[#FFC21A]/05 rounded-full blur-[130px] pointer-events-none animate-float"></div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 
                 <!-- Content Column (Left) -->
                 <div class="lg:col-span-7 text-left">
@@ -170,7 +170,7 @@
                 </div>
 
                 <!-- Visual Graphic Column: Biểu Tượng 3 Vòng Đồng Tâm Hội Tụ Chuẩn BND (Right) -->
-                <div class="lg:col-span-5 flex justify-center" data-aos="zoom-in" data-aos-delay="300">
+                <div class="lg:col-span-5 flex flex-col items-center justify-center" data-aos="zoom-in" data-aos-delay="300">
                     <div class="relative w-88 h-88 sm:w-[26rem] sm:h-[26rem] lg:w-[30rem] lg:h-[30rem] flex items-center justify-center">
                         <!-- SVG 3 Vòng Đồng Tâm chạy 3 vòng cùng lúc & logo trung tâm xuất hiện cuối cùng -->
                         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="1080 60 1040 1040" class="w-full h-full object-contain filter drop-shadow-[0_10px_30px_rgba(47,107,255,0.35)]">
@@ -199,6 +199,29 @@
                         </div>
                         <div class="badge-v3-pop absolute top-1/2 -right-6 transform -translate-y-1/2 px-3 py-1.5 rounded-xl bg-[#0B1B4D]/90 border border-[#F7931E] text-xs font-bold text-[#FFC21A] backdrop-blur-md shadow-lg">
                             Vòng 3: <span class="text-[#FFC21A] ml-1">Dữ liệu</span>
+                        </div>
+                    </div>
+
+                    <!-- Nút bấm bật/tắt thuyết minh logo -->
+                    <button id="toggleExplanationBtn" type="button" aria-expanded="false" aria-controls="identityExplanationBox" class="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#13307A]/80 hover:bg-[#13307A] border border-[#FFC21A]/40 hover:border-[#FFC21A] text-xs sm:text-sm font-bold text-white shadow-lg transition-all transform hover:scale-105 active:scale-95 cursor-pointer">
+                        <i class="fa-solid fa-circle-info text-[#FFC21A] text-sm"></i>
+                        <span id="explanationBtnText">Xem thuyết minh biểu trưng 2026</span>
+                        <i id="explanationChevron" class="fa-solid fa-chevron-down text-[#FFC21A] text-xs transition-transform duration-300"></i>
+                    </button>
+
+                    <!-- Khung thuyết minh hiển thị khi click nút -->
+                    <div id="identityExplanationBox" class="hidden mt-4 w-full max-w-lg rounded-2xl border border-[#C9D3F0]/25 bg-[#13307A]/90 backdrop-blur-md p-5 sm:p-6 shadow-2xl transition-all duration-300">
+                        <div class="flex items-center gap-3 pb-3 border-b border-[#C9D3F0]/20">
+                            <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#FFC21A]/20 text-[#FFC21A] text-sm font-bold"><i class="fa-solid fa-circle-nodes"></i></span>
+                            <h4 class="text-sm sm:text-base font-extrabold tracking-wide text-white uppercase">THUYẾT MINH BIỂU TRƯNG 2026</h4>
+                        </div>
+                        <div class="mt-3.5 space-y-3 text-xs sm:text-sm leading-relaxed text-[#C9D3F0]">
+                            <p class="text-[#C9D3F0] text-justify">
+                                <span class="font-extrabold text-[#FFC21A]">Ba vòng cung mở, đồng tâm</span> hội tụ về lõi biểu trưng, lần lượt thể hiện <span class="font-bold text-white">kiến trúc, nền tảng và dữ liệu</span>. Các vòng mở biểu đạt khả năng kết nối, tương thích công nghệ mới; sóng dữ liệu thể hiện sự chia sẻ, luân chuyển và liên thông.
+                            </p>
+                            <p class="text-[#C9D3F0] text-justify pt-2.5 border-t border-[#C9D3F0]/10">
+                                <span class="font-extrabold text-[#FFC21A]">Biểu trưng trung tâm</span> được giữ nguyên, với hình tượng con người và ba cánh chuyển động tượng trưng cho <span class="font-bold text-white">Chính phủ số, Kinh tế số, Xã hội số</span>. Lấy người dân làm trung tâm, đích đến là <span class="font-bold text-white">kết quả thực chất và giá trị mang lại cho con người</span>.
+                            </p>
                         </div>
                     </div>
                 </div>
