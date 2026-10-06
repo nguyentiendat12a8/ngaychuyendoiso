@@ -1,27 +1,83 @@
 document.addEventListener('DOMContentLoaded', function () {
             const storiesSplideElement = document.getElementById('storiesSplide');
             if (storiesSplideElement) {
-                const storiesSplide = new Splide('#storiesSplide', {
-                    type: 'loop',
-                    drag: 'free',
-                    focus: 'center',
-                    perPage: 3,
-                    gap: 24,
-                    pagination: false,
-                    arrows: true,
-                    autoScroll: {
-                        speed: 0.6,
-                        pauseOnHover: true,
-                        pauseOnFocus: false,
-                        rewind: false
-                    },
-                    breakpoints: {
-                        640: { perPage: 1, gap: 16 },
-                        1024: { perPage: 2, gap: 20 },
-                        1280: { perPage: 3, gap: 24 }
-                    }
+                const storyList = storiesSplideElement.querySelector('.splide__list');
+                const toggleWrap = document.getElementById('storiesToggleWrap');
+                const toggleButton = document.getElementById('storiesToggle');
+                const toggleLabel = document.getElementById('storiesToggleLabel');
+                const toggleIcon = document.getElementById('storiesToggleIcon');
+                const status = document.getElementById('storiesStatus');
+                const previewPerCategory = 5;
+                const allSlides = storyList ? Array.from(storyList.children) : [];
+                const categoryCounts = new Map();
+                const previewSlides = [];
+
+                allSlides.forEach((slide) => {
+                    const article = slide.querySelector('article[onclick^="openArticleModal("]');
+                    const match = article && article.getAttribute('onclick').match(/openArticleModal\((\d+)\)/);
+                    const story = match && typeof articlesData !== 'undefined' ? articlesData[Number(match[1])] : null;
+                    const category = story ? story.category : 'Khác';
+                    const count = categoryCounts.get(category) || 0;
+                    categoryCounts.set(category, count + 1);
+                    if (count < previewPerCategory) previewSlides.push(slide);
                 });
-                storiesSplide.mount(window.splide.Extensions);
+
+                let expanded = false;
+                let storiesSplide = null;
+
+                function mountStories(slides) {
+                    if (!storyList) return;
+                    storyList.replaceChildren(...slides);
+                    const hasMultipleStories = slides.length > 1;
+                    storiesSplideElement.classList.toggle('max-w-xl', !hasMultipleStories);
+                    storiesSplideElement.classList.toggle('mx-auto', !hasMultipleStories);
+                    storiesSplide = new Splide('#storiesSplide', {
+                        type: hasMultipleStories ? 'loop' : 'slide',
+                        drag: 'free',
+                        focus: 'center',
+                        perPage: hasMultipleStories ? 3 : 1,
+                        gap: 24,
+                        pagination: false,
+                        arrows: hasMultipleStories,
+                        autoScroll: hasMultipleStories ? {
+                            speed: 0.6,
+                            pauseOnHover: true,
+                            pauseOnFocus: false,
+                            rewind: false
+                        } : false,
+                        breakpoints: {
+                            640: { perPage: 1, gap: 16 },
+                            1024: { perPage: 2, gap: 20 },
+                            1280: { perPage: 3, gap: 24 }
+                        }
+                    });
+                    storiesSplide.mount(window.splide.Extensions);
+                }
+
+                function updateToggle() {
+                    if (!toggleWrap || !toggleButton || !toggleLabel || !status) return;
+                    const visibleCount = expanded ? allSlides.length : previewSlides.length;
+                    toggleWrap.classList.toggle('hidden', allSlides.length <= previewSlides.length);
+                    toggleButton.setAttribute('aria-expanded', String(expanded));
+                    toggleLabel.textContent = expanded ? 'Thu gọn danh sách' : 'Xem thêm câu chuyện';
+                    status.textContent = expanded
+                        ? `Đang hiển thị toàn bộ ${allSlides.length} câu chuyện.`
+                        : `Đang hiển thị ${visibleCount} bài tiêu biểu.`;
+                    if (toggleIcon) toggleIcon.classList.toggle('rotate-180', expanded);
+                }
+
+                mountStories(previewSlides);
+                updateToggle();
+
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', function () {
+                        expanded = !expanded;
+                        if (storiesSplide) storiesSplide.destroy(true);
+                        mountStories(expanded ? allSlides : previewSlides);
+                        updateToggle();
+                        if (!expanded) storiesSplideElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    });
+                }
             }
 
             // Partner Continuous Marquee Reel Splide Initialization

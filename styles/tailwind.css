@@ -51,6 +51,15 @@
             box-shadow: 0 15px 30px -10px rgba(47, 107, 255, 0.25);
         }
 
+        /* Keep article headings and source links natural while aligning prose. */
+        #modalContent section:not(:last-child) p,
+        #modalContent section:not(:last-child) li,
+        #modalContent blockquote {
+            text-align: justify;
+            text-align-last: left;
+            text-justify: inter-word;
+        }
+
         .text-accent-a4 {
             color: #FFC21A;
             letter-spacing: 0.14em;
