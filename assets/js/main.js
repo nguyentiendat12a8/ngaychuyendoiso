@@ -54,20 +54,25 @@ AOS.init({ once: true, duration: 1200 });
                         const decimals = isFloat ? (rawTarget.split('.')[1] || '').length : 0;
                         let count = 0;
                         const increment = target / 45;
+                        const formatter = new Intl.NumberFormat('vi-VN', {
+                            minimumFractionDigits: decimals,
+                            maximumFractionDigits: decimals
+                        });
                         const updateCount = () => {
                             count += increment;
                             if (count < target) {
-                                counter.innerText = isFloat ? count.toFixed(decimals) : Math.ceil(count);
+                                const current = isFloat ? Number(count.toFixed(decimals)) : Math.ceil(count);
+                                counter.innerText = formatter.format(current);
                                 setTimeout(updateCount, 45);
                             } else {
-                                counter.innerText = isFloat ? target.toFixed(decimals) : target;
+                                counter.innerText = formatter.format(target);
                             }
                         };
                         updateCount();
                     });
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.15 });
         const metricsSection = document.getElementById('ket-qua');
         if (metricsSection) observer.observe(metricsSection);
 
@@ -1391,30 +1396,34 @@ AOS.init({ once: true, duration: 1200 });
             }
         });
 
-        // Event Section Tab Switcher (Mặc định 10/10, chuyển sang 09/10)
+        // Event Section Tab Switcher (Mặc định 10/10; hỗ trợ 09/10 và 08/10)
         function switchEventTab(day) {
             const tab10 = document.getElementById('tabEvent10');
             const tab09 = document.getElementById('tabEvent09');
+            const tab08 = document.getElementById('tabEvent08');
             const panel10 = document.getElementById('eventPanel10');
             const panel09 = document.getElementById('eventPanel09');
+            const panel08 = document.getElementById('eventPanel08');
 
-            if (!tab10 || !tab09 || !panel10 || !panel09) return;
+            if (!tab10 || !tab09 || !tab08 || !panel10 || !panel09 || !panel08) return;
 
-            if (day === '10') {
-                tab10.className = "flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-[#0B1B4D] bg-gradient-to-r from-[#FFC21A] via-[#FFD452] to-[#FFC21A] shadow-[0_4px_20px_rgba(255,194,26,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-                tab09.className = "flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-[#C9D3F0] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const tabs = { '10': tab10, '09': tab09, '08': tab08 };
+            const panels = { '10': panel10, '09': panel09, '08': panel08 };
+            const inactiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#C9D3F0] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const mainActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#0B1B4D] bg-gradient-to-r from-[#FFC21A] via-[#FFD452] to-[#FFC21A] shadow-[0_4px_20px_rgba(255,194,26,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const secondaryActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-white bg-gradient-to-r from-[#2F6BFF] to-[#13307A] shadow-[0_4px_20px_rgba(47,107,255,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
 
-                panel09.classList.add('hidden', 'opacity-0');
-                panel10.classList.remove('hidden');
-                setTimeout(() => panel10.classList.remove('opacity-0'), 15);
-            } else {
-                tab09.className = "flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-white bg-gradient-to-r from-[#2F6BFF] to-[#13307A] shadow-[0_4px_20px_rgba(47,107,255,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-                tab10.className = "flex-1 py-3.5 px-4 sm:px-6 rounded-xl text-[#C9D3F0] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            if (!tabs[day] || !panels[day]) return;
 
-                panel10.classList.add('hidden', 'opacity-0');
-                panel09.classList.remove('hidden');
-                setTimeout(() => panel09.classList.remove('opacity-0'), 15);
-            }
+            Object.entries(tabs).forEach(([tabDay, tab]) => {
+                tab.className = tabDay === day
+                    ? (tabDay === '10' ? mainActiveClass : secondaryActiveClass)
+                    : inactiveClass;
+            });
+
+            Object.values(panels).forEach((panel) => panel.classList.add('hidden', 'opacity-0'));
+            panels[day].classList.remove('hidden');
+            setTimeout(() => panels[day].classList.remove('opacity-0'), 15);
         }
 
         // ScrollSpy Menu Navigation Active Highlighting
