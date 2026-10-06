@@ -71,6 +71,14 @@ function include(relative) {
     for (const m of fs.readFileSync(target, 'utf8').matchAll(/['"](assets\/[\w./-]+)['"]/g)) include(m[1]);
   }
 }
+// Article bodies are loaded only when a reader opens a card. They are dynamic
+// script URLs, so include the source directory explicitly in the deploy bundle.
+const storyDataDirectory = path.join(root, 'assets/data/stories');
+for (const entry of fs.readdirSync(storyDataDirectory, { withFileTypes: true })) {
+  if (entry.isFile() && /^story-\d{2}\.js$/.test(entry.name)) {
+    include(path.join('assets/data/stories', entry.name));
+  }
+}
 let html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 // Responsive image candidates are dependencies too, including ones not selected
 // on the build machine's screen.

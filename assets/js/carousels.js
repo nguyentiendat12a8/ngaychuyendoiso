@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 let storiesSplide = null;
+                let libraryBuilt = false;
 
                 function mountStories(slides) {
                     if (!storyList) return;
@@ -57,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 function buildStoryLibrary() {
-                    if (!libraryGrid) return;
+                    if (!libraryGrid || libraryBuilt) return;
                     const fragment = document.createDocumentFragment();
                     let cardCount = 0;
 
@@ -84,11 +85,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     });
 
                     libraryGrid.replaceChildren(fragment);
+                    libraryBuilt = true;
                     if (libraryCount) libraryCount.textContent = `${cardCount} câu chuyện`;
                 }
 
                 window.openStoriesLibrary = function () {
                     if (!libraryModal) return;
+                    buildStoryLibrary();
                     libraryModal.classList.remove('hidden');
                     libraryModal.classList.add('flex');
                     if (toggleButton) toggleButton.setAttribute('aria-expanded', 'true');
@@ -115,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     status.textContent = `Đang hiển thị ${previewSlides.length} bài tiêu biểu.`;
                 }
 
-                buildStoryLibrary();
                 mountStories(previewSlides);
                 updateLibraryButton();
 
