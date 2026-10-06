@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         pagination: false,
                         arrows: hasMultipleStories,
                         autoScroll: hasMultipleStories ? {
-                            speed: 1.2,
+                            speed: 1.8,
                             pauseOnHover: true,
                             pauseOnFocus: false,
                             rewind: false
