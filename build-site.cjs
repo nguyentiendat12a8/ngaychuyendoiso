@@ -33,12 +33,13 @@ if (/data:image\/[^;]+;base64,[A-Za-z0-9+/=]{100000}/.test(mainSource)) {
 fs.mkdirSync(out, { recursive: true });
 // Narration is temporarily disabled. Keep the source MP3 files and scripts for
 // possible later use, but do not validate, generate, or copy them into dist.
-// Generate an offline-only companion from the same frame bytes. Online users
-// never request it; keeping it separate avoids bloating main.js again.
-const framePath = mainSource.match(/const FRAME_URL = '([^']+)'/)[1];
-const frameData = fs.readFileSync(path.join(root, framePath)).toString('base64');
+// Generate an offline-only companion from the approved final frame. Online
+// users never request it; keeping it separate avoids bloating main.js.
+const finalFrameData = fs.readFileSync(path.join(root, 'assets/images/avatar-frame-final.png')).toString('base64');
 fs.writeFileSync(path.join(root, 'assets/js/avatar-frame.local.js'),
-  'window.__loadLocalAvatarFrame("data:image/png;base64,' + frameData + '");\n');
+  'window.__localAvatarFrame = "data:image/png;base64,' + finalFrameData + '";\n' +
+  'if (typeof window.__loadLocalAvatarFrame === "function") window.__loadLocalAvatarFrame();\n'
+);
 const included = new Set();
 function include(relative) {
   relative = relative.split(/[?#]/)[0].replace(/\\/g, '/');

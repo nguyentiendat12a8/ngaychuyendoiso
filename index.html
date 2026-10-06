@@ -51,11 +51,12 @@
                 <a href="#tao-avatar" class="hover:text-[#FFC21A] transition-colors py-2">Hưởng ứng</a>
             </nav>
 
-            <!-- Right: Nút nổi Đăng ký tham dự & Menu Mobile Button -->
-            <div class="flex items-center gap-3">
-                <a href="#dang-ky-qr" class="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#FFC21A] via-[#F7931E] to-[#FFC21A] text-[#0B1B4D] font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider">
+            <!-- Right: Đăng ký tham dự & Menu Mobile Button -->
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="#dang-ky-qr" class="inline-flex items-center gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#FFC21A] via-[#F7931E] to-[#FFC21A] text-[#0B1B4D] font-extrabold text-xs sm:text-sm shadow-lg hover:shadow-amber-500/25 hover:scale-105 active:scale-95 transition-all duration-300 uppercase tracking-wider">
                     <i class="fa-solid fa-qrcode text-sm"></i>
-                    <span>Đăng ký tham dự</span>
+                    <span class="hidden sm:inline">Đăng ký tham dự</span>
+                    <span class="sm:hidden">Đăng ký</span>
                 </a>
 
                 <!-- Mobile Menu Button -->
@@ -1941,9 +1942,9 @@
                 </div>
                 <div id="storiesToggleWrap" class="hidden mt-8 text-center">
                     <p id="storiesStatus" class="text-xs text-[#C9D3F0]/80 mb-3" aria-live="polite"></p>
-                    <button id="storiesToggle" type="button" aria-controls="storiesSplide" aria-expanded="false" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/40 text-sm font-extrabold shadow-lg hover:bg-[#FFC21A] hover:text-[#0B1B4D] hover:border-[#FFC21A] transition-all duration-300">
+                    <button id="storiesToggle" type="button" aria-controls="storiesLibraryModal" aria-haspopup="dialog" aria-expanded="false" class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#13307A] text-[#FFC21A] border border-[#FFC21A]/40 text-sm font-extrabold shadow-lg hover:bg-[#FFC21A] hover:text-[#0B1B4D] hover:border-[#FFC21A] transition-all duration-300">
                         <span id="storiesToggleLabel">Xem thêm câu chuyện</span>
-                        <i id="storiesToggleIcon" class="fa-solid fa-chevron-down text-xs transition-transform duration-300" aria-hidden="true"></i>
+                        <i class="fa-solid fa-table-cells-large text-xs" aria-hidden="true"></i>
                     </button>
                 </div>
             </div>
@@ -1965,7 +1966,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
                     <div class="md:col-span-6 flex flex-col items-center justify-center">
-                        <div class="relative w-72 h-72 sm:w-80 sm:h-80 border-2 border-[#FFC21A]/40 rounded-2xl overflow-hidden shadow-2xl bg-[#0B1B4D]">
+                        <div class="relative w-72 h-72 sm:w-80 sm:h-80 rounded-2xl overflow-hidden shadow-2xl bg-[#0B1B4D]">
                             <canvas id="avatarCanvas" class="w-full h-full"></canvas>
                         </div>
                     </div>
@@ -2035,6 +2036,24 @@
             </div>
         </div>
     </section>
+
+    <!-- Cửa sổ thư viện toàn bộ câu chuyện -->
+    <div id="storiesLibraryModal" role="dialog" aria-modal="true" aria-labelledby="storiesLibraryTitle" class="fixed inset-0 z-[9998] hidden items-center justify-center bg-black/85 backdrop-blur-md sm:p-4" onclick="closeStoriesLibrary()">
+        <div class="w-full h-full sm:max-w-7xl sm:h-[92vh] flex flex-col overflow-hidden bg-[#081642] sm:border sm:border-[#FFC21A]/35 sm:rounded-2xl shadow-2xl" onclick="event.stopPropagation()">
+            <div class="shrink-0 flex items-center justify-between gap-4 px-4 sm:px-7 py-4 border-b border-[#C9D3F0]/15 bg-[#0B1B4D]">
+                <div class="min-w-0">
+                    <span id="storiesLibraryCount" class="block text-[10px] sm:text-xs font-extrabold uppercase tracking-[0.14em] text-[#FFC21A]">64 câu chuyện</span>
+                    <h2 id="storiesLibraryTitle" class="text-lg sm:text-2xl font-extrabold text-white truncate">Câu chuyện Chuyển đổi số Việt Nam</h2>
+                </div>
+                <button id="storiesLibraryClose" type="button" onclick="closeStoriesLibrary()" aria-label="Đóng danh sách câu chuyện" class="shrink-0 w-10 h-10 rounded-full bg-[#13307A] text-[#FFC21A] hover:bg-[#FFC21A] hover:text-[#0B1B4D] transition-colors flex items-center justify-center text-lg shadow-lg">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div id="storiesLibraryBody" class="min-h-0 flex-1 overflow-y-auto overscroll-contain p-4 sm:p-6 custom-scrollbar">
+                <div id="storiesLibraryGrid" class="story-library-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Đọc Chi Tiết Bài Viết -->
     <div id="articleModal" class="fixed inset-0 z-[9999] hidden items-center justify-center p-4 bg-black/80 backdrop-blur-md transition-all duration-300" onclick="closeArticleModal()">

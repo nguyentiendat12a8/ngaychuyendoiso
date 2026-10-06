@@ -105,18 +105,24 @@ AOS.init({ once: true, duration: 1200 });
         let uploadedImage = null;
 
         const frameImg = new Image();
-        const FRAME_URL = 'assets/images/avatar-frame-cc05a2f8a505.png';
+        const FINAL_FRAME_URL = 'assets/images/avatar-frame-final.png';
         
         frameImg.onload = function() {
             renderAvatarFrame();
         };
 
+        function updateAvatarFrame() {
+            if (window.location.protocol === 'file:' && window.__localAvatarFrame) {
+                frameImg.src = window.__localAvatarFrame;
+            } else {
+                frameImg.crossOrigin = 'anonymous';
+                frameImg.src = FINAL_FRAME_URL;
+            }
+        }
+
         if (window.location.protocol === 'file:') {
-            // Local file images can taint a canvas. Only local previews load
-            // the identical PNG as a data URL through a separate script.
-            window.__loadLocalAvatarFrame = function(dataUrl) {
-                frameImg.src = dataUrl;
-                delete window.__loadLocalAvatarFrame;
+            window.__loadLocalAvatarFrame = function() {
+                updateAvatarFrame();
             };
             const localFrameScript = document.createElement('script');
             localFrameScript.src = 'assets/js/avatar-frame.local.js';
@@ -125,9 +131,12 @@ AOS.init({ once: true, duration: 1200 });
             };
             document.head.appendChild(localFrameScript);
         } else {
-            frameImg.crossOrigin = 'anonymous';
-            frameImg.src = FRAME_URL;
+            updateAvatarFrame();
         }
+
+        // Reset theme class on body if any cached theme existed
+        document.body.classList.remove('theme-red');
+        try { localStorage.removeItem('site_theme'); } catch(e) {}
 
         function initCanvas() {
             canvas.width = 800;
@@ -139,9 +148,11 @@ AOS.init({ once: true, duration: 1200 });
             const size = 800;
             ctx.clearRect(0, 0, size, size);
 
+            // Match the transparent portrait opening in avatar-frame-final.png.
+            // Using the old frame's smaller circle left a visible gap on the right.
             const cx = 400;
-            const cy = 437.5;
-            const r = 261.875;
+            const cy = 440;
+            const r = 278;
 
             if (uploadedImage) {
                 const zoom = parseFloat(document.getElementById('zoomRange').value) || 1.0;
@@ -162,7 +173,7 @@ AOS.init({ once: true, duration: 1200 });
                 ctx.beginPath();
                 ctx.arc(cx, cy, r, 0, Math.PI * 2);
                 ctx.clip();
-                ctx.fillStyle = '#13307A';
+                ctx.fillStyle = '#7A0C12';
                 ctx.fillRect(0, 0, size, size);
                 ctx.fillStyle = '#C9D3F0';
                 ctx.font = '600 22px "Be Vietnam Pro", sans-serif';
@@ -1387,12 +1398,23 @@ AOS.init({ once: true, duration: 1200 });
                 modal.classList.remove('flex');
             }
             resetArticleModalScroll();
-            document.body.style.overflow = '';
+            const libraryModal = document.getElementById('storiesLibraryModal');
+            const libraryIsOpen = libraryModal && !libraryModal.classList.contains('hidden');
+            document.body.style.overflow = libraryIsOpen ? 'hidden' : '';
         }
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
-                closeArticleModal();
+                const articleModal = document.getElementById('articleModal');
+                if (articleModal && !articleModal.classList.contains('hidden')) {
+                    closeArticleModal();
+                    return;
+                }
+
+                const libraryModal = document.getElementById('storiesLibraryModal');
+                if (libraryModal && !libraryModal.classList.contains('hidden') && typeof window.closeStoriesLibrary === 'function') {
+                    window.closeStoriesLibrary();
+                }
             }
         });
 

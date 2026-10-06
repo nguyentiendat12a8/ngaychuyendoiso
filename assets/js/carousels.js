@@ -5,8 +5,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 const toggleWrap = document.getElementById('storiesToggleWrap');
                 const toggleButton = document.getElementById('storiesToggle');
                 const toggleLabel = document.getElementById('storiesToggleLabel');
-                const toggleIcon = document.getElementById('storiesToggleIcon');
                 const status = document.getElementById('storiesStatus');
+                const libraryModal = document.getElementById('storiesLibraryModal');
+                const libraryBody = document.getElementById('storiesLibraryBody');
+                const libraryGrid = document.getElementById('storiesLibraryGrid');
+                const libraryCount = document.getElementById('storiesLibraryCount');
                 const previewPerCategory = 5;
                 const allSlides = storyList ? Array.from(storyList.children) : [];
                 const categoryCounts = new Map();
@@ -22,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
                     if (count < previewPerCategory) previewSlides.push(slide);
                 });
 
-                let expanded = false;
                 let storiesSplide = null;
 
                 function mountStories(slides) {
@@ -54,29 +56,71 @@ document.addEventListener('DOMContentLoaded', function () {
                     storiesSplide.mount(window.splide.Extensions);
                 }
 
-                function updateToggle() {
-                    if (!toggleWrap || !toggleButton || !toggleLabel || !status) return;
-                    const visibleCount = expanded ? allSlides.length : previewSlides.length;
-                    toggleWrap.classList.toggle('hidden', allSlides.length <= previewSlides.length);
-                    toggleButton.setAttribute('aria-expanded', String(expanded));
-                    toggleLabel.textContent = expanded ? 'Thu gọn danh sách' : 'Xem thêm câu chuyện';
-                    status.textContent = expanded
-                        ? `Đang hiển thị toàn bộ ${allSlides.length} câu chuyện.`
-                        : `Đang hiển thị ${visibleCount} bài tiêu biểu.`;
-                    if (toggleIcon) toggleIcon.classList.toggle('rotate-180', expanded);
+                function buildStoryLibrary() {
+                    if (!libraryGrid) return;
+                    const fragment = document.createDocumentFragment();
+                    let cardCount = 0;
+
+                    allSlides.forEach((slide) => {
+                        const sourceArticle = slide.querySelector('article[onclick^="openArticleModal("]');
+                        if (!sourceArticle) return;
+
+                        const wrapper = document.createElement('div');
+                        wrapper.className = 'min-w-0 h-full';
+                        const article = sourceArticle.cloneNode(true);
+                        const title = article.querySelector('h3')?.textContent.trim() || 'Câu chuyện chuyển đổi số';
+                        article.setAttribute('role', 'button');
+                        article.setAttribute('tabindex', '0');
+                        article.setAttribute('aria-label', `Đọc bài: ${title}`);
+                        article.addEventListener('keydown', (event) => {
+                            if (event.key === 'Enter' || event.key === ' ') {
+                                event.preventDefault();
+                                article.click();
+                            }
+                        });
+                        wrapper.appendChild(article);
+                        fragment.appendChild(wrapper);
+                        cardCount += 1;
+                    });
+
+                    libraryGrid.replaceChildren(fragment);
+                    if (libraryCount) libraryCount.textContent = `${cardCount} câu chuyện`;
                 }
 
+                window.openStoriesLibrary = function () {
+                    if (!libraryModal) return;
+                    libraryModal.classList.remove('hidden');
+                    libraryModal.classList.add('flex');
+                    if (toggleButton) toggleButton.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                    if (libraryBody) libraryBody.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+                    requestAnimationFrame(() => document.getElementById('storiesLibraryClose')?.focus({ preventScroll: true }));
+                };
+
+                window.closeStoriesLibrary = function () {
+                    if (!libraryModal) return;
+                    libraryModal.classList.add('hidden');
+                    libraryModal.classList.remove('flex');
+                    if (toggleButton) toggleButton.setAttribute('aria-expanded', 'false');
+                    const articleModal = document.getElementById('articleModal');
+                    if (!articleModal || articleModal.classList.contains('hidden')) document.body.style.overflow = '';
+                    toggleButton?.focus({ preventScroll: true });
+                };
+
+                function updateLibraryButton() {
+                    if (!toggleWrap || !toggleButton || !toggleLabel || !status) return;
+                    toggleWrap.classList.toggle('hidden', allSlides.length <= previewSlides.length);
+                    toggleButton.setAttribute('aria-expanded', 'false');
+                    toggleLabel.textContent = 'Xem thêm câu chuyện';
+                    status.textContent = `Đang hiển thị ${previewSlides.length} bài tiêu biểu.`;
+                }
+
+                buildStoryLibrary();
                 mountStories(previewSlides);
-                updateToggle();
+                updateLibraryButton();
 
                 if (toggleButton) {
-                    toggleButton.addEventListener('click', function () {
-                        expanded = !expanded;
-                        if (storiesSplide) storiesSplide.destroy(true);
-                        mountStories(expanded ? allSlides : previewSlides);
-                        updateToggle();
-                        if (!expanded) storiesSplideElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    });
+                    toggleButton.addEventListener('click', window.openStoriesLibrary);
                 }
             }
 
