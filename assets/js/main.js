@@ -25,13 +25,13 @@ AOS.init({ once: true, duration: 1200 });
                     containerEl.classList.add('expired-active');
                     containerEl.className = 'w-full expired-active';
                     containerEl.innerHTML = `
-                        <div class="w-full bg-gradient-to-r from-[#FBAB18] via-[#E65925] to-[#FBAB18] text-[#7A0C12] font-black p-4 sm:p-5 rounded-2xl text-center shadow-2xl border border-white/40">
+                        <div class="w-full bg-gradient-to-r from-[#FFC21A] via-[#F7931E] to-[#FFC21A] text-[#0B1B4D] font-black p-4 sm:p-5 rounded-2xl text-center shadow-2xl border border-white/40">
                             <div class="text-sm sm:text-lg flex items-center justify-center gap-1.5 sm:gap-2 uppercase tracking-wider font-black mb-1.5 leading-tight">
                                 <span class="text-base sm:text-xl">🎉</span>
                                 <span class="whitespace-normal">CHÀO MỪNG NGÀY CHUYỂN ĐỔI SỐ QUỐC GIA 10/10</span>
                                 <span class="text-base sm:text-xl">🎉</span>
                             </div>
-                            <span class="text-xs sm:text-sm font-bold text-[#7A0C12]/90 block leading-relaxed">Hành động cùng Chuyển đổi số Quốc gia – Nâng cao hiệu quả quản trị và tạo giá trị thực cho Người dân!</span>
+                            <span class="text-xs sm:text-sm font-bold text-[#0B1B4D]/90 block leading-relaxed">Hành động cùng Chuyển đổi số Quốc gia – Nâng cao hiệu quả quản trị và tạo giá trị thực cho Người dân!</span>
                         </div>
                     `;
                 }
@@ -150,6 +150,10 @@ AOS.init({ once: true, duration: 1200 });
             updateAvatarFrame();
         }
 
+        // Reset theme class on body if any cached theme existed
+        document.body.classList.remove('theme-red');
+        try { localStorage.removeItem('site_theme'); } catch(e) {}
+
         function renderAvatarFrame() {
             if (!ctx) return;
             const size = 800;
@@ -179,9 +183,9 @@ AOS.init({ once: true, duration: 1200 });
                 ctx.beginPath();
                 ctx.arc(cx, cy, r, 0, Math.PI * 2);
                 ctx.clip();
-                ctx.fillStyle = '#7A0C12';
+                ctx.fillStyle = '#0B1B4D';
                 ctx.fillRect(0, 0, size, size);
-                ctx.fillStyle = '#FFF6E6';
+                ctx.fillStyle = '#C9D3F0';
                 ctx.font = '600 22px "Be Vietnam Pro", sans-serif';
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
@@ -202,7 +206,7 @@ AOS.init({ once: true, duration: 1200 });
                 if (nameDisplay) {
                     nameDisplay.innerText = file.name;
                     nameDisplay.classList.remove('italic');
-                    nameDisplay.classList.add('font-semibold', 'text-[#FBAB18]');
+                    nameDisplay.classList.add('font-semibold', 'text-[#FFC21A]');
                 }
                 const reader = new FileReader();
                 reader.onload = function(evt) {
@@ -212,7 +216,7 @@ AOS.init({ once: true, duration: 1200 });
                         if (downloadBtn) {
                             downloadBtn.disabled = false;
                             downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-                            downloadBtn.classList.add('hover:bg-[#E65925]', 'hover:scale-105', 'cursor-pointer');
+                            downloadBtn.classList.add('hover:bg-amber-300', 'hover:scale-105', 'cursor-pointer');
                         }
                     }
                     uploadedImage.src = evt.target.result;
@@ -222,12 +226,12 @@ AOS.init({ once: true, duration: 1200 });
                 if (nameDisplay) {
                     nameDisplay.innerText = 'Chưa chọn tệp nào';
                     nameDisplay.classList.add('italic');
-                    nameDisplay.classList.remove('font-semibold', 'text-[#FBAB18]');
+                    nameDisplay.classList.remove('font-semibold', 'text-[#FFC21A]');
                 }
                 if (downloadBtn) {
                     downloadBtn.disabled = true;
                     downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                    downloadBtn.classList.remove('hover:bg-[#E65925]', 'hover:scale-105', 'cursor-pointer');
+                    downloadBtn.classList.remove('hover:bg-amber-300', 'hover:scale-105', 'cursor-pointer');
                 }
             }
         });
@@ -312,8 +316,8 @@ AOS.init({ once: true, duration: 1200 });
 
         function drawParticles() {
             pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
-            pCtx.fillStyle = 'rgba(251, 171, 24, 0.35)';
-            pCtx.strokeStyle = 'rgba(230, 89, 37, 0.12)';
+            pCtx.fillStyle = 'rgba(255, 194, 26, 0.35)';
+            pCtx.strokeStyle = 'rgba(47, 107, 255, 0.12)';
 
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
@@ -849,8 +853,8 @@ AOS.init({ once: true, duration: 1200 });
             const modalContent = document.getElementById('modalContent');
             modalContent.setAttribute('aria-busy', 'true');
             modalContent.innerHTML = `
-                <div class="py-12 flex flex-col items-center justify-center gap-3 text-center text-[#2B2B2B]">
-                    <i class="fa-solid fa-circle-notch fa-spin text-2xl text-[#FBAB18]" aria-hidden="true"></i>
+                <div class="py-12 flex flex-col items-center justify-center gap-3 text-center text-[#C9D3F0]">
+                    <i class="fa-solid fa-circle-notch fa-spin text-2xl text-[#FFC21A]" aria-hidden="true"></i>
                     <p class="font-semibold">Đang tải nội dung câu chuyện...</p>
                 </div>
             `;
@@ -875,9 +879,9 @@ AOS.init({ once: true, duration: 1200 });
                 modalContent.removeAttribute('aria-busy');
                 modalContent.innerHTML = `
                     <div class="py-10 px-4 flex flex-col items-center justify-center gap-4 text-center">
-                        <i class="fa-solid fa-triangle-exclamation text-2xl text-[#FBAB18]" aria-hidden="true"></i>
-                        <p class="text-[#2B2B2B] font-bold">Chưa tải được nội dung bài viết.</p>
-                        <button id="retryArticleLoad" type="button" class="px-5 py-2.5 rounded-xl bg-[#FBAB18] text-[#7A0C12] text-sm font-extrabold hover:bg-[#E65925] transition-colors">Thử tải lại</button>
+                        <i class="fa-solid fa-triangle-exclamation text-2xl text-[#FFC21A]" aria-hidden="true"></i>
+                        <p class="text-white font-bold">Chưa tải được nội dung bài viết.</p>
+                        <button id="retryArticleLoad" type="button" class="px-5 py-2.5 rounded-xl bg-[#FFC21A] text-[#0B1B4D] text-sm font-extrabold hover:bg-amber-300 transition-colors">Thử tải lại</button>
                     </div>
                 `;
                 document.getElementById('retryArticleLoad')?.addEventListener('click', () => openArticleModal(id), { once: true });
@@ -925,9 +929,9 @@ AOS.init({ once: true, duration: 1200 });
 
             const tabs = { '10': tab10, '09': tab09, '08': tab08 };
             const panels = { '10': panel10, '09': panel09, '08': panel08 };
-            const inactiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#FFF6E6] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-            const mainActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#7A0C12] bg-gradient-to-r from-[#FBAB18] via-[#FBAB18] to-[#FBAB18] shadow-[0_4px_20px_rgba(251,171,24,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-            const secondaryActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-white bg-gradient-to-r from-[#E65925] to-[#B5121B] shadow-[0_4px_20px_rgba(230,89,37,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const inactiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#C9D3F0] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const mainActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#0B1B4D] bg-gradient-to-r from-[#FFC21A] via-[#FFD452] to-[#FFC21A] shadow-[0_4px_20px_rgba(255,194,26,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const secondaryActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-white bg-gradient-to-r from-[#2F6BFF] to-[#13307A] shadow-[0_4px_20px_rgba(47,107,255,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
 
             if (!tabs[day] || !panels[day]) return;
 
@@ -972,21 +976,21 @@ AOS.init({ once: true, duration: 1200 });
             // Desktop Header Links Highlighting
             document.querySelectorAll('header nav a[href^="#"]').forEach(link => {
                 if (link.getAttribute('href') === activeHref) {
-                    link.classList.add('text-[#FBAB18]', 'border-b-2', 'border-[#FBAB18]');
-                    link.classList.remove('text-[#FFF6E6]');
+                    link.classList.add('text-[#FFC21A]', 'border-b-2', 'border-[#FFC21A]');
+                    link.classList.remove('text-[#C9D3F0]');
                 } else {
-                    link.classList.remove('text-[#FBAB18]', 'border-b-2', 'border-[#FBAB18]');
-                    link.classList.add('text-[#FFF6E6]');
+                    link.classList.remove('text-[#FFC21A]', 'border-b-2', 'border-[#FFC21A]');
+                    link.classList.add('text-[#C9D3F0]');
                 }
             });
 
             // Mobile Drawer Links Highlighting
             document.querySelectorAll('#mobileMenu a[href^="#"]').forEach(link => {
                 if (link.getAttribute('href') === activeHref) {
-                    link.classList.add('bg-[#B5121B]', 'text-[#FBAB18]', 'font-extrabold', 'border-l-4', 'border-[#FBAB18]');
+                    link.classList.add('bg-[#13307A]', 'text-[#FFC21A]', 'font-extrabold', 'border-l-4', 'border-[#FFC21A]');
                     link.classList.remove('text-white');
                 } else {
-                    link.classList.remove('bg-[#B5121B]', 'text-[#FBAB18]', 'font-extrabold', 'border-l-4', 'border-[#FBAB18]');
+                    link.classList.remove('bg-[#13307A]', 'text-[#FFC21A]', 'font-extrabold', 'border-l-4', 'border-[#FFC21A]');
                     link.classList.add('text-white');
                 }
             });
