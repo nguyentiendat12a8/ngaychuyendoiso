@@ -101,7 +101,7 @@ AOS.init({ once: true, duration: 1200 });
 
         // Canvas Avatar Generator
         const canvas = document.getElementById('avatarCanvas');
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas ? canvas.getContext('2d') : null;
         let uploadedImage = null;
 
         const frameImg = new Image();
@@ -115,9 +115,25 @@ AOS.init({ once: true, duration: 1200 });
             if (window.location.protocol === 'file:' && window.__localAvatarFrame) {
                 frameImg.src = window.__localAvatarFrame;
             } else {
-                frameImg.crossOrigin = 'anonymous';
                 frameImg.src = FINAL_FRAME_URL;
             }
+            if (frameImg.complete && frameImg.naturalWidth > 0) {
+                renderAvatarFrame();
+            }
+        }
+
+        function initCanvas() {
+            if (!canvas) return;
+            canvas.width = 800;
+            canvas.height = 800;
+            updateAvatarFrame();
+            renderAvatarFrame();
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCanvas);
+        } else {
+            initCanvas();
         }
 
         if (window.location.protocol === 'file:') {
@@ -138,18 +154,12 @@ AOS.init({ once: true, duration: 1200 });
         document.body.classList.remove('theme-red');
         try { localStorage.removeItem('site_theme'); } catch(e) {}
 
-        function initCanvas() {
-            canvas.width = 800;
-            canvas.height = 800;
-            renderAvatarFrame();
-        }
-
         function renderAvatarFrame() {
+            if (!ctx) return;
             const size = 800;
             ctx.clearRect(0, 0, size, size);
 
             // Match the transparent portrait opening in avatar-frame-final.png.
-            // Using the old frame's smaller circle left a visible gap on the right.
             const cx = 400;
             const cy = 440;
             const r = 278;
@@ -173,7 +183,7 @@ AOS.init({ once: true, duration: 1200 });
                 ctx.beginPath();
                 ctx.arc(cx, cy, r, 0, Math.PI * 2);
                 ctx.clip();
-                ctx.fillStyle = '#7A0C12';
+                ctx.fillStyle = '#0B1B4D';
                 ctx.fillRect(0, 0, size, size);
                 ctx.fillStyle = '#C9D3F0';
                 ctx.font = '600 22px "Be Vietnam Pro", sans-serif';
