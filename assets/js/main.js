@@ -290,61 +290,105 @@ AOS.init({ once: true, duration: 1200 });
                 alert("Đã xảy ra lỗi khi tải ảnh. Vui lòng thử lại!");
             }
         }
-        // Particle Constellation Background Canvas
-        const pCanvas = document.getElementById('particleCanvas');
-        const pCtx = pCanvas.getContext('2d');
+        // Particle Constellation Background Canvas (Supports all red sections)
+        function initParticleCanvases() {
+            const canvases = document.querySelectorAll('#particleCanvas, .particleCanvas');
+            if (!canvases.length) return;
 
-        function resizeParticleCanvas() {
-            pCanvas.width = window.innerWidth;
-            pCanvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeParticleCanvas);
-        resizeParticleCanvas();
+            const canvasInstances = [];
 
-        const particles = [];
-        const particleCount = 40;
+            canvases.forEach(canvas => {
+                const ctx = canvas.getContext('2d');
+                if (!ctx) return;
 
-        for (let i = 0; i < particleCount; i++) {
-            particles.push({
-                x: Math.random() * pCanvas.width,
-                y: Math.random() * pCanvas.height,
-                vx: (Math.random() - 0.5) * 0.25,
-                vy: (Math.random() - 0.5) * 0.25,
-                radius: Math.random() * 2 + 1
-            });
-        }
+                const instance = {
+                    canvas,
+                    ctx,
+                    particles: [],
+                    width: 0,
+                    height: 0,
+                    isVisible: true
+                };
 
-        function drawParticles() {
-            pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
-            pCtx.fillStyle = 'rgba(251, 171, 24, 0.35)';
-            pCtx.strokeStyle = 'rgba(230, 89, 37, 0.12)';
+                function resize() {
+                    const rect = canvas.parentElement ? canvas.parentElement.getBoundingClientRect() : canvas.getBoundingClientRect();
+                    instance.width = canvas.width = rect.width || window.innerWidth;
+                    instance.height = canvas.height = rect.height || 600;
 
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-
-                if (p.x < 0 || p.x > pCanvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > pCanvas.height) p.vy *= -1;
-
-                pCtx.beginPath();
-                pCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                pCtx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 120) {
-                        pCtx.beginPath();
-                        pCtx.moveTo(p.x, p.y);
-                        pCtx.lineTo(p2.x, p2.y);
-                        pCtx.stroke();
+                    const count = Math.min(50, Math.max(20, Math.floor((instance.width * instance.height) / 24000)));
+                    instance.particles = [];
+                    for (let i = 0; i < count; i++) {
+                        instance.particles.push({
+                            x: Math.random() * instance.width,
+                            y: Math.random() * instance.height,
+                            vx: (Math.random() - 0.5) * 0.25,
+                            vy: (Math.random() - 0.5) * 0.25,
+                            radius: Math.random() * 2 + 1
+                        });
                     }
                 }
+
+                resize();
+                window.addEventListener('resize', resize);
+                canvasInstances.push(instance);
+            });
+
+            if ('IntersectionObserver' in window) {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        const inst = canvasInstances.find(i => i.canvas === entry.target);
+                        if (inst) {
+                            inst.isVisible = entry.isIntersecting;
+                        }
+                    });
+                }, { threshold: 0.01 });
+
+                canvasInstances.forEach(inst => observer.observe(inst.canvas));
             }
-            requestAnimationFrame(drawParticles);
+
+            function drawAllParticles() {
+                canvasInstances.forEach(inst => {
+                    if (!inst.isVisible) return;
+                    const { ctx, width, height, particles } = inst;
+                    ctx.clearRect(0, 0, width, height);
+                    ctx.fillStyle = 'rgba(251, 171, 24, 0.45)';
+                    ctx.strokeStyle = 'rgba(230, 89, 37, 0.18)';
+
+                    for (let i = 0; i < particles.length; i++) {
+                        let p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+
+                        if (p.x < 0 || p.x > width) p.vx *= -1;
+                        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        for (let j = i + 1; j < particles.length; j++) {
+                            let p2 = particles[j];
+                            let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                            if (dist < 125) {
+                                ctx.beginPath();
+                                ctx.moveTo(p.x, p.y);
+                                ctx.lineTo(p2.x, p2.y);
+                                ctx.stroke();
+                            }
+                        }
+                    }
+                });
+                requestAnimationFrame(drawAllParticles);
+            }
+
+            drawAllParticles();
         }
-        drawParticles();
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initParticleCanvases);
+        } else {
+            initParticleCanvases();
+        }
 
         // Articles Modal Logic
         // Card metadata stays in the initial bundle. Full article bodies are loaded on demand.
