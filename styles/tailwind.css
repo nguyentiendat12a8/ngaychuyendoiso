@@ -39,35 +39,215 @@
             width: 5px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(11, 27, 77, 0.4);
+            background: rgba(122, 12, 18, 0.4);
             border-radius: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: rgba(255, 194, 26, 0.5);
+            background: rgba(251, 171, 24, 0.5);
             border-radius: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 194, 26, 0.9);
+            background: rgba(251, 171, 24, 0.9);
         }
     
 
         body {
-            background: linear-gradient(180deg, #0B1B4D 0%, #0B1B4D 45%, #13307A 100%);
+            background:
+                radial-gradient(circle at 75% 20%, rgba(230, 89, 37, 0.22) 0%, transparent 45%),
+                radial-gradient(circle at 20% 45%, rgba(251, 171, 24, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(230, 89, 37, 0.18) 0%, transparent 45%),
+                radial-gradient(circle at 25% 90%, rgba(251, 171, 24, 0.12) 0%, transparent 35%),
+                linear-gradient(180deg, var(--brand-deep-red) 0%, var(--brand-red) 35%, #8B0C12 70%, var(--brand-deep-red) 100%);
             color: #FFFFFF;
             font-family: 'Be Vietnam Pro', sans-serif;
         }
+
+        :root {
+            --brand-deep-red: #7A0C12;
+            --brand-red: #B5121B;
+            --brand-bright-red: #D23723;
+            --brand-orange: #E65925;
+            --brand-gold: #FBAB18;
+            --brand-cream: #FFF6E6;
+            --brand-charcoal: #2B2B2B;
+            --brand-white: #FFFFFF;
+        }
+
+        #hero,
+        #tru-cot,
+        #su-kien,
+        #cau-chuyen,
+        #tao-avatar,
+        #dang-ky-qr {
+            background: transparent !important;
+            color: #FFFFFF !important;
+        }
+
+        #su-kien > div > .text-center h2,
+        #cau-chuyen > div > .text-center h2,
+        #tao-avatar .brand-card > h2 {
+            color: #FFFFFF !important;
+        }
+
+        #su-kien > div > .text-center > span,
+        #cau-chuyen > div > .text-center > span,
+        #tao-avatar .brand-card > span {
+            color: var(--brand-gold) !important;
+        }
+
+        #su-kien > div > .text-center > p,
+        #cau-chuyen > div > .text-center > p,
+        #tao-avatar .brand-card > p {
+            color: var(--brand-cream) !important;
+        }
+
+        #cau-chuyen article.brand-card,
+        .stories-splide article.brand-card {
+            background: #FFFFFF !important;
+            border-color: rgba(122, 12, 18, 0.12) !important;
+            box-shadow: 0 10px 28px rgba(122, 12, 18, 0.08) !important;
+            border-radius: 1.25rem !important;
+        }
+
+        #cau-chuyen article.brand-card:hover,
+        .stories-splide article.brand-card:hover {
+            border-color: rgba(122, 12, 18, 0.25) !important;
+            box-shadow: 0 18px 40px rgba(122, 12, 18, 0.15) !important;
+        }
+
+        #cau-chuyen article.brand-card > div:last-child,
+        .stories-splide article.brand-card > div:last-child {
+            background: #FFFFFF !important;
+        }
+
+        #cau-chuyen article.brand-card .absolute.inset-0,
+        .stories-splide article.brand-card .absolute.inset-0 {
+            background: linear-gradient(to top, #7A0C12 0%, transparent 60%, rgba(0, 0, 0, 0.2) 100%) !important;
+        }
+
+        #cau-chuyen article.brand-card h3,
+        .stories-splide article.brand-card h3 {
+            color: #7A0C12 !important;
+            font-weight: 800 !important;
+        }
+
+        #cau-chuyen article.brand-card:hover h3,
+        .stories-splide article.brand-card:hover h3 {
+            color: #B5121B !important;
+        }
+
+        #cau-chuyen article.brand-card p,
+        .stories-splide article.brand-card p {
+            color: #334155 !important;
+        }
+
+        #cau-chuyen article.brand-card .pt-3,
+        .stories-splide article.brand-card .pt-3 {
+            border-color: transparent !important;
+        }
+
+        #cau-chuyen article.brand-card span.inline-flex,
+        .stories-splide article.brand-card span.inline-flex {
+            background-color: #B5121B !important;
+            color: #FBAB18 !important;
+            border-color: rgba(251, 171, 24, 0.2) !important;
+            box-shadow: 0 4px 12px rgba(181, 18, 27, 0.3) !important;
+        }
+
+        #cau-chuyen article.brand-card:hover span.inline-flex,
+        .stories-splide article.brand-card:hover span.inline-flex {
+            background-color: #7A0C12 !important;
+            color: #FBAB18 !important;
+        }
         .brand-card {
-            background: rgba(11, 27, 77, 0.75);
+            background: rgba(122, 12, 18, 0.75);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(201, 211, 240, 0.15);
+            border: 1px solid rgba(255, 246, 230, 0.15);
             border-radius: 1.25rem;
             transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .brand-card:hover {
-            border-color: rgba(255, 194, 26, 0.5);
+            border-color: rgba(251, 171, 24, 0.5);
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(47, 107, 255, 0.25);
+            box-shadow: 0 15px 30px -10px rgba(230, 89, 37, 0.25);
+        }
+
+        #ket-qua article {
+            border-color: rgba(122, 12, 18, 0.14);
+            box-shadow: 0 12px 28px rgba(122, 12, 18, 0.08);
+        }
+
+        #ket-qua article > div:first-child {
+            background: linear-gradient(135deg, #7A0C12 0%, #B5121B 100%) !important;
+        }
+
+        #ket-qua article .pillar-title {
+            background-image: linear-gradient(110deg, #FFFFFF 0%, #FFF3B0 55%, #FBAB18 100%) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35)) !important;
+        }
+
+        #storiesLibraryBody {
+            background: var(--brand-cream) !important;
+        }
+
+        #storiesLibraryGrid article.brand-card {
+            color: var(--brand-charcoal);
+            background: var(--brand-white) !important;
+            border-color: rgba(122, 12, 18, 0.16) !important;
+            box-shadow: 0 12px 28px rgba(122, 12, 18, 0.08);
+        }
+
+        #storiesLibraryGrid article > div:last-child {
+            background: var(--brand-white) !important;
+        }
+
+        #storiesLibraryGrid article h3 {
+            color: var(--brand-deep-red) !important;
+        }
+
+        #storiesLibraryGrid article p {
+            color: var(--brand-charcoal) !important;
+        }
+
+        #articleModal > .brand-card {
+            color: var(--brand-charcoal);
+            background: var(--brand-white) !important;
+            border-color: rgba(251, 171, 24, 0.62) !important;
+        }
+
+        #articleModalBody {
+            background: var(--brand-white) !important;
+        }
+
+        #modalTitle {
+            color: var(--brand-deep-red) !important;
+        }
+
+        #modalDate,
+        #modalContent {
+            color: var(--brand-charcoal) !important;
+        }
+
+        #modalContent h3,
+        #modalContent a {
+            color: var(--brand-red) !important;
+        }
+
+        #modalContent blockquote {
+            color: var(--brand-charcoal) !important;
+            background: var(--brand-cream) !important;
+            border-left-color: var(--brand-orange) !important;
+        }
+
+        #modalContent blockquote strong {
+            color: var(--brand-deep-red) !important;
+        }
+
+        #modalContent section.pt-4 {
+            border-color: rgba(122, 12, 18, 0.14) !important;
         }
 
         .pillar-title {
@@ -76,19 +256,13 @@
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 2px 9px rgba(0, 0, 0, 0.22));
+            filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
         }
 
-        .pillar-title-government {
-            background-image: linear-gradient(110deg, #FFF3BA 0%, #FFC21A 68%);
-        }
-
-        .pillar-title-economy {
-            background-image: linear-gradient(110deg, #C9D3F0 0%, #76A0FF 45%, #2F6BFF 100%);
-        }
-
+        .pillar-title-government,
+        .pillar-title-economy,
         .pillar-title-society {
-            background-image: linear-gradient(110deg, #FFC21A 0%, #F7931E 72%);
+            background-image: linear-gradient(110deg, #FFFFFF 0%, #FFF3B0 55%, #FBAB18 100%) !important;
         }
 
         /* Keep article headings and source links natural while aligning prose. */
@@ -110,10 +284,10 @@
             padding: 1.5rem;
             overflow: hidden;
             color: #FFFFFF;
-            background: linear-gradient(135deg, #102864 0%, #173D8C 50%, #0B1B4D 100%);
-            border: 1px solid rgba(19, 48, 122, 0.2);
+            background: linear-gradient(135deg, #7A0C12 0%, #B5121B 50%, #7A0C12 100%);
+            border: 1px solid rgba(181, 18, 27, 0.2);
             border-radius: 1.5rem;
-            box-shadow: 0 14px 32px rgba(11, 27, 77, 0.16);
+            box-shadow: 0 14px 32px rgba(122, 12, 18, 0.16);
         }
 
         .foundation-heading {
@@ -133,15 +307,15 @@
             align-items: center;
             justify-content: center;
             border-radius: 0.8rem;
-            color: #0B1B4D;
-            background: #FFC21A;
-            box-shadow: 0 0 0 5px rgba(255, 194, 26, 0.11);
+            color: #7A0C12;
+            background: #FBAB18;
+            box-shadow: 0 0 0 5px rgba(251, 171, 24, 0.11);
         }
 
         .foundation-kicker {
             display: block;
             margin-top: 0.2rem;
-            color: #FFC21A;
+            color: #FBAB18;
             font-size: 0.6rem;
             font-weight: 800;
             letter-spacing: 0.12em;
@@ -167,7 +341,7 @@
             min-height: 7.6rem;
             padding: 1rem;
             background: rgba(255, 255, 255, 0.065);
-            border: 1px solid rgba(201, 211, 240, 0.15);
+            border: 1px solid rgba(255, 246, 230, 0.15);
             border-radius: 1rem;
         }
 
@@ -192,14 +366,14 @@
         }
 
         .foundation-stat span {
-            color: #FFC21A;
+            color: #FBAB18;
             font-size: 0.68rem;
             font-weight: 800;
             line-height: 1.25;
         }
 
         .foundation-item p {
-            color: #C9D3F0;
+            color: #FFF6E6;
             font-size: 0.72rem;
             line-height: 1.48;
         }
@@ -241,19 +415,19 @@
         }
 
         .text-accent-a4 {
-            color: #FFC21A;
+            color: #FBAB18;
             letter-spacing: 0.14em;
         }
 
         .heading-line-a4 {
             width: 96px;
             height: 6px;
-            background-color: #FFC21A;
+            background-color: #FBAB18;
             border-radius: 3px;
         }
 
         .gradient-shimmer-text {
-            background: linear-gradient(135deg, #FFFFFF 0%, #FFC21A 40%, #C9D3F0 70%, #FFFFFF 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #FBAB18 40%, #FFF6E6 70%, #FFFFFF 100%);
             background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;

@@ -6,13 +6,13 @@ module.exports = {
                     },
                     colors: {
                         brand: {
-                            a1: '#0B1B4D', // Chàm đêm (Nền chính)
-                            a2: '#13307A', // Chàm sâu (Gradient nền)
-                            a3: '#2F6BFF', // Xanh tín hiệu
-                            a4: '#FFC21A', // Vàng nắng
-                            a5: '#F7931E', // Cam ấm
-                            a6: '#F4F1EA', // Ngà (Nền sáng)
-                            subtext: '#C9D3F0' // Xanh xám nhạt
+                            a1: '#7A0C12', // Đỏ trầm (Nền sâu)
+                            a2: '#B5121B', // Đỏ son (Mảng chính)
+                            a3: '#E65925', // Cam đất (Điểm nhấn)
+                            a4: '#FBAB18', // Vàng nắng
+                            a5: '#E65925', // Cam ấm
+                            a6: '#FFF6E6', // Kem (Nền sáng)
+                            subtext: '#FFF6E6' // Kem nhạt trên nền đỏ
                         }
                     },
                     animation: {
