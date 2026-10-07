@@ -83,6 +83,26 @@
             color: #FFFFFF !important;
         }
 
+        .golden-section-divider {
+            position: relative;
+            width: 100%;
+            max-width: 80rem;
+            margin: 1rem auto;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .golden-section-divider::before {
+            content: '';
+            display: block;
+            width: 75%;
+            height: 2px;
+            margin: 0 auto;
+            background: linear-gradient(90deg, transparent 0%, #FBAB18 30%, #FFF6E6 50%, #FBAB18 70%, transparent 100%);
+            box-shadow: 0 0 25px #FBAB18, 0 0 10px rgba(251, 171, 24, 0.6);
+            border-radius: 9999px;
+        }
+
         #su-kien > div > .text-center h2,
         #cau-chuyen > div > .text-center h2,
         #tao-avatar .brand-card > h2 {
