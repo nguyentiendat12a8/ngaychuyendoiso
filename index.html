@@ -471,96 +471,86 @@
     <section id="su-kien" class="py-24 relative overflow-hidden">
         <canvas class="particleCanvas"></canvas>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-4xl mx-auto mb-12" data-aos="fade-up">
+            <div class="text-center max-w-4xl mx-auto mb-10" data-aos="fade-up">
                 <span class="text-xs uppercase tracking-[0.18em] text-[#FBAB18] font-extrabold block mb-3">SỰ KIỆN NỔI BẬT</span>
                 <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white uppercase pt-1" style="line-height: 1.45;">
-                    CHƯƠNG TRÌNH CHÀO MỪNG NGÀY <br class="hidden sm:block" />
-                    CHUYỂN ĐỔI SỐ QUỐC GIA NĂM 2026
+                    CHƯƠNG TRÌNH NGÀY CHUYỂN ĐỔI SỐ <br class="hidden sm:block" />
+                    QUỐC GIA NĂM 2026
                 </h2>
                 <div class="heading-line-a4 mx-auto mt-4"></div>
             </div>
 
-
-
-            <!-- Event Card Container (Thứ Sáu, ngày 09/10/2026) -->
-            <div class="max-w-4xl mx-auto" data-aos="fade-up">
-                <div id="eventPanel09" class="brand-card p-6 sm:p-10 border-t-4 border-t-[#FBAB18] bg-[#B5121B] relative overflow-hidden flex flex-col justify-between transition-all duration-500 ease-out shadow-2xl">
-                    <div class="flex flex-col flex-grow">
-                        <div class="flex items-center justify-between mb-4 h-10">
-                            <div class="px-4 py-2 rounded-xl bg-[#FBAB18] text-[#7A0C12] font-black text-base sm:text-lg shadow-md">
-                                THỨ SÁU, NGÀY 09/10/2026
+            <!-- Hiển thị 2 Thẻ Chương Trình trên 1 hàng ngang khi màn hình to (md trở lên), màn nhỏ xuống dòng -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch max-w-7xl mx-auto w-full" data-aos="fade-up">
+                <!-- Thẻ 1: CHƯƠNG TRÌNH CHÀO MỪNG (Buổi sáng 09/10/2026) -->
+                <div id="eventPanelChaomung" class="brand-card p-6 sm:p-8 border-t-4 border-t-[#FBAB18] bg-[#B5121B] relative overflow-hidden flex flex-col shadow-2xl h-full">
+                    <div class="flex flex-col mb-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                            <div class="px-4 py-2 rounded-xl bg-[#FBAB18] text-[#7A0C12] font-black text-xs sm:text-sm shadow-md flex items-center gap-2 uppercase tracking-wider">
+                                <i class="fa-solid fa-clock"></i> 08:00 THỨ SÁU, NGÀY 09/10/2026
                             </div>
+                            <span class="text-xs font-extrabold text-[#FBAB18] uppercase tracking-widest px-3 py-1 rounded-full bg-[#7A0C12]/80 border border-[#FBAB18]/30">BUỔI SÁNG</span>
                         </div>
-                        <p class="text-xs sm:text-sm text-white mb-6 leading-relaxed w-full text-justify sm:text-left">
-                            Tham quan Triển lãm Chuyển đổi số và Đô thị thông minh, trình chiếu phóng sự tài liệu, báo cáo tham luận chuyên sâu, nghi thức bấm nút khai trương ứng dụng hỗ trợ chuyển đổi số cấp xã.
-                        </p>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-4 leading-snug text-center">
+                            CHƯƠNG TRÌNH CHÀO MỪNG
+                        </h3>
 
-                        <div class="mb-6 p-4 rounded-xl bg-[#7A0C12]/70 border border-[#FBAB18]/30 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 text-xs sm:text-sm text-white">
+                        <div class="p-4 rounded-xl bg-[#7A0C12]/70 border border-[#FBAB18]/30 text-xs sm:text-sm text-white">
                             <a href="https://maps.google.com/?q=Trung+tam+Trien+lam+Quoc+gia+Dong+Anh+Ha+Noi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-[#FBAB18] hover:underline font-bold transition-colors">
                                 <i class="fa-solid fa-location-dot"></i>
                                 <span>Trung tâm Triển lãm Quốc gia Việt Nam, Đông Anh, Hà Nội</span>
                                 <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                             </a>
-                            <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-[#FBAB18]"></i> 08:00 - 10:30</span>
                         </div>
                     </div>
 
-                    <!-- Timeline Chi Tiết Ngày 09/10 -->
-                    <div class="pt-6 border-t border-[#FBAB18]/20">
+                    <!-- Timeline Chi Tiết Chương Trình Chào Mừng -->
+                    <div class="pt-6 border-t border-[#FBAB18]/20 flex-grow">
                         <h4 class="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-[#FBAB18] mb-6 flex items-center gap-2">
-                            <i class="fa-solid fa-timeline"></i> Lịch trình chi tiết (Timeline Ngày 09/10/2026)
+                            <i class="fa-solid fa-timeline"></i> Lịch trình chi tiết
                         </h4>
                         <div class="w-full">
                             <div class="relative pl-7 space-y-5 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-[#FBAB18]/50">
-                                <!-- Item 1 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">08:00 - 08:30</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Đón tiếp đại biểu</div>
                                 </div>
-                                <!-- Item 2 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">08:30 - 08:50</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Tham quan Triển lãm Chuyển đổi số và Đô thị thông minh</div>
                                 </div>
-                                <!-- Item 3 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">08:50 - 09:00</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Văn nghệ chào mừng</div>
                                 </div>
-                                <!-- Item 4 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">09:00 - 09:05</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Giới thiệu đại biểu, mục đích, ý nghĩa Chương trình</div>
                                 </div>
-                                <!-- Item 5 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">09:05 - 09:20</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Phát biểu chào mừng của Bộ trưởng Bộ Khoa học và Công nghệ</div>
                                 </div>
-                                <!-- Item 6 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">09:20 - 09:30</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Trình chiếu phóng sự tài liệu Thành tựu nổi bật chuyển đổi số quốc gia</div>
                                 </div>
-                                <!-- Item 7 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">09:30 - 10:15</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Báo cáo tham luận chia sẻ kinh nghiệm, bài học hay, cách làm đột phá trong chuyển đổi số</div>
                                 </div>
-                                <!-- Item 8 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">10:15 - 10:20</div>
                                     <div class="text-xs sm:text-sm text-white font-medium">Trình chiếu video clip Tương lai Việt Nam số</div>
                                 </div>
-                                <!-- Item 9 -->
                                 <div class="relative">
                                     <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
                                     <div class="text-xs font-black text-[#FBAB18]">10:20 - 10:30</div>
@@ -569,6 +559,80 @@
                                         <div>- Chụp ảnh lưu niệm</div>
                                         <div>- MC kết thúc Chương trình</div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thẻ 2: CHƯƠNG TRÌNH DIỄN ĐÀN CHUYỂN ĐỔI SỐ (Buổi chiều 09/10/2026) -->
+                <div id="eventPanelDiendan" class="brand-card p-6 sm:p-8 border-t-4 border-t-[#FBAB18] bg-[#B5121B] relative overflow-hidden flex flex-col shadow-2xl h-full">
+                    <div class="flex flex-col mb-6">
+                        <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+                            <div class="px-4 py-2 rounded-xl bg-[#FBAB18] text-[#7A0C12] font-black text-xs sm:text-sm shadow-md flex items-center gap-2 uppercase tracking-wider">
+                                <i class="fa-solid fa-clock"></i> 13:00 THỨ SÁU, NGÀY 09/10/2026
+                            </div>
+                            <span class="text-xs font-extrabold text-[#FBAB18] uppercase tracking-widest px-3 py-1 rounded-full bg-[#7A0C12]/80 border border-[#FBAB18]/30">BUỔI CHIỀU</span>
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-black text-white uppercase tracking-tight mb-4 leading-snug text-center">
+                            CHƯƠNG TRÌNH DIỄN ĐÀN
+                        </h3>
+
+                        <div class="p-4 rounded-xl bg-[#7A0C12]/70 border border-[#FBAB18]/30 text-xs sm:text-sm text-white">
+                            <a href="https://maps.google.com/?q=Trung+tam+Trien+lam+Quoc+gia+Dong+Anh+Ha+Noi" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-[#FBAB18] hover:underline font-bold transition-colors">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span>Trung tâm Triển lãm Quốc gia Việt Nam, Đông Anh, Hà Nội</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Chi Tiết Chương Trình Diễn Đàn -->
+                    <div class="pt-6 border-t border-[#FBAB18]/20 flex-grow">
+                        <h4 class="text-xs sm:text-sm uppercase tracking-wider font-extrabold text-[#FBAB18] mb-6 flex items-center gap-2">
+                            <i class="fa-solid fa-timeline"></i> Lịch trình chi tiết
+                        </h4>
+                        <div class="w-full">
+                            <div class="relative pl-7 space-y-5 before:absolute before:left-[7px] before:top-2 before:bottom-2 before:w-0.5 before:bg-[#FBAB18]/50">
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">13:00 - 13:30</div>
+                                    <div class="text-xs sm:text-sm text-white font-medium">Đón tiếp đại biểu</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">13:30 - 13:35</div>
+                                    <div class="text-xs sm:text-sm text-white font-medium">Giới thiệu đại biểu, mục đích, ý nghĩa Chương trình</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">13:35 - 13:45</div>
+                                    <div class="text-xs sm:text-sm text-white font-medium">Phát biểu khai mạc của Lãnh đạo Bộ Khoa học và Công nghệ</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">13:45 - 14:00</div>
+                                    <div class="text-xs sm:text-sm text-white font-bold">Báo cáo trung tâm: Hành lang pháp lý cho chuyển đổi số - điểm mới của Nghị định số 224/2026/NĐ-CP của Chính phủ</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">14:00 - 14:50</div>
+                                    <div class="text-xs sm:text-sm text-white font-bold">Phiên tọa đàm chuyên đề 1: Chính phủ số và dịch vụ công thế hệ mới</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">14:50 - 15:40</div>
+                                    <div class="text-xs sm:text-sm text-white font-medium">Các báo cáo tham luận</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">15:40 - 16:30</div>
+                                    <div class="text-xs sm:text-sm text-white font-bold">Phiên tọa đàm chuyên đề 2: Kinh tế số, xã hội số và năng lực quốc gia số</div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute -left-[27px] top-1 w-3.5 h-3.5 rounded-full bg-[#FBAB18] border-2 border-[#B5121B]"></span>
+                                    <div class="text-xs font-black text-[#FBAB18]">16:30</div>
+                                    <div class="text-xs sm:text-sm text-white font-bold">Tổng hợp kết quả, bế mạc Diễn đàn</div>
                                 </div>
                             </div>
                         </div>

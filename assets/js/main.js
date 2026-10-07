@@ -1025,35 +1025,39 @@ AOS.init({ once: true, duration: prefersReducedMotion ? 0 : 1200, disable: prefe
             }
         });
 
-        // Event Section Tab Switcher (Mặc định 10/10; hỗ trợ 09/10 và 08/10)
-        function switchEventTab(day) {
-            const tab10 = document.getElementById('tabEvent10');
-            const tab09 = document.getElementById('tabEvent09');
-            const tab08 = document.getElementById('tabEvent08');
-            const panel10 = document.getElementById('eventPanel10');
-            const panel09 = document.getElementById('eventPanel09');
-            const panel08 = document.getElementById('eventPanel08');
+        // Event Section Program Tab Switcher (Chương trình Chào mừng & Chương trình Diễn đàn)
+        function switchProgramTab(program) {
+            const tabChaomung = document.getElementById('tabChaomung');
+            const tabDiendan = document.getElementById('tabDiendan');
+            const panelChaomung = document.getElementById('eventPanelChaomung');
+            const panelDiendan = document.getElementById('eventPanelDiendan');
 
-            if (!tab10 || !tab09 || !tab08 || !panel10 || !panel09 || !panel08) return;
+            if (!tabChaomung || !tabDiendan || !panelChaomung || !panelDiendan) return;
 
-            const tabs = { '10': tab10, '09': tab09, '08': tab08 };
-            const panels = { '10': panel10, '09': panel09, '08': panel08 };
-            const inactiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#FFF6E6] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-            const mainActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-[#7A0C12] bg-gradient-to-r from-[#FBAB18] via-[#FBAB18] to-[#FBAB18] shadow-[0_4px_20px_rgba(251,171,24,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
-            const secondaryActiveClass = "min-w-0 flex-1 py-3.5 px-2 sm:px-6 rounded-xl text-white bg-gradient-to-r from-[#E65925] to-[#B5121B] shadow-[0_4px_20px_rgba(230,89,37,0.4)] transition-all duration-300 flex items-center justify-center cursor-pointer select-none";
+            const activeTabClass = "flex-1 py-3.5 px-3 sm:px-6 rounded-xl font-extrabold text-xs sm:text-sm text-[#7A0C12] bg-[#FBAB18] shadow-[0_4px_20px_rgba(251,171,24,0.4)] transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer";
+            const inactiveTabClass = "flex-1 py-3.5 px-3 sm:px-6 rounded-xl font-extrabold text-xs sm:text-sm text-[#FFF6E6] hover:text-white bg-transparent transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer";
 
-            if (!tabs[day] || !panels[day]) return;
+            if (program === 'chaomung') {
+                tabChaomung.className = activeTabClass;
+                tabChaomung.setAttribute('aria-selected', 'true');
+                tabDiendan.className = inactiveTabClass;
+                tabDiendan.setAttribute('aria-selected', 'false');
 
-            Object.entries(tabs).forEach(([tabDay, tab]) => {
-                tab.className = tabDay === day
-                    ? (tabDay === '10' ? mainActiveClass : secondaryActiveClass)
-                    : inactiveClass;
-            });
+                panelDiendan.classList.add('hidden', 'opacity-0');
+                panelChaomung.classList.remove('hidden');
+                setTimeout(() => panelChaomung.classList.remove('opacity-0'), 15);
+            } else if (program === 'diendan') {
+                tabDiendan.className = activeTabClass;
+                tabDiendan.setAttribute('aria-selected', 'true');
+                tabChaomung.className = inactiveTabClass;
+                tabChaomung.setAttribute('aria-selected', 'false');
 
-            Object.values(panels).forEach((panel) => panel.classList.add('hidden', 'opacity-0'));
-            panels[day].classList.remove('hidden');
-            setTimeout(() => panels[day].classList.remove('opacity-0'), 15);
+                panelChaomung.classList.add('hidden', 'opacity-0');
+                panelDiendan.classList.remove('hidden');
+                setTimeout(() => panelDiendan.classList.remove('opacity-0'), 15);
+            }
         }
+        window.switchProgramTab = switchProgramTab;
 
         // ScrollSpy Menu Navigation Active Highlighting
         function updateScrollSpy() {
