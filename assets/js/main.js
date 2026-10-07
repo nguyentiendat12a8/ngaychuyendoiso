@@ -1,4 +1,5 @@
-AOS.init({ once: true, duration: 1200 });
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+AOS.init({ once: true, duration: prefersReducedMotion ? 0 : 1200, disable: prefersReducedMotion });
 
         // Countdown (Đếm ngược 24/7 đến Ngày Chuyển đổi số Quốc gia 10/10/2026)
         const targetDate = new Date('2026-10-10T00:00:00+07:00').getTime();
@@ -106,19 +107,35 @@ AOS.init({ once: true, duration: 1200 });
 
         const frameImg = new Image();
         const FINAL_FRAME_URL = 'assets/images/avatar-frame-final.png';
+        let frameLoadStarted = false;
+        let localFrameScriptRequested = false;
         
         frameImg.onload = function() {
             renderAvatarFrame();
         };
 
         function updateAvatarFrame() {
-            if (window.location.protocol === 'file:' && window.__localAvatarFrame) {
-                frameImg.src = window.__localAvatarFrame;
-            } else {
-                frameImg.src = FINAL_FRAME_URL;
-            }
             if (frameImg.complete && frameImg.naturalWidth > 0) {
                 renderAvatarFrame();
+                return;
+            }
+            if (frameLoadStarted) return;
+            frameLoadStarted = true;
+
+            if (window.location.protocol === 'file:' && window.__localAvatarFrame) {
+                frameImg.src = window.__localAvatarFrame;
+            } else if (window.location.protocol === 'file:') {
+                if (localFrameScriptRequested) return;
+                localFrameScriptRequested = true;
+                const localFrameScript = document.createElement('script');
+                localFrameScript.src = 'assets/js/avatar-frame.local.js';
+                localFrameScript.onerror = function() {
+                    frameLoadStarted = false;
+                    console.error('Không tải được ảnh khung cho bản xem local. Hãy chạy npm run build.');
+                };
+                document.head.appendChild(localFrameScript);
+            } else {
+                frameImg.src = FINAL_FRAME_URL;
             }
         }
 
@@ -126,8 +143,19 @@ AOS.init({ once: true, duration: 1200 });
             if (!canvas) return;
             canvas.width = 800;
             canvas.height = 800;
-            updateAvatarFrame();
             renderAvatarFrame();
+            const avatarSection = document.getElementById('tao-avatar');
+            if ('IntersectionObserver' in window && avatarSection) {
+                const frameObserver = new IntersectionObserver((entries, observer) => {
+                    if (entries.some(entry => entry.isIntersecting)) {
+                        updateAvatarFrame();
+                        observer.disconnect();
+                    }
+                }, { rootMargin: '400px 0px' });
+                frameObserver.observe(avatarSection);
+            } else {
+                updateAvatarFrame();
+            }
         }
 
         if (document.readyState === 'loading') {
@@ -138,16 +166,8 @@ AOS.init({ once: true, duration: 1200 });
 
         if (window.location.protocol === 'file:') {
             window.__loadLocalAvatarFrame = function() {
-                updateAvatarFrame();
+                if (window.__localAvatarFrame) frameImg.src = window.__localAvatarFrame;
             };
-            const localFrameScript = document.createElement('script');
-            localFrameScript.src = 'assets/js/avatar-frame.local.js';
-            localFrameScript.onerror = function() {
-                console.error('Không tải được ảnh khung cho bản xem local. Hãy chạy npm run build.');
-            };
-            document.head.appendChild(localFrameScript);
-        } else {
-            updateAvatarFrame();
         }
 
         // Reset theme class on body if any cached theme existed
@@ -203,6 +223,7 @@ AOS.init({ once: true, duration: 1200 });
             const nameDisplay = document.getElementById('fileNameDisplay');
             const downloadBtn = document.getElementById('downloadBtn');
             if (file) {
+                updateAvatarFrame();
                 if (nameDisplay) {
                     nameDisplay.innerText = file.name;
                     nameDisplay.classList.remove('italic');
@@ -275,6 +296,7 @@ AOS.init({ once: true, duration: 1200 });
         }
 
         window.downloadAvatar = downloadAvatar;
+        document.getElementById('downloadBtn')?.addEventListener('click', downloadAvatar);
 
         function executeDataURLDownload() {
             try {
@@ -378,7 +400,7 @@ AOS.init({ once: true, duration: 1200 });
                         }
                     }
                 });
-                requestAnimationFrame(drawAllParticles);
+                if (!prefersReducedMotion) requestAnimationFrame(drawAllParticles);
             }
 
             drawAllParticles();
@@ -853,6 +875,7 @@ AOS.init({ once: true, duration: 1200 });
         window.__storyContents = window.__storyContents || Object.create(null);
         const articleContentLoads = new Map();
         let articleRequestId = 0;
+        let articleReturnFocus = null;
 
         function loadArticleContent(id) {
             if (Object.prototype.hasOwnProperty.call(window.__storyContents, id)) {
@@ -887,6 +910,8 @@ AOS.init({ once: true, duration: 1200 });
         async function openArticleModal(id) {
             const article = articlesData[id];
             if (!article) return;
+            const modal = document.getElementById('articleModal');
+            if (modal.classList.contains('hidden')) articleReturnFocus = document.activeElement;
             const requestId = ++articleRequestId;
             document.getElementById('modalCategory').innerText = article.category;
             document.getElementById('modalTitle').innerText = article.title;
@@ -904,12 +929,14 @@ AOS.init({ once: true, duration: 1200 });
             `;
             resetArticleModalScroll();
 
-            const modal = document.getElementById('articleModal');
             modal.classList.remove('hidden');
             modal.classList.add('flex');
             document.body.style.overflow = 'hidden';
 
-            requestAnimationFrame(resetArticleModalScroll);
+            requestAnimationFrame(() => {
+                resetArticleModalScroll();
+                modal.querySelector('[data-close-article]')?.focus({ preventScroll: true });
+            });
 
             try {
                 const content = await loadArticleContent(id);
@@ -943,17 +970,55 @@ AOS.init({ once: true, duration: 1200 });
             const libraryModal = document.getElementById('storiesLibraryModal');
             const libraryIsOpen = libraryModal && !libraryModal.classList.contains('hidden');
             document.body.style.overflow = libraryIsOpen ? 'hidden' : '';
+            const returnFocus = articleReturnFocus;
+            articleReturnFocus = null;
+            requestAnimationFrame(() => {
+                if (returnFocus instanceof HTMLElement && returnFocus.isConnected) {
+                    returnFocus.focus({ preventScroll: true });
+                } else if (libraryIsOpen) {
+                    document.getElementById('storiesLibraryClose')?.focus({ preventScroll: true });
+                }
+            });
+        }
+
+        document.querySelectorAll('[data-close-article]').forEach((button) => {
+            button.addEventListener('click', closeArticleModal);
+        });
+        document.getElementById('articleModal')?.addEventListener('click', (event) => {
+            if (event.target === event.currentTarget) closeArticleModal();
+        });
+
+        function trapFocus(event, modal) {
+            if (event.key !== 'Tab') return;
+            const focusable = [...modal.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )].filter((element) => !element.hasAttribute('hidden') && element.getClientRects().length > 0);
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
+            }
         }
 
         document.addEventListener('keydown', function(e) {
+            const articleModal = document.getElementById('articleModal');
+            const libraryModal = document.getElementById('storiesLibraryModal');
+            const activeModal = articleModal && !articleModal.classList.contains('hidden')
+                ? articleModal
+                : libraryModal && !libraryModal.classList.contains('hidden') ? libraryModal : null;
+            if (activeModal && e.key === 'Tab') trapFocus(e, activeModal);
+
             if (e.key === 'Escape') {
-                const articleModal = document.getElementById('articleModal');
                 if (articleModal && !articleModal.classList.contains('hidden')) {
                     closeArticleModal();
                     return;
                 }
 
-                const libraryModal = document.getElementById('storiesLibraryModal');
                 if (libraryModal && !libraryModal.classList.contains('hidden') && typeof window.closeStoriesLibrary === 'function') {
                     window.closeStoriesLibrary();
                 }

@@ -16,12 +16,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 const previewSlides = [];
 
                 allSlides.forEach((slide) => {
-                    const article = slide.querySelector('article[onclick^="openArticleModal("]');
-                    const match = article && article.getAttribute('onclick').match(/openArticleModal\((\d+)\)/);
-                    const story = match && typeof articlesData !== 'undefined' ? articlesData[Number(match[1])] : null;
+                    const article = slide.querySelector('article[data-story-id]');
+                    const storyId = article ? Number(article.dataset.storyId) : 0;
+                    const story = storyId && typeof articlesData !== 'undefined' ? articlesData[storyId] : null;
                     const category = story ? story.category : 'Khác';
                     const count = categoryCounts.get(category) || 0;
                     categoryCounts.set(category, count + 1);
+                    if (article && story) {
+                        article.setAttribute('role', 'button');
+                        article.setAttribute('tabindex', '0');
+                        article.setAttribute('aria-label', `Đọc bài: ${story.title}`);
+                    }
                     if (count < previewPerCategory) previewSlides.push(slide);
                 });
 
@@ -42,10 +47,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         gap: 24,
                         pagination: false,
                         arrows: hasMultipleStories,
-                        autoScroll: hasMultipleStories ? {
+                        autoScroll: hasMultipleStories && !window.matchMedia('(prefers-reduced-motion: reduce)').matches ? {
                             speed: 1.5,
                             pauseOnHover: true,
-                            pauseOnFocus: false,
+                            pauseOnFocus: true,
                             rewind: false
                         } : false,
                         breakpoints: {
@@ -63,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     let cardCount = 0;
 
                     allSlides.forEach((slide) => {
-                        const sourceArticle = slide.querySelector('article[onclick^="openArticleModal("]');
+                        const sourceArticle = slide.querySelector('article[data-story-id]');
                         if (!sourceArticle) return;
 
                         const wrapper = document.createElement('div');
@@ -73,12 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
                         article.setAttribute('role', 'button');
                         article.setAttribute('tabindex', '0');
                         article.setAttribute('aria-label', `Đọc bài: ${title}`);
-                        article.addEventListener('keydown', (event) => {
-                            if (event.key === 'Enter' || event.key === ' ') {
-                                event.preventDefault();
-                                article.click();
-                            }
-                        });
                         wrapper.appendChild(article);
                         fragment.appendChild(wrapper);
                         cardCount += 1;
@@ -124,6 +123,25 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (toggleButton) {
                     toggleButton.addEventListener('click', window.openStoriesLibrary);
                 }
+
+                document.addEventListener('click', (event) => {
+                    const card = event.target.closest('article[data-story-id]');
+                    if (!card) return;
+                    openArticleModal(Number(card.dataset.storyId));
+                });
+
+                document.addEventListener('keydown', (event) => {
+                    if (event.key !== 'Enter' && event.key !== ' ') return;
+                    const card = event.target.closest('article[data-story-id]');
+                    if (!card) return;
+                    event.preventDefault();
+                    openArticleModal(Number(card.dataset.storyId));
+                });
+
+                document.getElementById('storiesLibraryClose')?.addEventListener('click', window.closeStoriesLibrary);
+                libraryModal?.addEventListener('click', (event) => {
+                    if (event.target === libraryModal) window.closeStoriesLibrary();
+                });
             }
 
             // Partner Continuous Marquee Reel Splide Initialization
@@ -136,10 +154,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     gap: 20,
                     arrows: false,
                     pagination: false,
-                    autoScroll: {
+                    autoScroll: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? false : {
                         speed: 0.7,
                         pauseOnHover: true,
-                        pauseOnFocus: false,
+                        pauseOnFocus: true,
                         rewind: false
                     }
                 });
@@ -151,15 +169,29 @@ document.addEventListener('DOMContentLoaded', function () {
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const icon = document.getElementById('mobileMenuIcon');
+            const button = document.getElementById('mobileMenuButton');
             if (menu && icon) {
                 if (menu.classList.contains('hidden')) {
                     menu.classList.remove('hidden');
                     icon.classList.remove('fa-bars');
                     icon.classList.add('fa-xmark');
+                    button?.setAttribute('aria-expanded', 'true');
+                    button?.setAttribute('aria-label', 'Đóng menu điều hướng');
                 } else {
                     menu.classList.add('hidden');
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
+                    button?.setAttribute('aria-expanded', 'false');
+                    button?.setAttribute('aria-label', 'Mở menu điều hướng');
                 }
             }
         }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('mobileMenuButton')?.addEventListener('click', toggleMobileMenu);
+            document.querySelectorAll('#mobileMenu a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    if (!document.getElementById('mobileMenu')?.classList.contains('hidden')) toggleMobileMenu();
+                });
+            });
+        });

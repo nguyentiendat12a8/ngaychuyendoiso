@@ -39,7 +39,7 @@ const path = require('path');
     };
   });
 
-  await page.locator('#storiesSplide article').first().click();
+  await page.evaluate(() => openArticleModal(1));
   await page.waitForSelector('#articleModal.flex');
   await page.waitForSelector('#modalContent h3');
   const article = await page.evaluate(() => ({
@@ -64,13 +64,22 @@ const path = require('path');
   mobile.on('pageerror', error => pageErrors.push('mobile: ' + error.message));
   await mobile.goto(url, { waitUntil: 'load' });
   await mobile.waitForTimeout(2500);
-  await mobile.locator('button[aria-label="Toggle Menu"]').click();
+  await mobile.locator('#mobileMenuButton').click();
   const mobileState = await mobile.evaluate(() => ({
     menuOpen: !document.getElementById('mobileMenu').classList.contains('hidden'),
     scrollWidth: document.documentElement.scrollWidth,
     clientWidth: document.documentElement.clientWidth
   }));
 
-  console.log(JSON.stringify({ dom, article, library, mobileState, consoleErrors, pageErrors }, null, 2));
+  const reduced = await browser.newPage({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce' });
+  reduced.on('pageerror', error => pageErrors.push('reduced-motion: ' + error.message));
+  await reduced.goto(url, { waitUntil: 'load' });
+  await reduced.waitForTimeout(500);
+  const reducedMotionState = await reduced.evaluate(() => ({
+    requested: matchMedia('(prefers-reduced-motion: reduce)').matches,
+    hiddenAosElements: [...document.querySelectorAll('[data-aos]')].filter(element => getComputedStyle(element).opacity === '0').length
+  }));
+
+  console.log(JSON.stringify({ dom, article, library, mobileState, reducedMotionState, consoleErrors, pageErrors }, null, 2));
   await browser.close();
 })().catch(error => { console.error(error); process.exit(1); });
