@@ -457,27 +457,6 @@ AOS.init({ once: true, duration: prefersReducedMotion ? 0 : 1200, disable: prefe
                 "image": "assets/images/story-cross-province-service-2026.webp",
                 "imageAlt": "Người lao động nộp hồ sơ hộ tịch tại nơi làm việc để được xử lý liên tỉnh"
             },
-            "7": {
-                "category": "Cơ quan nhà nước",
-                "title": "Kiosk thông minh giúp người dân tự tin trên môi trường số",
-                "date": "Câu chuyện năm 2026",
-                "image": "assets/images/story-smart-kiosk-langson-2026.webp",
-                "imageAlt": "Người cao tuổi được hướng dẫn sử dụng kiosk dịch vụ công thông minh tại Lạng Sơn"
-            },
-            "8": {
-                "category": "Cơ quan nhà nước",
-                "title": "Số hóa ngay từ quầy: Cách chuyển đổi số giúp chính quyền cơ sở xử lý hồ sơ đất đai đúng hạn",
-                "date": "Câu chuyện năm 2026",
-                "image": "assets/images/story-land-record-digitization-2026.webp",
-                "imageAlt": "Cán bộ số hóa hồ sơ đất đai ngay tại quầy tiếp nhận ở Ninh Bình"
-            },
-            "9": {
-                "category": "Cơ quan nhà nước",
-                "title": "Nền tảng số dùng chung: Một thay đổi lớn trong đầu tư chuyển đổi số của cơ quan nhà nước",
-                "date": "Câu chuyện năm 2026",
-                "image": "assets/images/story-shared-digital-platform-2026.webp",
-                "imageAlt": "Các cơ quan cùng khai thác một nền tảng số và dữ liệu dùng chung"
-            },
             "10": {
                 "category": "Cơ quan nhà nước",
                 "title": "“Lên đời” cho Internet: Hạ tầng thầm lặng của chuyển đổi số",
@@ -596,13 +575,6 @@ AOS.init({ once: true, duration: prefersReducedMotion ? 0 : 1200, disable: prefe
                 "date": "Câu chuyện năm 2026",
                 "image": "assets/images/story-ai-railway-flexible-fare-2026.webp",
                 "imageAlt": "Hành khách chọn vé tàu giảm giá theo chặng trống do hệ thống AI xác định"
-            },
-            "27": {
-                "category": "Doanh nghiệp",
-                "title": "Hợp đồng 256 triệu USD và nấc thang mới của kỹ sư Việt",
-                "date": "Câu chuyện năm 2026",
-                "image": "assets/images/story-vietnam-global-engineers-2026.webp",
-                "imageAlt": "Đội ngũ kỹ sư Việt Nam triển khai dự án chuyển đổi số cho khách hàng quốc tế"
             },
             "28": {
                 "category": "Doanh nghiệp",

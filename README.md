@@ -8,7 +8,7 @@
 - CSS tùy chỉnh: `styles/tailwind.css` (sau ba dòng `@tailwind`).
 - Màu, font, animation của Tailwind: `tailwind.config.cjs`.
 - Countdown, avatar, thông tin thẻ bài viết và tab: `assets/js/main.js`.
-- Nội dung đầy đủ của 64 bài: `assets/data/stories/story-01.js` đến `story-64.js`; mỗi tệp chỉ được tải khi người dùng mở đúng bài đó.
+- Nội dung đầy đủ của 60 bài nằm trong `assets/data/stories/`; mỗi tệp chỉ được tải khi người dùng mở đúng bài đó.
 - Carousel, menu: `assets/js/carousels.js`.
 - Ảnh câu chuyện: `assets/images/`; logo và khung avatar giữ vị trí cũ.
 

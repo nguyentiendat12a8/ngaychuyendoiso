@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     libraryGrid.replaceChildren(fragment);
                     libraryBuilt = true;
-                    if (libraryCount) libraryCount.textContent = `${cardCount} câu chuyện`;
+                    if (libraryCount) libraryCount.textContent = String(cardCount);
                 }
 
                 window.openStoriesLibrary = function () {
