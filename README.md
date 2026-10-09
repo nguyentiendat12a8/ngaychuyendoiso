@@ -39,7 +39,7 @@ Tailwind CSS 3.4.17 (build tại máy); Font Awesome Free 6.4.0; AOS 2.3.4; Spli
 
 Font hiện dùng WOFF2 đầy đủ bộ ký tự từ font gốc, không cắt theo nội dung hiện tại để tránh thiếu dấu khi cập nhật. Ảnh minh họa và logo hiển thị dùng WebP; các file gốc giữ lại để chỉnh sửa. Khung avatar giữ nguyên PNG gốc, tách khỏi JavaScript để tải/cache riêng. `optimize-assets.py` là công cụ chuyển đổi ban đầu, không thuộc quy trình build thường ngày và không cần Python trên Vercel.
 
-QR đăng ký dùng nguyên ảnh được cung cấp, lưu tại `assets/images/registration-qr.jpg`. Ảnh và nút đăng ký cùng dẫn đến URL giải mã từ QR: `https://q.me-qr.com/qhn68xfc`. Không gọi dịch vụ tạo QR ngoài khi tải trang. Đây là URL trung gian ME-QR; cần kiểm tra trên điện thoại rằng đích chuyển tiếp là biểu mẫu chính thức trước khi công bố. Các liên kết bản đồ và website liên hệ vẫn dẫn ra ngoài.
+QR tài liệu sự kiện được lưu tại `assets/images/event-documents-qr.png`; ảnh và nút mở tài liệu cùng dẫn đến thư mục Google Drive chính thức của sự kiện.
 
 ## Giữ tài nguyên khi cập nhật
 

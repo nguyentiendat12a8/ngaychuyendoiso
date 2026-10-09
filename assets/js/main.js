@@ -1040,7 +1040,7 @@ AOS.init({ once: true, duration: prefersReducedMotion ? 0 : 1200, disable: prefe
                 { id: 'su-kien', navHref: '#su-kien' },
                 { id: 'cau-chuyen', navHref: '#cau-chuyen' },
                 { id: 'tao-avatar', navHref: '#tao-avatar' },
-                { id: 'dang-ky-qr', navHref: '#tao-avatar' }
+                { id: 'tai-lieu-su-kien', navHref: '#tao-avatar' }
             ];
 
             const scrollPos = window.scrollY + 180;
